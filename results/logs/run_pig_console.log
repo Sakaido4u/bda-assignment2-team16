@@ -1,0 +1,282 @@
+=== Building a small sample (5000 core rows incl. QC-failed rows from India and elsewhere) ===
+5000 /tmp/sample.csv
+=== Pig sample inspection (DESCRIBE / DUMP / ILLUSTRATE) ===
+raw: {station_id: chararray,obs_date: chararray,element: chararray,data_value: int,m_flag: chararray,q_flag: chararray,s_flag: chararray,obs_time: chararray}
+clean: {station_id: chararray,country_code: chararray,year: int,month: int,day: int,element: chararray,value: double}
+HadoopVersion	PigVersion	UserId	StartedAt	FinishedAt	Features
+3.3.6	0.18.0	root	2026-10-27 05:22:39	2026-10-27 05:23:22	FILTER,LIMIT
+Success!
+Job Stats (time in seconds):
+JobId	Maps	Reduces	MaxMapTime	MinMapTime	AvgMapTime	MedianMapTime	MaxReduceTime	MinReduceTime	AvgReduceTime	MedianReducetime	Alias	Feature	Outputs
+job_1793078486119_0001	1	1	3	3	3	3	3	3	3	3	core,qc_show,raw		
+job_1793078486119_0002	1	1	2	2	2	2	2	2	2	2			hdfs://master:9000/tmp/temp-246932888/tmp388459261,
+Input(s):
+Successfully read 5000 records (173710 bytes) from: "/ghcn/sample/sample.csv"
+Output(s):
+Successfully stored 5 records (235 bytes) in: "hdfs://master:9000/tmp/temp-246932888/tmp388459261"
+Counters:
+Total records written : 5
+Total bytes written : 235
+Spillable Memory Manager spill count : 0
+Total bags proactively spilled: 0
+Total records proactively spilled: 0
+Job DAG:
+job_1793078486119_0001	->	job_1793078486119_0002,
+job_1793078486119_0002
+(USS0014K07S,20250101,TMIN,-76,,I,T,)
+(USS0015F09S,20250101,TMAX,-5,,I,T,)
+(USS0021D08S,20250101,TMAX,-35,,I,T,)
+(USS0021D12S,20250101,TMAX,-25,,I,T,)
+(USS0021E06S,20250101,TMAX,-9,,I,T,)
+HadoopVersion	PigVersion	UserId	StartedAt	FinishedAt	Features
+3.3.6	0.18.0	root	2026-10-27 05:23:22	2026-10-27 05:24:10	FILTER,LIMIT
+Success!
+Job Stats (time in seconds):
+JobId	Maps	Reduces	MaxMapTime	MinMapTime	AvgMapTime	MedianMapTime	MaxReduceTime	MinReduceTime	AvgReduceTime	MedianReducetime	Alias	Feature	Outputs
+job_1793078486119_0003	1	1	4	4	4	4	5	5	5	5	clean,core,india,india_show,raw		
+job_1793078486119_0004	1	1	2	2	2	2	2	2	2	2			hdfs://master:9000/tmp/temp-246932888/tmp1027722657,
+Input(s):
+Successfully read 5000 records (173710 bytes) from: "/ghcn/sample/sample.csv"
+Output(s):
+Successfully stored 10 records (420 bytes) in: "hdfs://master:9000/tmp/temp-246932888/tmp1027722657"
+Counters:
+Total records written : 10
+Total bytes written : 420
+Spillable Memory Manager spill count : 0
+Total bags proactively spilled: 0
+Total records proactively spilled: 0
+Job DAG:
+job_1793078486119_0003	->	job_1793078486119_0004,
+job_1793078486119_0004
+(IN018103100,IN,2025,1,1,TMAX,13.0)
+(IN018103100,IN,2025,1,1,TMIN,8.8)
+(IN019010300,IN,2025,1,1,TMAX,21.4)
+(IN019010300,IN,2025,1,1,TMIN,7.8)
+(IN019040100,IN,2025,1,1,TMAX,25.6)
+(IN019040100,IN,2025,1,1,TMIN,11.6)
+(IN019070100,IN,2025,1,1,TMAX,18.6)
+(IN019070100,IN,2025,1,1,TMIN,7.0)
+(IN019100500,IN,2025,1,1,TMAX,14.6)
+(IN019100500,IN,2025,1,1,TMIN,6.0)
+HadoopVersion	PigVersion	UserId	StartedAt	FinishedAt	Features
+3.3.6	0.18.0	root	2026-10-27 05:24:10	2026-10-27 05:24:58	HASH_JOIN,GROUP_BY,FILTER
+Success!
+Job Stats (time in seconds):
+JobId	Maps	Reduces	MaxMapTime	MinMapTime	AvgMapTime	MedianMapTime	MaxReduceTime	MinReduceTime	AvgReduceTime	MedianReducetime	Alias	Feature	Outputs
+job_1793078486119_0005	1	1	2	2	2	2	2	2	2	2	1-16,1-17,by_el_clean,by_el_raw,clean,core,raw,valid	MULTI_QUERY,COMBINER	
+job_1793078486119_0006	2	1	3	3	3	3	5	5	5	5	cmp,cmp_out	HASH_JOIN	hdfs://master:9000/tmp/temp-246932888/tmp1535673873,
+Input(s):
+Successfully read 5000 records (173710 bytes) from: "/ghcn/sample/sample.csv"
+Output(s):
+Successfully stored 4 records (64 bytes) in: "hdfs://master:9000/tmp/temp-246932888/tmp1535673873"
+Counters:
+Total records written : 4
+Total bytes written : 64
+Spillable Memory Manager spill count : 0
+Total bags proactively spilled: 0
+Total records proactively spilled: 0
+Job DAG:
+job_1793078486119_0005	->	job_1793078486119_0006,
+job_1793078486119_0006
+(PRCP,2004,1946)
+(SNWD,35,3)
+(TMAX,918,772)
+(TMIN,1063,929)
+(US1COMT0036,20250101,SNWD,0,T,I,N,0700)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| raw     | station_id:chararray     | obs_date:chararray     | element:chararray     | data_value:int     | m_flag:chararray     | q_flag:chararray     | s_flag:chararray     | obs_time:chararray     | 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|         | US1COMT0036              | 20250101               | SNWD                  | 0                  | T                    | I                    | N                    | 0700                   | 
+|         | US1WIBN0031              | 20250101               | SNOW                  | 0                  | T                    | I                    | N                    | 1000                   | 
+|         | US1COMT0036              | 20250101               | 0                     | 0                  | T                    | I                    | N                    | 0700                   | 
+|         | 0                        | 20250101               | TMAX                  | 0                  | T                    | I                    | N                    | 0700                   | 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| core     | station_id:chararray     | obs_date:chararray     | element:chararray     | data_value:int     | m_flag:chararray     | q_flag:chararray     | s_flag:chararray     | obs_time:chararray     | 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|          | US1COMT0036              | 20250101               | SNWD                  | 0                  | T                    | I                    | N                    | 0700                   | 
+|          | US1WIBN0031              | 20250101               | SNOW                  | 0                  | T                    | I                    | N                    | 1000                   | 
+|          | 0                        | 20250101               | TMAX                  | 0                  | T                    | I                    | N                    | 0700                   | 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| valid     | station_id:chararray     | obs_date:chararray     | element:chararray     | data_value:int     | m_flag:chararray     | q_flag:chararray     | s_flag:chararray     | obs_time:chararray     | 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| clean     | station_id:chararray     | country_code:chararray      | year:int      | month:int      | day:int      | element:chararray     | value:double      | 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=== Full cleaning job: /ghcn/raw -> /ghcn/clean ===
+HadoopVersion	PigVersion	UserId	StartedAt	FinishedAt	Features
+3.3.6	0.18.0	root	2026-10-27 05:25:03	2026-10-27 05:40:29	GROUP_BY,FILTER,UNION
+
+Success!
+
+Job Stats (time in seconds):
+JobId	Maps	Reduces	MaxMapTime	MinMapTime	AvgMapTime	MedianMapTime	MaxReduceTime	MinReduceTime	AvgReduceTime	MedianReducetime	Alias	Feature	Outputs
+job_1793078486119_0007	122	1	43	8	33	34	166	166	166	166	1-11,1-12,1-13,1-14,1-15,c_clean,c_core,c_missing,c_qc_bad,c_raw,clean,core,missing,qc_bad,qc_ok,raw,valid	MULTI_QUERY,COMBINER	/ghcn/clean,
+job_1793078486119_0008	5	0	6	4	5	5	0	0	0	0	counts	MAP_ONLY	/ghcn/clean_stats,
+
+Input(s):
+Successfully read 113135524 records (4071153883 bytes) from: "/ghcn/raw"
+
+Output(s):
+Successfully stored 86871554 records (3531395026 bytes) in: "/ghcn/clean"
+Successfully stored 4 records (100 bytes) in: "/ghcn/clean_stats"
+
+Counters:
+Total records written : 86871558
+Total bytes written : 3531395126
+Spillable Memory Manager spill count : 0
+Total bags proactively spilled: 576
+Total records proactively spilled: 172571676
+
+Job DAG:
+Success!
+Successfully read 113135524 records (4071153883 bytes) from: "/ghcn/raw"
+Successfully stored 86871554 records (3531395026 bytes) in: "/ghcn/clean"
+Successfully stored 4 records (100 bytes) in: "/ghcn/clean_stats"
+2026-10-27 05:40:30,168 [main] INFO  org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.MapReduceLauncher - Success!
+pig exit=0  elapsed=930s
+
+=== Record counts before / after cleaning ===
+1_raw_records	113135524
+2_core_elements	86955581
+3_qc_failed_removed	84027
+5_clean_records	86871554
+
+3.8 G  7.6 G  /ghcn/raw
+3.3 G  6.6 G  /ghcn/clean
+USW00023272	US	2025	12	21	TMAX	17.2		7	2400
+USW00023272	US	2025	12	21	TMIN	14.4		7	2400
+USW00023272	US	2025	12	21	PRCP	6.4		7	2400
+USW00023273	US	2025	12	21	TMAX	17.8		1	2400
+USW00023273	US	2025	12	21	TMIN	9.4		1	2400
+USW00023272	US	2025	12	21	TMAX	17.2		7	2400
+USW00023272	US	2025	12	21	TMIN	14.4		7	2400
+USW00023272	US	2025	12	21	PRCP	6.4		7	2400
+USW00023273	US	2025	12	21	TMAX	17.8		1	2400
+USW00023273	US	2025	12	21	TMIN	9.4		1	2400
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.

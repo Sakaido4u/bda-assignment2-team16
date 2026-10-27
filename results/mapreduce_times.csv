@@ -1,0 +1,4 @@
+job,implementation,input,wall_seconds,job_id,maps,reduces,hdfs_bytes_read,map_output_records,combine_output_records,reduce_shuffle_bytes
+job1_country_year_temp,java,/ghcn/raw,208.9,job_1793076666567_0001,122,2,4071121919,26197386,20762,873468
+job2_extreme_precip,java,/ghcn/raw,190.4,job_1793076666567_0002,122,2,4071121919,200298,178571,3215742
+job1_country_year_temp,python_streaming,/ghcn/raw,290.6,job_1793076666567_0003,122,2,4071120333,26197386,20762,555956

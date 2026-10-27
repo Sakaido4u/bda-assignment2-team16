@@ -1,0 +1,196 @@
+==== Creating indexes ====
+observations:
+[
+  {
+    v: 2,
+    key: {
+      _id: 1
+    },
+    name: '_id_'
+  },
+  {
+    v: 2,
+    key: {
+      station_id: 1,
+      date: 1
+    },
+    name: 'station_date'
+  },
+  {
+    v: 2,
+    key: {
+      'readings.element': 1
+    },
+    name: 'element'
+  }
+]
+stations:
+[
+  {
+    v: 2,
+    key: {
+      _id: 1
+    },
+    name: '_id_'
+  },
+  {
+    v: 2,
+    key: {
+      location: '2dsphere'
+    },
+    name: 'location_2dsphere',
+    '2dsphereIndexVersion': 3
+  }
+]
+observations count: 20386429   stations count: 133039
+
+==== Q1 Yearly average TMAX/TMIN per country (top 15 by readings) ====
+{"readings":5296777,"country_code":"US","country":"United States","year":2023,"avg_tmax":17.38,"avg_tmin":5.03}
+{"readings":5252180,"country_code":"US","country":"United States","year":2024,"avg_tmax":17.96,"avg_tmin":5.52}
+{"readings":5206819,"country_code":"US","country":"United States","year":2025,"avg_tmax":17.7,"avg_tmin":5.21}
+{"readings":775476,"country_code":"CA","country":"Canada","year":2023,"avg_tmax":9.25,"avg_tmin":-0.64}
+{"readings":751817,"country_code":"CA","country":"Canada","year":2024,"avg_tmax":9.23,"avg_tmin":-0.45}
+{"readings":727634,"country_code":"CA","country":"Canada","year":2025,"avg_tmax":8.53,"avg_tmin":-1.53}
+{"readings":412992,"country_code":"AS","country":"Australia","year":2023,"avg_tmax":24.86,"avg_tmin":12.67}
+{"readings":409033,"country_code":"AS","country":"Australia","year":2024,"avg_tmax":25.08,"avg_tmin":13.19}
+{"readings":405386,"country_code":"AS","country":"Australia","year":2025,"avg_tmax":24.92,"avg_tmin":12.89}
+{"readings":324923,"country_code":"GM","country":"Germany","year":2023,"avg_tmax":15.04,"avg_tmin":6.17}
+{"readings":324857,"country_code":"GM","country":"Germany","year":2024,"avg_tmax":15.18,"avg_tmin":6.53}
+{"readings":322134,"country_code":"GM","country":"Germany","year":2025,"avg_tmax":14.76,"avg_tmin":5.28}
+{"readings":265723,"country_code":"RS","country":"Russia","year":2023,"avg_tmax":6.42,"avg_tmin":-4.71}
+{"readings":256770,"country_code":"RS","country":"Russia","year":2024,"avg_tmax":6.63,"avg_tmin":-4.6}
+{"readings":187513,"country_code":"RS","country":"Russia","year":2025,"avg_tmax":8.18,"avg_tmin":-2.92}
+(15 documents, 179254 ms)
+
+==== Q2 Top 10 hottest (avg TMAX) and wettest (total PRCP) stations in India ====
+-- hottest:
+   {"days":683,"station_id":"IN020081700","name":"MADURAI","avg_tmax":36.52}
+   {"days":389,"station_id":"IN020130700","name":"TIRUCHCHIRAPALLI","avg_tmax":36.07}
+   {"days":873,"station_id":"IN019040100","name":"BARMER","avg_tmax":35.11}
+   {"days":544,"station_id":"IN020011100","name":"VELLORE","avg_tmax":34.91}
+   {"days":512,"station_id":"IN020110800","name":"SALEM","avg_tmax":34.75}
+   {"days":911,"station_id":"IN001120100","name":"KURNOOL","avg_tmax":34.74}
+   {"days":887,"station_id":"IN001020700","name":"PBO ANANTAPUR","avg_tmax":34.72}
+   {"days":1056,"station_id":"IN019140400","name":"JAISALMER","avg_tmax":34.61}
+   {"days":547,"station_id":"IN012090600","name":"CHANDRAPUR","avg_tmax":34.59}
+   {"days":554,"station_id":"IN001111600","name":"VIJAYAWADA/GANNAVA","avg_tmax":34.56}
+-- wettest:
+   {"days":334,"station_id":"IN012220400","name":"MAHABALESHWAR","total_mm":12769.9}
+   {"days":457,"station_id":"IN009130300","name":"MANGALORE/BAJPE","total_mm":11373.3}
+   {"days":392,"station_id":"IN022030600","name":"GOA/PANJIM","total_mm":9821}
+   {"days":390,"station_id":"IN012201100","name":"RATNAGIRI","total_mm":9676.7}
+   {"days":321,"station_id":"IN009120400","name":"HONAVAR","total_mm":9512}
+   {"days":354,"station_id":"IN012070800","name":"BOMBAY/SANTACRUZ","total_mm":8762.4}
+   {"days":557,"station_id":"IN003050401","name":"NORTH LAKHIMPUR","total_mm":8111.2}
+   {"days":402,"station_id":"IN024041000","name":"COOCH BEHAR","total_mm":7651.2}
+   {"days":293,"station_id":"IN009120100","name":"KARWAR","total_mm":7066.2}
+   {"days":376,"station_id":"IN010021200","name":"CANNUR","total_mm":6849.5}
+(1 documents, 31807 ms)
+
+==== Q3 Monthly precipitation totals - IN009010100 (Bangalore) ====
+{"reported_days":8,"rain_days":2,"year":2023,"month":3,"total_mm":8.4}
+{"reported_days":5,"rain_days":1,"year":2023,"month":4,"total_mm":7.1}
+{"reported_days":24,"rain_days":13,"year":2023,"month":5,"total_mm":305.7}
+{"reported_days":20,"rain_days":5,"year":2023,"month":6,"total_mm":66.7}
+{"reported_days":30,"rain_days":12,"year":2023,"month":7,"total_mm":142.7}
+{"reported_days":17,"rain_days":1,"year":2023,"month":8,"total_mm":12.5}
+{"reported_days":25,"rain_days":11,"year":2023,"month":9,"total_mm":228.4}
+{"reported_days":10,"rain_days":3,"year":2023,"month":10,"total_mm":87.1}
+{"reported_days":10,"rain_days":2,"year":2023,"month":11,"total_mm":104.4}
+{"reported_days":4,"rain_days":0,"year":2023,"month":12,"total_mm":0.8}
+{"reported_days":1,"rain_days":0,"year":2024,"month":1,"total_mm":0}
+{"reported_days":22,"rain_days":9,"year":2024,"month":5,"total_mm":180.6}
+{"reported_days":23,"rain_days":10,"year":2024,"month":6,"total_mm":201.5}
+{"reported_days":27,"rain_days":9,"year":2024,"month":7,"total_mm":72}
+{"reported_days":15,"rain_days":7,"year":2024,"month":8,"total_mm":118.1}
+{"reported_days":15,"rain_days":1,"year":2024,"month":9,"total_mm":23.8}
+{"reported_days":24,"rain_days":15,"year":2024,"month":10,"total_mm":293.9}
+{"reported_days":13,"rain_days":3,"year":2024,"month":11,"total_mm":21.4}
+{"reported_days":11,"rain_days":5,"year":2024,"month":12,"total_mm":89.9}
+(19 documents, 153 ms)
+
+==== Q4 Extreme-heat station-days (TMAX > 40 C) per year ====
+{"heat_days":36286,"max_tmax":53.4,"year":2023,"n_stations":2416,"n_countries":69}
+{"heat_days":35509,"max_tmax":53.9,"year":2024,"n_stations":2232,"n_countries":69}
+{"heat_days":24437,"max_tmax":51.6,"year":2025,"n_stations":1492,"n_countries":69}
+(3 documents, 86756 ms)
+
+==== Q5 $facet - temperature stats, precipitation stats, station counts, TMAX histogram ====
+-- temperature:
+   {"_id":"TMIN","min":-82,"max":43,"n":13097791,"avg":5.78}
+   {"_id":"TMAX","min":-79,"max":53.9,"n":13099595,"avg":17.11}
+-- precipitation:
+   {"max_mm":861.2,"n":17002881,"wet_days":4205594,"avg_mm":2.42}
+-- stations_per_country:
+   {"_id":"US","stations":9519}
+   {"_id":"AS","stations":4230}
+   {"_id":"CA","stations":2148}
+   {"_id":"RS","stations":624}
+   {"_id":"SW","stations":608}
+   {"_id":"GM","stations":561}
+   {"_id":"NL","stations":360}
+   {"_id":"NO","stations":293}
+   {"_id":"FI","stations":247}
+   {"_id":"CH","stations":210}
+-- tmax_histogram:
+   {"_id":-70,"n":78772}
+   {"_id":-20,"n":215307}
+   {"_id":-10,"n":893491}
+   {"_id":0,"n":2503974}
+   {"_id":10,"n":3336451}
+   {"_id":20,"n":3915428}
+   {"_id":30,"n":2045617}
+   {"_id":40,"n":110310}
+   {"_id":50,"n":176}
+   {"_id":"out_of_range","n":69}
+(1 documents, 139536 ms)
+
+==== Q6 Stations within 200 km of Bengaluru ($geoNear, 2dsphere index) ====
+{"station_id":"IN009010100","elevation":921,"name":"BANGALORE","dist_km":1.4}
+{"station_id":"IN009012900","elevation":899,"name":"BANGALORE C.JAIL","dist_km":2.5}
+{"station_id":"IN009011900","elevation":899,"name":"HEBBAL","dist_km":3.5}
+{"station_id":"IN009012800","elevation":897,"name":"BANGALORE/HINDUSTAN","dist_km":4.8}
+{"station_id":"IN009015400","elevation":861,"name":"SOLDEVANHALLI","dist_km":14.5}
+{"station_id":"IN009012000","elevation":909,"name":"YELAHANKA","dist_km":16.6}
+{"station_id":"IN009011400","elevation":903,"name":"VARTUR","dist_km":17.8}
+{"station_id":"IN009012200","elevation":857,"name":"KADGUDI(KADGOD)","dist_km":20.4}
+{"station_id":"IN009013000","elevation":896,"name":"CHIKJALA","dist_km":22.1}
+{"station_id":"IN009011800","elevation":860,"name":"HESSARGHATTA","dist_km":22.5}
+{"station_id":"IN009010101","elevation":858,"name":"HASKOTE","dist_km":23.5}
+{"station_id":"IN009010300","elevation":909,"name":"NELAMANGALA","dist_km":25.5}
+{"station_id":"IN009010500","elevation":914,"name":"ANEKAL","dist_km":31.6}
+{"station_id":"IN009011801","elevation":891,"name":"ATTIBELE","dist_km":31.8}
+{"station_id":"IN009010401","elevation":891,"name":"DEVANHALLI","dist_km":33}
+{"station_id":"IN009142101","elevation":899,"name":"LAKKUR","dist_km":33.6}
+{"station_id":"IN009012700","elevation":91,"name":"BEGUR","dist_km":33.7}
+{"station_id":"IN009010200","elevation":889,"name":"DODBALLAPUR","dist_km":34.7}
+{"station_id":"IN009140900","elevation":903,"name":"MALUR","dist_km":36.5}
+{"station_id":"IN009012801","elevation":919,"name":"TAVAREKERE","dist_km":37.3}
+{"station_id":"IN020051100","elevation":949,"name":"HOSUR","dist_km":37.9}
+{"station_id":"IN009012901","elevation":903,"name":"SOLUR","dist_km":38.9}
+{"station_id":"IN009143400","elevation":899,"name":"JAMGAMKOTE","dist_km":40.1}
+{"station_id":"IN009010301","elevation":871,"name":"MAGADI","dist_km":40.7}
+{"station_id":"IN009012500","elevation":91,"name":"TYAMAGONDLU","dist_km":42.2}
+(25 documents, 26 ms)
+
+==== Q7 Average TMAX/TMIN and total rain of stations within 200 km of Bengaluru ====
+{"station_id":"IN009010100","name":"BANGALORE","dist_km":1.4,"obs":[{"element":"TMAX","avg":29.67,"n":905},{"element":"PRCP","avg":6.46,"n":304},{"element":"TMIN","avg":20.49,"n":976}]}
+{"station_id":"IN009012800","name":"BANGALORE/HINDUSTAN","dist_km":4.8,"obs":[{"element":"TMIN","avg":18.98,"n":393},{"element":"PRCP","avg":5.36,"n":144},{"element":"TMAX","avg":30.83,"n":435}]}
+{"station_id":"IN020110800","name":"SALEM","dist_km":159.7,"obs":[{"element":"TMAX","avg":34.75,"n":512},{"element":"PRCP","avg":8.18,"n":235},{"element":"TMIN","avg":22.53,"n":655}]}
+{"station_id":"IN020011100","name":"VELLORE","dist_km":168.9,"obs":[{"element":"TMAX","avg":34.91,"n":544},{"element":"PRCP","avg":6.85,"n":296},{"element":"TMIN","avg":24.02,"n":740}]}
+{"station_id":"IN001020700","name":"PBO ANANTAPUR","dist_km":179.4,"obs":[{"element":"TMAX","avg":34.72,"n":887},{"element":"PRCP","avg":4.38,"n":198},{"element":"TMIN","avg":23.21,"n":1005}]}
+{"station_id":"IN009070100","name":"CHITRADURGA","dist_km":188.4,"obs":[{"element":"TMIN","avg":20.6,"n":940},{"element":"PRCP","avg":6.28,"n":203},{"element":"TMAX","avg":30.57,"n":791}]}
+(6 documents, 272 ms)
+
+==== explain(executionStats) for Q3's $match ====
+{
+  winningStage: 'IXSCAN',
+  executionTimeMillis: 18,
+  totalKeysExamined: 1053,
+  totalDocsExamined: 1053,
+  nReturned: 1053
+}
+
+real	7m19.544s
+user	0m0.000s
+sys	0m0.123s

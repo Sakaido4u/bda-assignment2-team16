@@ -1,0 +1,65 @@
+$ pig -x mapreduce -f pig/inspect_sample.pig     (DESCRIBE, DUMP on a 5,000-row sample)
+raw: {station_id: chararray,obs_date: chararray,element: chararray,data_value: int,m_flag: chararray,q_flag: chararray,s_flag: chararray,obs_time: chararray}
+clean: {station_id: chararray,country_code: chararray,year: int,month: int,day: int,element: chararray,value: double}
+HadoopVersion	PigVersion	UserId	StartedAt	FinishedAt	Features
+3.3.6	0.18.0	root	2026-10-27 05:22:39	2026-10-27 05:23:22	FILTER,LIMIT
+Success!
+Job Stats (time in seconds):
+JobId	Maps	Reduces	MaxMapTime	MinMapTime	AvgMapTime	MedianMapTime	MaxReduceTime	MinReduceTime	AvgReduceTime	MedianReducetime	Alias	Feature	Outputs
+job_1793078486119_0001	1	1	3	3	3	3	3	3	3	3	core,qc_show,raw		
+job_1793078486119_0002	1	1	2	2	2	2	2	2	2	2			hdfs://master:9000/tmp/temp-246932888/tmp388459261,
+Input(s):
+Successfully read 5000 records (173710 bytes) from: "/ghcn/sample/sample.csv"
+Output(s):
+Successfully stored 5 records (235 bytes) in: "hdfs://master:9000/tmp/temp-246932888/tmp388459261"
+Job DAG:
+job_1793078486119_0001	->	job_1793078486119_0002,
+job_1793078486119_0002
+(USS0014K07S,20250101,TMIN,-76,,I,T,)
+(USS0015F09S,20250101,TMAX,-5,,I,T,)
+(USS0021D08S,20250101,TMAX,-35,,I,T,)
+(USS0021D12S,20250101,TMAX,-25,,I,T,)
+(USS0021E06S,20250101,TMAX,-9,,I,T,)
+HadoopVersion	PigVersion	UserId	StartedAt	FinishedAt	Features
+3.3.6	0.18.0	root	2026-10-27 05:23:22	2026-10-27 05:24:10	FILTER,LIMIT
+Success!
+Job Stats (time in seconds):
+JobId	Maps	Reduces	MaxMapTime	MinMapTime	AvgMapTime	MedianMapTime	MaxReduceTime	MinReduceTime	AvgReduceTime	MedianReducetime	Alias	Feature	Outputs
+job_1793078486119_0003	1	1	4	4	4	4	5	5	5	5	clean,core,india,india_show,raw		
+job_1793078486119_0004	1	1	2	2	2	2	2	2	2	2			hdfs://master:9000/tmp/temp-246932888/tmp1027722657,
+Input(s):
+Successfully read 5000 records (173710 bytes) from: "/ghcn/sample/sample.csv"
+Output(s):
+Successfully stored 10 records (420 bytes) in: "hdfs://master:9000/tmp/temp-246932888/tmp1027722657"
+Job DAG:
+job_1793078486119_0003	->	job_1793078486119_0004,
+job_1793078486119_0004
+(IN018103100,IN,2025,1,1,TMAX,13.0)
+(IN018103100,IN,2025,1,1,TMIN,8.8)
+(IN019010300,IN,2025,1,1,TMAX,21.4)
+(IN019010300,IN,2025,1,1,TMIN,7.8)
+(IN019040100,IN,2025,1,1,TMAX,25.6)
+(IN019040100,IN,2025,1,1,TMIN,11.6)
+(IN019070100,IN,2025,1,1,TMAX,18.6)
+(IN019070100,IN,2025,1,1,TMIN,7.0)
+(IN019100500,IN,2025,1,1,TMAX,14.6)
+(IN019100500,IN,2025,1,1,TMIN,6.0)
+HadoopVersion	PigVersion	UserId	StartedAt	FinishedAt	Features
+3.3.6	0.18.0	root	2026-10-27 05:24:10	2026-10-27 05:24:58	HASH_JOIN,GROUP_BY,FILTER
+Success!
+Job Stats (time in seconds):
+JobId	Maps	Reduces	MaxMapTime	MinMapTime	AvgMapTime	MedianMapTime	MaxReduceTime	MinReduceTime	AvgReduceTime	MedianReducetime	Alias	Feature	Outputs
+job_1793078486119_0005	1	1	2	2	2	2	2	2	2	2	1-16,1-17,by_el_clean,by_el_raw,clean,core,raw,valid	MULTI_QUERY,COMBINER	
+job_1793078486119_0006	2	1	3	3	3	3	5	5	5	5	cmp,cmp_out	HASH_JOIN	hdfs://master:9000/tmp/temp-246932888/tmp1535673873,
+Input(s):
+Successfully read 5000 records (173710 bytes) from: "/ghcn/sample/sample.csv"
+Output(s):
+Successfully stored 4 records (64 bytes) in: "hdfs://master:9000/tmp/temp-246932888/tmp1535673873"
+Job DAG:
+job_1793078486119_0005	->	job_1793078486119_0006,
+job_1793078486119_0006
+(PRCP,2004,1946)
+(SNWD,35,3)
+(TMAX,918,772)
+(TMIN,1063,929)
+(US1COMT0036,20250101,SNWD,0,T,I,N,0700)

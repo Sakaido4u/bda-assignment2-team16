@@ -1,0 +1,45 @@
+$ docker exec master hdfs dfsadmin -report
+Configured Capacity: 2162202353664 (1.97 TB)
+Present Capacity: 1992783343326 (1.81 TB)
+DFS Remaining: 1969375526912 (1.79 TB)
+DFS Used: 23407816414 (21.80 GB)
+DFS Used%: 1.17%
+Replicated Blocks:
+	Under replicated blocks: 0
+	Blocks with corrupt replicas: 0
+	Missing blocks: 0
+	Block groups with corrupt internal blocks: 0
+
+-------------------------------------------------
+Live datanodes (2):
+
+Name: 172.19.0.6:9866 (worker1.bda16-net)
+Hostname: worker1
+Decommission Status : Normal
+Configured Capacity: 1081101176832 (1006.85 GB)
+DFS Used: 11703825505 (10.90 GB)
+Non DFS Used: 29717248927 (27.68 GB)
+DFS Remaining: 984687747072 (917.06 GB)
+DFS Used%: 1.08%
+DFS Remaining%: 91.08%
+Xceivers: 0
+Last contact: Tue Oct 27 08:47:20 UTC 2026
+Last Block Report: Tue Oct 27 05:21:52 UTC 2026
+Num of Blocks: 706
+
+
+Name: 172.19.0.7:9866 (worker2.bda16-net)
+Hostname: worker2
+Decommission Status : Normal
+Configured Capacity: 1081101176832 (1006.85 GB)
+DFS Used: 11703990909 (10.90 GB)
+Non DFS Used: 29717050755 (27.68 GB)
+DFS Remaining: 984687779840 (917.06 GB)
+DFS Used%: 1.08%
+DFS Remaining%: 91.08%
+Xceivers: 0
+Last contact: Tue Oct 27 08:47:19 UTC 2026
+Last Block Report: Tue Oct 27 05:21:53 UTC 2026
+Num of Blocks: 706
+
+

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Hive queries{% endblock %}
+{% block content %}
+<h3 class="mb-0">Hive queries</h3>
+<div class="small-muted mb-3">Predefined, parameterised HQL executed on HiveServer2 (<code>master:10000</code>) through PyHive. Parameters come from fixed lists and are validated server-side, so free-text SQL (and SQL injection) is impossible. Each query runs as MapReduce job(s) on the YARN cluster.</div>
+<div class="row g-3">
+  <div class="col-xl-4">
+    <div class="card">
+      <div class="card-body">
+        <label class="form-label small-muted" for="qid">Query</label>
+        <select class="form-select mb-3" id="qid">
+          {% for qid, q in queries.items() %}<option value="{{ qid }}" data-params="{{ q.params|join(',') }}" data-table="{{ q.table }}">{{ q.title }}</option>{% endfor %}
+        </select>
+        <div class="small-muted mb-3">Table: <span id="tbl"></span></div>
+        <div class="mb-2 p" data-p="country"><label class="form-label small-muted" for="country">Country</label>
+          <select class="form-select" id="country">
+            <option value="IN">India (IN)</option><option value="US">United States (US)</option><option value="AU">Australia (AU)</option>
+            <option value="CA">Canada (CA)</option><option value="RS">Russia (RS)</option><option value="CH">China (CH)</option>
+            <option value="BR">Brazil (BR)</option><option value="SA">Saudi Arabia (SA)</option><option value="JA">Japan (JA)</option>
+            <option value="UK">United Kingdom (UK)</option><option value="GM">Germany (GM)</option><option value="MX">Mexico (MX)</option>
+          </select></div>
+        <div class="mb-2 p" data-p="element"><label class="form-label small-muted" for="element">Element</label>
+          <select class="form-select" id="element"><option>TMAX</option><option>TMIN</option><option>PRCP</option><option>SNOW</option><option>SNWD</option></select></div>
+        <div class="mb-2 p" data-p="year"><label class="form-label small-muted" for="year">Year</label>
+          <select class="form-select" id="year"><option>2023</option><option>2024</option><option selected>2025</option></select></div>
+        <div class="mb-3 p" data-p="limit"><label class="form-label small-muted" for="limit">Rows (top N)</label>
+          <select class="form-select" id="limit"><option>5</option><option selected>10</option><option>20</option></select></div>
+        <button class="btn btn-primary w-100" id="run">Run on Hive</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-8">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between"><span>Result</span><span id="time" class="small-muted"></span></div>
+      <div class="card-body">
+        <pre class="sql" id="sql">-- choose a query and press "Run on Hive"</pre>
+        <div class="table-responsive"><table class="table table-sm table-striped small" id="result"></table></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+const sel = document.getElementById("qid");
+function sync() {
+  const o = sel.selectedOptions[0];
+  const ps = o.dataset.params ? o.dataset.params.split(",") : [];
+  document.querySelectorAll(".p").forEach(el => el.style.display = ps.includes(el.dataset.p) ? "" : "none");
+  document.getElementById("tbl").textContent = o.dataset.table;
+}
+sel.addEventListener("change", sync);
+
+// deep links: /hive?qid=country_monthly&country=IN&element=TMAX&year=2025&autorun=1
+const qs = new URLSearchParams(location.search);
+if (qs.get("qid") && [...sel.options].some(o => o.value === qs.get("qid"))) sel.value = qs.get("qid");
+["country", "element", "year", "limit"].forEach(k => {
+  const el = document.getElementById(k);
+  if (qs.get(k) && [...el.options].some(o => (o.value || o.text) === qs.get(k))) el.value = qs.get(k);
+});
+sync();
+
+document.getElementById("run").addEventListener("click", async () => {
+  clearAlerts();
+  const btn = document.getElementById("run");
+  const body = {};
+  ["country", "element", "year", "limit"].forEach(k => body[k] = document.getElementById(k).value);
+  btn.disabled = true; btn.textContent = "Running on the cluster…";
+  document.getElementById("time").textContent = "";
+  const t0 = performance.now();
+  const timer = setInterval(() => document.getElementById("time").textContent = `running ${((performance.now() - t0) / 1000).toFixed(0)} s…`, 1000);
+  try {
+    const d = await api(`/api/hive/${sel.value}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    document.getElementById("sql").textContent = d.sql;
+    document.getElementById("time").textContent = `${d.rows.length} rows · ${d.seconds} s on HiveServer2`;
+    document.getElementById("result").innerHTML = `<thead><tr>${d.columns.map(c => `<th>${escapeHtml(c)}</th>`).join("")}</tr></thead>
+      <tbody>${d.rows.map(r => `<tr>${r.map(v => `<td>${escapeHtml(v ?? "")}</td>`).join("")}</tr>`).join("")}</tbody>`;
+  } catch (e) {
+    document.getElementById("time").textContent = "failed";
+  } finally {
+    clearInterval(timer); btn.disabled = false; btn.textContent = "Run on Hive";
+  }
+});
+if (qs.get("autorun") === "1") document.getElementById("run").click();
+</script>
+{% endblock %}

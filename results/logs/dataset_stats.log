@@ -1,0 +1,81 @@
+ Container bda16-tools-run-f36465f88f78 Creating 
+ Container bda16-tools-run-f36465f88f78 Created 
+{'year': '2023', 'records': 38293556, 'core_element_records': 29069188, 'qc_failed_records': 42221, 'distinct_elements': 73, 'stations': 44415, 'countries': 195, 'compressed_mb': 167.9, 'uncompressed_mb': 1312.6, 'n_PRCP': 11297809, 'n_SNOW': 5590276, 'n_SNWD': 3296073, 'n_TMAX': 4439955, 'n_TMIN': 4445075}
+{'year': '2024', 'records': 38470116, 'core_element_records': 29273951, 'qc_failed_records': 36875, 'distinct_elements': 74, 'stations': 44882, 'countries': 195, 'compressed_mb': 168.3, 'uncompressed_mb': 1319.3, 'n_PRCP': 11458045, 'n_SNOW': 5774440, 'n_SNWD': 3311272, 'n_TMAX': 4369889, 'n_TMIN': 4360305}
+{'year': '2025', 'records': 36371852, 'core_element_records': 28612442, 'qc_failed_records': 46383, 'distinct_elements': 66, 'stations': 44531, 'countries': 198, 'compressed_mb': 158.3, 'uncompressed_mb': 1250.2, 'n_PRCP': 10994959, 'n_SNOW': 5720701, 'n_SNWD': 3271410, 'n_TMAX': 4311463, 'n_TMIN': 4313909}
+{
+  "years": [
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "total_records": 113135524,
+  "total_core_records": 86955581,
+  "total_qc_failed": 125479,
+  "distinct_stations": 49733,
+  "distinct_countries": 200,
+  "compressed_mb": 494.5,
+  "uncompressed_mb": 3882.1,
+  "top_elements": [
+    [
+      "PRCP",
+      33750813
+    ],
+    [
+      "SNOW",
+      17085417
+    ],
+    [
+      "TMAX",
+      13121307
+    ],
+    [
+      "TMIN",
+      13119289
+    ],
+    [
+      "SNWD",
+      9878755
+    ],
+    [
+      "TAVG",
+      6520547
+    ],
+    [
+      "TOBS",
+      4673563
+    ],
+    [
+      "WESD",
+      1773170
+    ],
+    [
+      "AWND",
+      1224653
+    ],
+    [
+      "WSF2",
+      1152826
+    ],
+    [
+      "WDF2",
+      1152460
+    ],
+    [
+      "WSF5",
+      1114641
+    ],
+    [
+      "WDF5",
+      1112478
+    ],
+    [
+      "WESF",
+      1076545
+    ],
+    [
+      "WSFG",
+      561074
+    ]
+  ]
+}

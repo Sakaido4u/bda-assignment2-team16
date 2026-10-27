@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}Cluster overview{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-end mb-3">
+  <div>
+    <h3 class="mb-0">Cluster overview</h3>
+    <div class="small-muted">Live from the NameNode JMX API (:9870/jmx) and the YARN ResourceManager REST API (:8088/ws/v1/cluster) · refreshes every 10 s</div>
+  </div>
+  <div class="small-muted" id="updated">loading…</div>
+</div>
+
+<div class="row g-3 mb-3" id="kpis">
+  <div class="col-6 col-xl-3"><div class="card kpi p-3"><div class="label">Live DataNodes</div><div class="value" id="k-dn">–</div><div class="sub" id="k-dn-sub"></div></div></div>
+  <div class="col-6 col-xl-3"><div class="card kpi p-3"><div class="label">Active NodeManagers</div><div class="value" id="k-nm">–</div><div class="sub" id="k-nm-sub"></div></div></div>
+  <div class="col-6 col-xl-3"><div class="card kpi p-3"><div class="label">HDFS used (incl. replicas)</div><div class="value" id="k-hdfs">–</div><div class="sub" id="k-hdfs-sub"></div></div></div>
+  <div class="col-6 col-xl-3"><div class="card kpi p-3"><div class="label">YARN memory in use</div><div class="value" id="k-mem">–</div><div class="sub" id="k-mem-sub"></div></div></div>
+</div>
+
+<h5 class="mt-4 mb-2">The three nodes</h5>
+<div class="row g-3 mb-4" id="nodes"></div>
+
+<div class="row g-3">
+  <div class="col-xl-5">
+    <div class="card h-100">
+      <div class="card-header">HDFS storage per DataNode (GB, both replicas spread over the workers)</div>
+      <div class="card-body"><div class="chart-box"><canvas id="dnChart"></canvas></div></div>
+    </div>
+  </div>
+  <div class="col-xl-7">
+    <div class="card h-100">
+      <div class="card-header">Recent YARN applications</div>
+      <div class="card-body p-0">
+        <table class="table table-sm table-hover mb-0 small">
+          <thead class="table-light"><tr><th>Application</th><th>Name</th><th>Type</th><th>State</th><th class="text-end">Elapsed</th><th>Started</th></tr></thead>
+          <tbody id="apps"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+let dnChart;
+const ROLES = {
+  master:  ["NameNode", "SecondaryNameNode", "ResourceManager", "JobHistory", "Hive Metastore", "HiveServer2"],
+  worker1: ["DataNode", "NodeManager"],
+  worker2: ["DataNode", "NodeManager"],
+};
+
+function nodeCard(name, up, lines) {
+  const role = name === "master" ? "Master node" : "Worker node";
+  return `<div class="col-md-4"><div class="card node-card ${up ? "up" : "down"} p-3 h-100">
+    <div class="d-flex justify-content-between"><div><div class="node-role">${role}</div><h5 class="mb-1"><span class="dot ${up ? "" : "off"}"></span>${name}</h5></div>
+    <span class="badge ${up ? "text-bg-success" : "text-bg-danger"} align-self-start">${up ? "RUNNING" : "DOWN"}</span></div>
+    <div class="mb-2">${ROLES[name].map(s => `<span class="svc">${s}</span>`).join("")}</div>
+    <div class="small">${lines.join("<br>")}</div></div></div>`;
+}
+
+async function refresh() {
+  let d;
+  try { d = await (await fetch("/api/cluster")).json(); } catch (e) { showAlert("dashboard backend unreachable"); return; }
+  clearAlerts();
+  (d.errors || []).forEach(e => showAlert(e));
+  const h = d.hdfs, y = d.yarn;
+  if (h) {
+    document.getElementById("k-dn").textContent = `${h.live_datanodes} / 2`;
+    document.getElementById("k-dn-sub").textContent = `${h.dead_datanodes} dead · ${fmt(h.blocks)} blocks · ${h.under_replicated} under-replicated`;
+    document.getElementById("k-hdfs").textContent = `${fmt(h.used_gb, 2)} GB`;
+    document.getElementById("k-hdfs-sub").textContent = `${fmt(h.files)} files · Hadoop ${h.version} · safemode ${h.safemode}`;
+  }
+  if (y) {
+    document.getElementById("k-nm").textContent = `${y.active_nodes} / 2`;
+    document.getElementById("k-nm-sub").textContent = `${y.lost_nodes} lost · ${y.unhealthy_nodes} unhealthy · RM ${y.state}`;
+    document.getElementById("k-mem").textContent = `${fmt(y.memory_used_mb)} MB`;
+    document.getElementById("k-mem-sub").textContent = `of ${fmt(y.memory_total_mb)} MB · ${y.vcores_total} vcores · ${y.containers} containers · ${y.apps_completed} apps done`;
+  }
+  const dn = Object.fromEntries((h ? h.datanodes : []).map(n => [n.name, n]));
+  const nm = Object.fromEntries((y ? y.nodes : []).map(n => [n.host, n]));
+  const masterUp = !!h && !!y;
+  let html = nodeCard("master", masterUp, masterUp ? [
+    `HDFS capacity: ${fmt(h.capacity_gb)} GB configured`,
+    `YARN: ${y.apps_running} running / ${y.apps_completed} completed / ${y.apps_failed} failed apps`]
+    : ["NameNode or ResourceManager not responding"]);
+  for (const w of ["worker1", "worker2"]) {
+    const a = dn[w], b = nm[w];
+    const up = !!a && !!b && b.state === "RUNNING";
+    html += nodeCard(w, up, [
+      a ? `DataNode ${a.address}: ${fmt(a.used_gb, 2)} GB used · ${fmt(a.blocks)} blocks · last contact ${a.last_contact_s}s ago` : "DataNode not registered",
+      b ? `NodeManager ${b.state}: ${b.containers} containers · ${fmt(b.used_mb)} / ${fmt(b.used_mb + b.avail_mb)} MB · heartbeat ${b.last_heartbeat}` : "NodeManager not registered"]);
+  }
+  document.getElementById("nodes").innerHTML = html;
+
+  if (h) {
+    const labels = h.datanodes.map(n => n.name);
+    const used = h.datanodes.map(n => n.used_gb);
+    const blocks = h.datanodes.map(n => n.blocks);
+    if (!dnChart) {
+      dnChart = new Chart(document.getElementById("dnChart"), {
+        type: "bar",
+        data: { labels, datasets: [
+          { label: "HDFS used (GB)", data: used, backgroundColor: PALETTE[0], maxBarThickness: 90 }] },
+        options: { maintainAspectRatio: false, animation: false, plugins: { legend: { display: false },
+            tooltip: { callbacks: { afterLabel: c => `${fmt(blocks[c.dataIndex])} blocks` } } },
+          scales: { y: { title: { display: true, text: "GB used" }, beginAtZero: true } } }
+      });
+    } else {
+      dnChart.data.labels = labels; dnChart.data.datasets[0].data = used; dnChart.update();
+    }
+  }
+  if (y) {
+    document.getElementById("apps").innerHTML = y.apps.map(a => `<tr>
+      <td class="font-monospace">${a.id.replace("application_", "")}</td><td>${escapeHtml(a.name)}</td><td>${a.type}</td>
+      <td><span class="badge ${a.final === "SUCCEEDED" ? "text-bg-success" : a.state === "RUNNING" ? "text-bg-primary" : a.final === "UNDEFINED" ? "text-bg-secondary" : "text-bg-danger"}">${a.state === "RUNNING" ? "RUNNING " + a.progress + "%" : a.final}</span></td>
+      <td class="text-end">${a.elapsed_s}s</td><td>${a.started}</td></tr>`).join("") || `<tr><td colspan="6" class="text-center small-muted">no applications yet</td></tr>`;
+  }
+  document.getElementById("updated").textContent = "updated " + new Date().toLocaleTimeString();
+}
+refresh();
+setInterval(refresh, 10000);
+</script>
+{% endblock %}

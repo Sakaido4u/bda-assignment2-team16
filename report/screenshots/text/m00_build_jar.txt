@@ -1,0 +1,16 @@
+$ .\mapreduce\build.ps1   (mvn -B package inside maven:3.9.9-eclipse-temurin-8)
+
+$ docker exec master jar tf /project/mapreduce/target/ghcn-mapreduce.jar | grep class
+edu/jssateb/bda/ghcn/CountryYearTemperature$TempCombiner.class
+edu/jssateb/bda/ghcn/CountryYearTemperature$TempMapper.class
+edu/jssateb/bda/ghcn/CountryYearTemperature$TempReducer.class
+edu/jssateb/bda/ghcn/CountryYearTemperature.class
+edu/jssateb/bda/ghcn/ExtremePrecipitation$Extreme.class
+edu/jssateb/bda/ghcn/ExtremePrecipitation$PrcpMapper.class
+edu/jssateb/bda/ghcn/ExtremePrecipitation.class
+edu/jssateb/bda/ghcn/GhcnJobs.class
+edu/jssateb/bda/ghcn/GhcnRecord$Quality.class
+edu/jssateb/bda/ghcn/GhcnRecord.class
+edu/jssateb/bda/ghcn/TempStatsWritable.class
+
+-rw-r--r-- 1 Shubh 197609 15758 Oct 27 10:26 mapreduce/target/ghcn-mapreduce.jar

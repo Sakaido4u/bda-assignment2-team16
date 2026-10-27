@@ -1,0 +1,30 @@
+# =====================================================================
+#  Mode B - WORKER machine. Run on each worker with its own name:
+#     PowerShell:  $env:WORKER_NAME="worker1"; docker compose -f docker-compose.worker.yml up -d
+#     bash:        WORKER_NAME=worker2 docker compose -f docker-compose.worker.yml up -d
+#  The worker reaches the NameNode/ResourceManager as "master" over the Swarm overlay network.
+# =====================================================================
+services:
+  worker:
+    image: bda16/hadoop:3.3.6
+    container_name: ${WORKER_NAME:-worker1}
+    hostname: ${WORKER_NAME:-worker1}
+    env_file: .env
+    environment:
+      NODE_ROLE: worker
+      NODE_HOSTNAME: ${WORKER_NAME:-worker1}
+    ports:
+      - "9864:9864"     # DataNode UI
+      - "8042:8042"     # NodeManager UI
+    volumes: [datanode:/hadoop/dfs]
+    restart: unless-stopped
+    stop_grace_period: 60s
+    networks: [bda]
+
+networks:
+  bda:
+    external: true
+    name: bda16-overlay
+
+volumes:
+  datanode:

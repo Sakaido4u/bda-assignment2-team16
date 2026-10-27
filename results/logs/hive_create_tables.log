@@ -1,0 +1,457 @@
+Connecting to jdbc:hive2://master:10000
+Connected to: Apache Hive (version 3.1.3)
+Driver: Hive JDBC (version 3.1.3)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://master:10000> -- =============================================== ======================
+0: jdbc:hive2://master:10000> --  Theme 3 - Hive tables over the Pig-cleaned GHC N data
+0: jdbc:hive2://master:10000> --  beeline -u jdbc:hive2://master:10000 -n root - f hive/01_create_tables.hql
+0: jdbc:hive2://master:10000> -- =============================================== ======================
+0: jdbc:hive2://master:10000> CREATE DATABASE IF NOT EXISTS ghcn;
+INFO  : Compiling command(queryId=root_20261027054122_332a74a4-918f-419a-91e8-45540ca4c847): CREATE DATABASE IF NOT EXISTS ghcn
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054122_332a74a4-918f-419a-91e8-45540ca4c847); Time taken: 1.362 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054122_332a74a4-918f-419a-91e8-45540ca4c847): CREATE DATABASE IF NOT EXISTS ghcn
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054122_332a74a4-918f-419a-91e8-45540ca4c847); Time taken: 5.168 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (6.793 seconds)
+0: jdbc:hive2://master:10000> USE ghcn;
+INFO  : Compiling command(queryId=root_20261027054129_bf50aaf1-851d-4aa5-98d4-c3044e64958e): USE ghcn
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054129_bf50aaf1-851d-4aa5-98d4-c3044e64958e); Time taken: 0.062 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054129_bf50aaf1-851d-4aa5-98d4-c3044e64958e): USE ghcn
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054129_bf50aaf1-851d-4aa5-98d4-c3044e64958e); Time taken: 0.013 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.103 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> -- 1) External TEXTFILE table directly over the Pi g output (row-oriented, uncompressed)
+0: jdbc:hive2://master:10000> DROP TABLE IF EXISTS obs_text;
+INFO  : Compiling command(queryId=root_20261027054129_e6154d7d-05b3-4a6e-8c0a-b46375b93dfa): DROP TABLE IF EXISTS obs_text
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054129_e6154d7d-05b3-4a6e-8c0a-b46375b93dfa); Time taken: 0.234 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054129_e6154d7d-05b3-4a6e-8c0a-b46375b93dfa): DROP TABLE IF EXISTS obs_text
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054129_e6154d7d-05b3-4a6e-8c0a-b46375b93dfa); Time taken: 0.033 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.291 seconds)
+0: jdbc:hive2://master:10000> CREATE EXTERNAL TABLE obs_text (
+. . . . . . . . . . . . . . >   station_id   STRING,
+. . . . . . . . . . . . . . >   country_code STRING,
+. . . . . . . . . . . . . . >   year         INT,
+. . . . . . . . . . . . . . >   month        INT,
+. . . . . . . . . . . . . . >   day          INT,
+. . . . . . . . . . . . . . >   element      STRING,
+. . . . . . . . . . . . . . >   value        DOUBLE,
+. . . . . . . . . . . . . . >   m_flag       STRING,
+. . . . . . . . . . . . . . >   s_flag       STRING,
+. . . . . . . . . . . . . . >   obs_time     STRING
+. . . . . . . . . . . . . . > )
+. . . . . . . . . . . . . . > ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+. . . . . . . . . . . . . . > STORED AS TEXTFILE
+. . . . . . . . . . . . . . > LOCATION '/ghcn/clean';
+INFO  : Compiling command(queryId=root_20261027054129_5ba6f82f-1e4f-4340-8973-380175a1bce8): CREATE EXTERNAL TABLE obs_text (
+station_id   STRING,
+country_code STRING,
+year         INT,
+month        INT,
+day          INT,
+element      STRING,
+value        DOUBLE,
+m_flag       STRING,
+s_flag       STRING,
+obs_time     STRING
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE
+LOCATION '/ghcn/clean'
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054129_5ba6f82f-1e4f-4340-8973-380175a1bce8); Time taken: 0.365 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054129_5ba6f82f-1e4f-4340-8973-380175a1bce8): CREATE EXTERNAL TABLE obs_text (
+station_id   STRING,
+country_code STRING,
+year         INT,
+month        INT,
+day          INT,
+element      STRING,
+value        DOUBLE,
+m_flag       STRING,
+s_flag       STRING,
+obs_time     STRING
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE
+LOCATION '/ghcn/clean'
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054129_5ba6f82f-1e4f-4340-8973-380175a1bce8); Time taken: 0.875 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (1.302 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> -- 2) Station and country dimension tables
+0: jdbc:hive2://master:10000> DROP TABLE IF EXISTS stations;
+INFO  : Compiling command(queryId=root_20261027054131_983c3b8e-3b5e-438c-b52a-f5fdedb2703a): DROP TABLE IF EXISTS stations
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054131_983c3b8e-3b5e-438c-b52a-f5fdedb2703a); Time taken: 0.04 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054131_983c3b8e-3b5e-438c-b52a-f5fdedb2703a): DROP TABLE IF EXISTS stations
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054131_983c3b8e-3b5e-438c-b52a-f5fdedb2703a); Time taken: 0.009 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.081 seconds)
+0: jdbc:hive2://master:10000> CREATE EXTERNAL TABLE stations (
+. . . . . . . . . . . . . . >   station_id   STRING,
+. . . . . . . . . . . . . . >   latitude     DOUBLE,
+. . . . . . . . . . . . . . >   longitude    DOUBLE,
+. . . . . . . . . . . . . . >   elevation    DOUBLE,
+. . . . . . . . . . . . . . >   state        STRING,
+. . . . . . . . . . . . . . >   name         STRING,
+. . . . . . . . . . . . . . >   gsn_flag     STRING,
+. . . . . . . . . . . . . . >   hcn_crn_flag STRING,
+. . . . . . . . . . . . . . >   wmo_id       STRING,
+. . . . . . . . . . . . . . >   country_code STRING,
+. . . . . . . . . . . . . . >   country_name STRING
+. . . . . . . . . . . . . . > )
+. . . . . . . . . . . . . . > ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+. . . . . . . . . . . . . . > STORED AS TEXTFILE
+. . . . . . . . . . . . . . > LOCATION '/ghcn/stations';
+INFO  : Compiling command(queryId=root_20261027054131_6ecfab02-ef39-4fec-a058-dbfe8e43a8e0): CREATE EXTERNAL TABLE stations (
+station_id   STRING,
+latitude     DOUBLE,
+longitude    DOUBLE,
+elevation    DOUBLE,
+state        STRING,
+name         STRING,
+gsn_flag     STRING,
+hcn_crn_flag STRING,
+wmo_id       STRING,
+country_code STRING,
+country_name STRING
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE
+LOCATION '/ghcn/stations'
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054131_6ecfab02-ef39-4fec-a058-dbfe8e43a8e0); Time taken: 0.096 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054131_6ecfab02-ef39-4fec-a058-dbfe8e43a8e0): CREATE EXTERNAL TABLE stations (
+station_id   STRING,
+latitude     DOUBLE,
+longitude    DOUBLE,
+elevation    DOUBLE,
+state        STRING,
+name         STRING,
+gsn_flag     STRING,
+hcn_crn_flag STRING,
+wmo_id       STRING,
+country_code STRING,
+country_name STRING
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE
+LOCATION '/ghcn/stations'
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054131_6ecfab02-ef39-4fec-a058-dbfe8e43a8e0); Time taken: 0.065 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.211 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> DROP TABLE IF EXISTS countries;
+INFO  : Compiling command(queryId=root_20261027054131_a1a1b6d9-b49e-4536-b5d7-4f40c75e1b43): DROP TABLE IF EXISTS countries
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054131_a1a1b6d9-b49e-4536-b5d7-4f40c75e1b43); Time taken: 0.064 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054131_a1a1b6d9-b49e-4536-b5d7-4f40c75e1b43): DROP TABLE IF EXISTS countries
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054131_a1a1b6d9-b49e-4536-b5d7-4f40c75e1b43); Time taken: 0.006 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.094 seconds)
+0: jdbc:hive2://master:10000> CREATE EXTERNAL TABLE countries (code STRING, name  STRING)
+. . . . . . . . . . . . . . > ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+. . . . . . . . . . . . . . > STORED AS TEXTFILE
+. . . . . . . . . . . . . . > LOCATION '/ghcn/countries';
+INFO  : Compiling command(queryId=root_20261027054132_125a8129-0d5e-4835-bc8c-96d59ab34b2e): CREATE EXTERNAL TABLE countries (code STRING, name STRING)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE
+LOCATION '/ghcn/countries'
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054132_125a8129-0d5e-4835-bc8c-96d59ab34b2e); Time taken: 0.05 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054132_125a8129-0d5e-4835-bc8c-96d59ab34b2e): CREATE EXTERNAL TABLE countries (code STRING, name STRING)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE
+LOCATION '/ghcn/countries'
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054132_125a8129-0d5e-4835-bc8c-96d59ab34b2e); Time taken: 0.063 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.16 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> -- 3) Identical schema stored as RCFile (row group s, column-wise inside each group)
+0: jdbc:hive2://master:10000> DROP TABLE IF EXISTS obs_rc;
+INFO  : Compiling command(queryId=root_20261027054132_584f8e69-4731-4607-a84f-db2dd1360fe1): DROP TABLE IF EXISTS obs_rc
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054132_584f8e69-4731-4607-a84f-db2dd1360fe1); Time taken: 0.057 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054132_584f8e69-4731-4607-a84f-db2dd1360fe1): DROP TABLE IF EXISTS obs_rc
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054132_584f8e69-4731-4607-a84f-db2dd1360fe1); Time taken: 0.006 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.094 seconds)
+0: jdbc:hive2://master:10000> CREATE TABLE obs_rc (
+. . . . . . . . . . . . . . >   station_id   STRING,
+. . . . . . . . . . . . . . >   country_code STRING,
+. . . . . . . . . . . . . . >   year         INT,
+. . . . . . . . . . . . . . >   month        INT,
+. . . . . . . . . . . . . . >   day          INT,
+. . . . . . . . . . . . . . >   element      STRING,
+. . . . . . . . . . . . . . >   value        DOUBLE,
+. . . . . . . . . . . . . . >   m_flag       STRING,
+. . . . . . . . . . . . . . >   s_flag       STRING,
+. . . . . . . . . . . . . . >   obs_time     STRING
+. . . . . . . . . . . . . . > )
+. . . . . . . . . . . . . . > STORED AS RCFILE;
+INFO  : Compiling command(queryId=root_20261027054132_6c64d85c-4dcd-4015-9abb-7d75f205c11a): CREATE TABLE obs_rc (
+station_id   STRING,
+country_code STRING,
+year         INT,
+month        INT,
+day          INT,
+element      STRING,
+value        DOUBLE,
+m_flag       STRING,
+s_flag       STRING,
+obs_time     STRING
+)
+STORED AS RCFILE
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054132_6c64d85c-4dcd-4015-9abb-7d75f205c11a); Time taken: 0.104 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054132_6c64d85c-4dcd-4015-9abb-7d75f205c11a): CREATE TABLE obs_rc (
+station_id   STRING,
+country_code STRING,
+year         INT,
+month        INT,
+day          INT,
+element      STRING,
+value        DOUBLE,
+m_flag       STRING,
+s_flag       STRING,
+obs_time     STRING
+)
+STORED AS RCFILE
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054132_6c64d85c-4dcd-4015-9abb-7d75f205c11a); Time taken: 1.993 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (2.119 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> SET hive.exec.compress.output=false;
+No rows affected (0.012 seconds)
+0: jdbc:hive2://master:10000> INSERT OVERWRITE TABLE obs_rc SELECT * FROM obs_te xt;
+INFO  : Compiling command(queryId=root_20261027054134_54660f1b-ca3f-4de8-9296-e1db1331a359): INSERT OVERWRITE TABLE obs_rc SELECT * FROM obs_text
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:obs_text.station_id, type:string, comment:null), FieldSchema(name:obs_text.country_code, type:string, comment:null), FieldSchema(name:obs_text.year, type:int, comment:null), FieldSchema(name:obs_text.month, type:int, comment:null), FieldSchema(name:obs_text.day, type:int, comment:null), FieldSchema(name:obs_text.element, type:string, comment:null), FieldSchema(name:obs_text.value, type:double, comment:null), FieldSchema(name:obs_text.m_flag, type:string, comment:null), FieldSchema(name:obs_text.s_flag, type:string, comment:null), FieldSchema(name:obs_text.obs_time, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054134_54660f1b-ca3f-4de8-9296-e1db1331a359); Time taken: 2.23 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054134_54660f1b-ca3f-4de8-9296-e1db1331a359): INSERT OVERWRITE TABLE obs_rc SELECT * FROM obs_text
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261027054134_54660f1b-ca3f-4de8-9296-e1db1331a359
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks is set to 0 since there's no reduce operator
+INFO  : number of splits:14
+INFO  : Submitting tokens for job: job_1793078486119_0009
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://master:8088/proxy/application_1793078486119_0009/
+INFO  : Starting Job = job_1793078486119_0009, Tracking URL = http://master:8088/proxy/application_1793078486119_0009/
+INFO  : Kill Command = /opt/hadoop/bin/mapred job  -kill job_1793078486119_0009
+INFO  : Hadoop job information for Stage-1: number of mappers: 14; number of reducers: 0
+INFO  : 2026-10-27 05:41:45,219 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-27 05:42:03,595 Stage-1 map = 3%,  reduce = 0%, Cumulative CPU 25.65 sec
+INFO  : 2026-10-27 05:42:08,410 Stage-1 map = 8%,  reduce = 0%, Cumulative CPU 60.74 sec
+INFO  : 2026-10-27 05:42:09,465 Stage-1 map = 10%,  reduce = 0%, Cumulative CPU 69.86 sec
+INFO  : 2026-10-27 05:42:14,220 Stage-1 map = 14%,  reduce = 0%, Cumulative CPU 83.63 sec
+INFO  : 2026-10-27 05:42:16,369 Stage-1 map = 17%,  reduce = 0%, Cumulative CPU 93.52 sec
+INFO  : 2026-10-27 05:42:20,626 Stage-1 map = 21%,  reduce = 0%, Cumulative CPU 108.56 sec
+INFO  : 2026-10-27 05:42:21,675 Stage-1 map = 25%,  reduce = 0%, Cumulative CPU 119.24 sec
+INFO  : 2026-10-27 05:42:26,005 Stage-1 map = 29%,  reduce = 0%, Cumulative CPU 130.13 sec
+INFO  : 2026-10-27 05:42:27,042 Stage-1 map = 33%,  reduce = 0%, Cumulative CPU 140.83 sec
+INFO  : 2026-10-27 05:42:28,066 Stage-1 map = 34%,  reduce = 0%, Cumulative CPU 142.35 sec
+INFO  : 2026-10-27 05:42:29,091 Stage-1 map = 36%,  reduce = 0%, Cumulative CPU 146.11 sec
+INFO  : 2026-10-27 05:42:52,110 Stage-1 map = 42%,  reduce = 0%, Cumulative CPU 194.66 sec
+INFO  : 2026-10-27 05:43:00,390 Stage-1 map = 47%,  reduce = 0%, Cumulative CPU 215.54 sec
+INFO  : 2026-10-27 05:43:06,624 Stage-1 map = 49%,  reduce = 0%, Cumulative CPU 220.18 sec
+INFO  : 2026-10-27 05:43:12,314 Stage-1 map = 53%,  reduce = 0%, Cumulative CPU 231.93 sec
+INFO  : 2026-10-27 05:43:27,243 Stage-1 map = 55%,  reduce = 0%, Cumulative CPU 244.17 sec
+INFO  : 2026-10-27 05:43:28,277 Stage-1 map = 56%,  reduce = 0%, Cumulative CPU 245.48 sec
+INFO  : 2026-10-27 05:43:33,398 Stage-1 map = 61%,  reduce = 0%, Cumulative CPU 257.08 sec
+INFO  : 2026-10-27 05:43:50,715 Stage-1 map = 65%,  reduce = 0%, Cumulative CPU 266.82 sec
+INFO  : 2026-10-27 05:43:59,888 Stage-1 map = 68%,  reduce = 0%, Cumulative CPU 274.58 sec
+INFO  : 2026-10-27 05:44:06,043 Stage-1 map = 70%,  reduce = 0%, Cumulative CPU 278.37 sec
+INFO  : 2026-10-27 05:44:07,067 Stage-1 map = 71%,  reduce = 0%, Cumulative CPU 279.59 sec
+INFO  : 2026-10-27 05:44:26,584 Stage-1 map = 73%,  reduce = 0%, Cumulative CPU 298.29 sec
+INFO  : 2026-10-27 05:44:32,775 Stage-1 map = 76%,  reduce = 0%, Cumulative CPU 307.74 sec
+INFO  : 2026-10-27 05:44:40,278 Stage-1 map = 78%,  reduce = 0%, Cumulative CPU 325.74 sec
+INFO  : 2026-10-27 05:44:46,120 Stage-1 map = 82%,  reduce = 0%, Cumulative CPU 334.56 sec
+INFO  : 2026-10-27 05:44:52,273 Stage-1 map = 85%,  reduce = 0%, Cumulative CPU 339.58 sec
+INFO  : 2026-10-27 05:45:15,566 Stage-1 map = 88%,  reduce = 0%, Cumulative CPU 349.2 sec
+INFO  : 2026-10-27 05:45:27,802 Stage-1 map = 90%,  reduce = 0%, Cumulative CPU 355.89 sec
+INFO  : 2026-10-27 05:45:36,990 Stage-1 map = 92%,  reduce = 0%, Cumulative CPU 359.47 sec
+INFO  : 2026-10-27 05:45:43,100 Stage-1 map = 97%,  reduce = 0%, Cumulative CPU 365.97 sec
+INFO  : 2026-10-27 05:45:49,229 Stage-1 map = 98%,  reduce = 0%, Cumulative CPU 367.55 sec
+INFO  : 2026-10-27 05:45:54,351 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 372.84 sec
+INFO  : MapReduce Total cumulative CPU time: 6 minutes 12 seconds 860 msec
+INFO  : Ended Job = job_1793078486119_0009
+INFO  : Starting task [Stage-7:CONDITIONAL] in serial mode
+INFO  : Stage-4 is selected by condition resolver.
+INFO  : Stage-3 is filtered out by condition resolver.
+INFO  : Stage-5 is filtered out by condition resolver.
+INFO  : Starting task [Stage-4:MOVE] in serial mode
+INFO  : Moving data to directory hdfs://master:9000/user/hive/warehouse/ghcn.db/obs_rc/.hive-staging_hive_2026-10-27_05-41-34_719_7667351713921474010-1/-ext-10000 from hdfs://master:9000/user/hive/warehouse/ghcn.db/obs_rc/.hive-staging_hive_2026-10-27_05-41-34_719_7667351713921474010-1/-ext-10002
+INFO  : Starting task [Stage-0:MOVE] in serial mode
+INFO  : Loading data to table ghcn.obs_rc from hdfs://master:9000/user/hive/warehouse/ghcn.db/obs_rc/.hive-staging_hive_2026-10-27_05-41-34_719_7667351713921474010-1/-ext-10000
+INFO  : Starting task [Stage-2:STATS] in serial mode
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 14   Cumulative CPU: 372.86 sec   HDFS Read: 3531495422 HDFS Write: 3034266104 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 6 minutes 12 seconds 860 msec
+INFO  : Completed executing command(queryId=root_20261027054134_54660f1b-ca3f-4de8-9296-e1db1331a359); Time taken: 260.355 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (262.616 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> SELECT 'obs_text' AS tbl, COUNT(*) AS row_count FR OM obs_text
+. . . . . . . . . . . . . . > UNION ALL
+. . . . . . . . . . . . . . > SELECT 'obs_rc' AS tbl, COUNT(*) AS row_count FROM  obs_rc;
+INFO  : Compiling command(queryId=root_20261027054557_6b840e9f-0996-4ffb-bd82-f0fb90f2bfc1): SELECT 'obs_text' AS tbl, COUNT(*) AS row_count FROM obs_text
+UNION ALL
+SELECT 'obs_rc' AS tbl, COUNT(*) AS row_count FROM obs_rc
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:_u1.tbl, type:string, comment:null), FieldSchema(name:_u1.row_count, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054557_6b840e9f-0996-4ffb-bd82-f0fb90f2bfc1); Time taken: 7.518 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054557_6b840e9f-0996-4ffb-bd82-f0fb90f2bfc1): SELECT 'obs_text' AS tbl, COUNT(*) AS row_count FROM obs_text
+UNION ALL
+SELECT 'obs_rc' AS tbl, COUNT(*) AS row_count FROM obs_rc
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261027054557_6b840e9f-0996-4ffb-bd82-f0fb90f2bfc1
+INFO  : Total jobs = 3
+INFO  : Launching Job 1 out of 3
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:14
+INFO  : Submitting tokens for job: job_1793078486119_0010
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://master:8088/proxy/application_1793078486119_0010/
+INFO  : Starting Job = job_1793078486119_0010, Tracking URL = http://master:8088/proxy/application_1793078486119_0010/
+INFO  : Kill Command = /opt/hadoop/bin/mapred job  -kill job_1793078486119_0010
+INFO  : Hadoop job information for Stage-1: number of mappers: 14; number of reducers: 1
+INFO  : 2026-10-27 05:46:17,362 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-27 05:46:33,432 Stage-1 map = 7%,  reduce = 0%, Cumulative CPU 7.15 sec
+INFO  : 2026-10-27 05:46:34,479 Stage-1 map = 14%,  reduce = 0%, Cumulative CPU 14.2 sec
+INFO  : 2026-10-27 05:46:36,540 Stage-1 map = 36%,  reduce = 0%, Cumulative CPU 34.13 sec
+INFO  : 2026-10-27 05:46:52,591 Stage-1 map = 50%,  reduce = 0%, Cumulative CPU 47.6 sec
+INFO  : 2026-10-27 05:46:53,642 Stage-1 map = 57%,  reduce = 0%, Cumulative CPU 59.84 sec
+INFO  : 2026-10-27 05:46:54,665 Stage-1 map = 71%,  reduce = 0%, Cumulative CPU 67.8 sec
+INFO  : 2026-10-27 05:47:03,986 Stage-1 map = 79%,  reduce = 0%, Cumulative CPU 72.94 sec
+INFO  : 2026-10-27 05:47:05,005 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 90.01 sec
+INFO  : 2026-10-27 05:47:12,140 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 92.35 sec
+INFO  : MapReduce Total cumulative CPU time: 1 minutes 32 seconds 350 msec
+INFO  : Ended Job = job_1793078486119_0010
+INFO  : Launching Job 2 out of 3
+INFO  : Starting task [Stage-3:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:12
+INFO  : Submitting tokens for job: job_1793078486119_0011
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://master:8088/proxy/application_1793078486119_0011/
+INFO  : Starting Job = job_1793078486119_0011, Tracking URL = http://master:8088/proxy/application_1793078486119_0011/
+INFO  : Kill Command = /opt/hadoop/bin/mapred job  -kill job_1793078486119_0011
+INFO  : Hadoop job information for Stage-3: number of mappers: 12; number of reducers: 1
+INFO  : 2026-10-27 05:47:28,398 Stage-3 map = 0%,  reduce = 0%
+INFO  : 2026-10-27 05:47:42,201 Stage-3 map = 17%,  reduce = 0%, Cumulative CPU 15.69 sec
+INFO  : 2026-10-27 05:47:44,288 Stage-3 map = 42%,  reduce = 0%, Cumulative CPU 37.49 sec
+INFO  : 2026-10-27 05:47:53,787 Stage-3 map = 58%,  reduce = 0%, Cumulative CPU 54.48 sec
+INFO  : 2026-10-27 05:47:56,937 Stage-3 map = 75%,  reduce = 0%, Cumulative CPU 69.94 sec
+INFO  : 2026-10-27 05:47:57,966 Stage-3 map = 83%,  reduce = 0%, Cumulative CPU 77.9 sec
+INFO  : 2026-10-27 05:48:01,107 Stage-3 map = 92%,  reduce = 0%, Cumulative CPU 84.02 sec
+INFO  : 2026-10-27 05:48:03,154 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 91.53 sec
+INFO  : 2026-10-27 05:48:05,194 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 93.6 sec
+INFO  : MapReduce Total cumulative CPU time: 1 minutes 33 seconds 600 msec
+INFO  : Ended Job = job_1793078486119_0011
+INFO  : Launching Job 3 out of 3
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks is set to 0 since there's no reduce operator
+INFO  : number of splits:2
+INFO  : Submitting tokens for job: job_1793078486119_0012
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://master:8088/proxy/application_1793078486119_0012/
+INFO  : Starting Job = job_1793078486119_0012, Tracking URL = http://master:8088/proxy/application_1793078486119_0012/
+INFO  : Kill Command = /opt/hadoop/bin/mapred job  -kill job_1793078486119_0012
+INFO  : Hadoop job information for Stage-2: number of mappers: 2; number of reducers: 0
+INFO  : 2026-10-27 05:48:16,899 Stage-2 map = 0%,  reduce = 0%
+INFO  : 2026-10-27 05:48:25,018 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 5.44 sec
+INFO  : MapReduce Total cumulative CPU time: 5 seconds 440 msec
+INFO  : Ended Job = job_1793078486119_0012
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 14  Reduce: 1   Cumulative CPU: 92.35 sec   HDFS Read: 3531507496 HDFS Write: 127 SUCCESS
+INFO  : Stage-Stage-3: Map: 12  Reduce: 1   Cumulative CPU: 93.6 sec   HDFS Read: 26146219 HDFS Write: 125 SUCCESS
+INFO  : Stage-Stage-2: Map: 2   Cumulative CPU: 5.44 sec   HDFS Read: 7552 HDFS Write: 232 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 3 minutes 11 seconds 390 msec
+INFO  : Completed executing command(queryId=root_20261027054557_6b840e9f-0996-4ffb-bd82-f0fb90f2bfc1); Time taken: 141.142 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
++-----------+----------------+
+|  _u1.tbl  | _u1.row_count  |
++-----------+----------------+
+| obs_text  | 86871554       |
+| obs_rc    | 86871554       |
++-----------+----------------+
+2 rows selected (152.31 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> Closing: 0: jdbc:hive2://master:10000

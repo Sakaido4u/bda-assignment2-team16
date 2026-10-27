@@ -1,0 +1,373 @@
+job_id,job_name,task_id,type,node,elapsed_ms
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000009,MAP,worker2,6337
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000078,MAP,worker1,6669
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000005,MAP,worker1,5212
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000082,MAP,worker2,5690
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000017,MAP,worker2,6138
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000070,MAP,worker1,6013
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000013,MAP,worker2,6221
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000074,MAP,worker2,6832
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000062,MAP,worker2,6817
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000066,MAP,worker2,6192
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000001,MAP,worker2,7929
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000115,MAP,worker1,4252
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000054,MAP,worker1,8190
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000119,MAP,worker2,4187
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000058,MAP,worker1,8408
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000041,MAP,worker1,5675
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000045,MAP,worker1,7289
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000110,MAP,worker2,4133
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000037,MAP,worker2,5737
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000114,MAP,worker2,4473
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000049,MAP,worker2,6885
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000102,MAP,worker2,7046
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000106,MAP,worker1,5697
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000025,MAP,worker1,5653
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000094,MAP,worker1,6188
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000021,MAP,worker1,5505
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000098,MAP,worker1,6328
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000033,MAP,worker2,6548
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000086,MAP,worker2,6375
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000029,MAP,worker2,6116
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000090,MAP,worker2,6608
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000010,MAP,worker1,5577
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000075,MAP,worker1,7170
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_r_000001,REDUCE,worker2,37936
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000006,MAP,worker1,5331
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000079,MAP,worker2,6681
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000018,MAP,worker2,6843
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000067,MAP,worker2,6179
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000014,MAP,worker2,6027
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000071,MAP,worker2,6719
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000059,MAP,worker2,8216
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000063,MAP,worker2,6321
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000002,MAP,worker2,7989
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000116,MAP,worker2,4366
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000051,MAP,worker2,7660
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000120,MAP,worker1,3613
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000055,MAP,worker1,8214
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000042,MAP,worker2,6788
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000107,MAP,worker2,4730
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000046,MAP,worker2,7773
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000038,MAP,worker1,5617
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000111,MAP,worker2,4790
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000050,MAP,worker1,6797
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000099,MAP,worker1,6941
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000103,MAP,worker1,6740
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000026,MAP,worker1,5660
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000091,MAP,worker2,6342
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000022,MAP,worker2,5466
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000095,MAP,worker2,6239
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000034,MAP,worker2,6676
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000083,MAP,worker1,6060
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000030,MAP,worker1,6560
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000087,MAP,worker2,6447
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000076,MAP,worker2,7272
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_r_000000,REDUCE,worker1,39218
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000007,MAP,worker2,6270
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000080,MAP,worker1,6091
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000003,MAP,worker1,5360
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000068,MAP,worker1,6159
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000015,MAP,worker1,6066
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000072,MAP,worker2,6982
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000011,MAP,worker1,5350
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000060,MAP,worker1,7742
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000064,MAP,worker1,5932
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000052,MAP,worker2,7935
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000117,MAP,worker1,4381
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000056,MAP,worker2,8356
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000121,MAP,worker2,3123
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000108,MAP,worker2,4805
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000039,MAP,worker2,5925
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000047,MAP,worker2,6426
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000112,MAP,worker1,5052
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000035,MAP,worker1,6203
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000100,MAP,worker2,7104
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000104,MAP,worker2,6214
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000043,MAP,worker1,7099
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000092,MAP,worker2,6211
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000023,MAP,worker2,5921
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000096,MAP,worker2,6386
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000019,MAP,worker2,6818
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000084,MAP,worker2,6800
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000031,MAP,worker1,6746
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000088,MAP,worker1,6058
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000027,MAP,worker2,5565
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000008,MAP,worker2,6186
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000077,MAP,worker2,6201
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000004,MAP,worker1,5464
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000081,MAP,worker2,6036
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000016,MAP,worker1,5792
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000069,MAP,worker2,6470
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000012,MAP,worker2,6319
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000073,MAP,worker1,6211
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000061,MAP,worker2,7219
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000065,MAP,worker1,5811
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000000,MAP,worker2,7908
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000118,MAP,worker2,4403
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000053,MAP,worker2,8404
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000057,MAP,worker2,8231
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000040,MAP,worker2,6197
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000109,MAP,worker1,4853
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000048,MAP,worker1,7019
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000036,MAP,worker1,6293
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000113,MAP,worker2,4682
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000101,MAP,worker2,6777
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000044,MAP,worker2,7407
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000105,MAP,worker2,6693
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000024,MAP,worker2,5888
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000093,MAP,worker1,6294
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000020,MAP,worker1,5735
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000097,MAP,worker2,7156
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000032,MAP,worker2,6606
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000085,MAP,worker1,6131
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000028,MAP,worker2,5898
+job_1793076666567_0001,GHCN Job1 - yearly avg TMAX/TMIN per country (Java),task_1793076666567_0001_m_000089,MAP,worker1,6029
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000041,MAP,worker2,5444
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000045,MAP,worker2,5791
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000110,MAP,worker2,4340
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000037,MAP,worker1,5846
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000114,MAP,worker1,4408
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000049,MAP,worker1,5586
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000102,MAP,worker1,6193
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000106,MAP,worker2,5122
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000025,MAP,worker2,6060
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000094,MAP,worker1,5815
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000021,MAP,worker2,6632
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000098,MAP,worker2,5737
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000033,MAP,worker1,5651
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000086,MAP,worker2,5786
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000029,MAP,worker1,6352
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000090,MAP,worker1,5514
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000008,MAP,worker1,5852
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_r_000001,REDUCE,worker1,34449
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000077,MAP,worker1,5438
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000004,MAP,worker2,6310
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000081,MAP,worker2,5707
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000016,MAP,worker2,5225
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000069,MAP,worker1,6131
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000012,MAP,worker1,5780
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000073,MAP,worker2,5923
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000061,MAP,worker2,5370
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000065,MAP,worker1,6555
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000000,MAP,worker1,6627
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000118,MAP,worker2,3901
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000053,MAP,worker1,6043
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000057,MAP,worker1,5427
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000042,MAP,worker1,6089
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000107,MAP,worker2,4141
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000046,MAP,worker2,5784
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000038,MAP,worker1,5709
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000111,MAP,worker1,4168
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000050,MAP,worker2,5430
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000099,MAP,worker1,5986
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000103,MAP,worker2,5956
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000026,MAP,worker2,6246
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000091,MAP,worker2,5642
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000022,MAP,worker1,5692
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000095,MAP,worker1,5730
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000034,MAP,worker1,5576
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000083,MAP,worker1,5759
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000030,MAP,worker2,6093
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000087,MAP,worker1,5840
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000009,MAP,worker1,5909
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_r_000000,REDUCE,worker1,35587
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000078,MAP,worker2,6116
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000005,MAP,worker2,5109
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000082,MAP,worker1,5799
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000017,MAP,worker1,6110
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000070,MAP,worker1,7270
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000013,MAP,worker1,5734
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000074,MAP,worker1,6026
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000062,MAP,worker1,5353
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000066,MAP,worker2,7062
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000001,MAP,worker1,6530
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000115,MAP,worker2,4237
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000054,MAP,worker1,6181
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000119,MAP,worker2,3825
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000058,MAP,worker1,6075
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000108,MAP,worker1,4034
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000039,MAP,worker1,5808
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000047,MAP,worker1,5346
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000112,MAP,worker2,4273
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000035,MAP,worker2,5493
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000100,MAP,worker1,6006
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000104,MAP,worker2,5039
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000043,MAP,worker1,6267
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000092,MAP,worker1,5721
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000023,MAP,worker1,6125
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000096,MAP,worker2,6018
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000019,MAP,worker1,5838
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000084,MAP,worker2,5410
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000031,MAP,worker2,5947
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000088,MAP,worker2,5298
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000027,MAP,worker1,5803
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000010,MAP,worker2,5026
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000075,MAP,worker1,5620
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000006,MAP,worker2,4901
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000079,MAP,worker1,6108
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000018,MAP,worker1,6029
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000067,MAP,worker1,7067
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000014,MAP,worker1,5925
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000071,MAP,worker2,6899
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000059,MAP,worker1,5908
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000063,MAP,worker2,5994
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000002,MAP,worker1,6594
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000116,MAP,worker2,4007
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000051,MAP,worker2,5527
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000120,MAP,worker1,3920
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000055,MAP,worker2,5563
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000044,MAP,worker1,6068
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000040,MAP,worker2,5601
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000109,MAP,worker2,4135
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000048,MAP,worker1,5772
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000036,MAP,worker2,5275
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000113,MAP,worker2,4349
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000101,MAP,worker2,5549
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000105,MAP,worker1,5360
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000024,MAP,worker1,5872
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000093,MAP,worker2,5547
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000020,MAP,worker2,6837
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000097,MAP,worker1,6062
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000032,MAP,worker1,5786
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000085,MAP,worker1,5817
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000028,MAP,worker1,5551
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000089,MAP,worker1,5330
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000076,MAP,worker2,5132
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000007,MAP,worker1,5974
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000080,MAP,worker1,6059
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000003,MAP,worker2,5908
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000068,MAP,worker2,6108
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000015,MAP,worker2,5039
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000072,MAP,worker1,7225
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000011,MAP,worker2,5017
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000060,MAP,worker2,5804
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000064,MAP,worker1,6358
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000052,MAP,worker1,5577
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000117,MAP,worker1,3795
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000056,MAP,worker2,5729
+job_1793076666567_0002,GHCN Job2 - extreme precipitation days per station (Java),task_1793076666567_0002_m_000121,MAP,worker2,3139
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_r_000001,REDUCE,worker2,46923
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000008,MAP,worker2,10444
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000077,MAP,worker2,8602
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000004,MAP,worker2,12699
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000081,MAP,worker1,8329
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000016,MAP,worker2,12010
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000069,MAP,worker2,8358
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000012,MAP,worker2,11572
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000073,MAP,worker2,8065
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000061,MAP,worker1,7967
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000065,MAP,worker1,7681
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000000,MAP,worker1,11983
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000118,MAP,worker2,5522
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000053,MAP,worker2,11949
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000057,MAP,worker2,7863
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000044,MAP,worker2,11050
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000040,MAP,worker2,12102
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000109,MAP,worker1,5562
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000048,MAP,worker1,11158
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000036,MAP,worker2,10605
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000113,MAP,worker1,6180
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000101,MAP,worker1,8402
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000105,MAP,worker2,5407
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000024,MAP,worker2,11583
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000093,MAP,worker2,9707
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000020,MAP,worker1,11475
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000097,MAP,worker2,8519
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000032,MAP,worker1,12291
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000085,MAP,worker1,8802
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000028,MAP,worker2,14508
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000089,MAP,worker2,8465
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000009,MAP,worker2,12171
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_r_000000,REDUCE,worker2,46943
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000078,MAP,worker2,6991
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000005,MAP,worker1,11102
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000082,MAP,worker2,8114
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000017,MAP,worker1,11356
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000070,MAP,worker1,7565
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000013,MAP,worker2,11196
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000074,MAP,worker2,8397
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000062,MAP,worker2,8025
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000066,MAP,worker1,7532
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000001,MAP,worker1,11637
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000115,MAP,worker2,5673
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000054,MAP,worker2,11922
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000119,MAP,worker1,5712
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000058,MAP,worker2,9229
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000041,MAP,worker2,12351
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000045,MAP,worker1,11876
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000110,MAP,worker1,5628
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000037,MAP,worker1,9684
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000114,MAP,worker1,6099
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000049,MAP,worker2,11654
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000102,MAP,worker2,7295
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000106,MAP,worker1,6238
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000025,MAP,worker1,14924
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000094,MAP,worker2,9948
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000021,MAP,worker1,11821
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000098,MAP,worker2,8070
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000033,MAP,worker2,11612
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000086,MAP,worker2,8119
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000029,MAP,worker2,13846
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000090,MAP,worker1,8342
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000010,MAP,worker1,11453
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000075,MAP,worker1,8395
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000006,MAP,worker1,9973
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000079,MAP,worker2,7093
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000018,MAP,worker2,11360
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000067,MAP,worker2,8003
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000014,MAP,worker2,10312
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000071,MAP,worker1,7677
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000059,MAP,worker2,8991
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000063,MAP,worker2,7832
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000002,MAP,worker2,12753
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000116,MAP,worker1,5759
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000051,MAP,worker1,10406
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000120,MAP,worker1,5628
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000055,MAP,worker1,8166
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000042,MAP,worker1,12062
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000107,MAP,worker1,6418
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000046,MAP,worker2,11861
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000038,MAP,worker1,9915
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000111,MAP,worker2,5512
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000050,MAP,worker1,9768
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000099,MAP,worker2,7989
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000103,MAP,worker1,5926
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000026,MAP,worker2,15138
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000091,MAP,worker1,8643
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000022,MAP,worker2,11909
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000095,MAP,worker1,8555
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000034,MAP,worker2,10415
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000083,MAP,worker2,8928
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000030,MAP,worker1,12702
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000087,MAP,worker1,8050
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000076,MAP,worker1,8731
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000007,MAP,worker2,11579
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000080,MAP,worker1,8392
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000003,MAP,worker2,12633
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000068,MAP,worker2,8308
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000015,MAP,worker1,11195
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000072,MAP,worker2,7544
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000011,MAP,worker1,11782
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000060,MAP,worker1,7985
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000064,MAP,worker2,7939
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000052,MAP,worker2,11566
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000117,MAP,worker1,5848
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000056,MAP,worker1,8485
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000121,MAP,worker2,2684
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000043,MAP,worker1,11435
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000108,MAP,worker2,6419
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000039,MAP,worker2,9913
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000047,MAP,worker2,12140
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000112,MAP,worker2,5991
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000035,MAP,worker2,10469
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000100,MAP,worker1,8141
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000104,MAP,worker1,5876
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000092,MAP,worker2,8984
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000023,MAP,worker2,11567
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000096,MAP,worker1,8497
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000019,MAP,worker2,12533
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000084,MAP,worker2,9101
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000031,MAP,worker2,11413
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000088,MAP,worker2,8568
+job_1793076666567_0003,GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming),task_1793076666567_0003_m_000027,MAP,worker1,14360

@@ -1,0 +1,21 @@
+$ pig -x mapreduce -param INPUT=/ghcn/raw -param OUTPUT=/ghcn/clean -f pig/clean_ghcn.pig
+raw: {station_id: chararray,obs_date: chararray,element: chararray,data_value: int,m_flag: chararray,q_flag: chararray,s_flag: chararray,obs_time: chararray}
+clean: {station_id: chararray,country_code: chararray,year: int,month: int,day: int,element: chararray,value: double,m_flag: chararray,s_flag: chararray,obs_time: chararray}
+HadoopVersion	PigVersion	UserId	StartedAt	FinishedAt	Features
+3.3.6	0.18.0	root	2026-10-27 05:25:03	2026-10-27 05:40:29	GROUP_BY,FILTER,UNION
+Success!
+Job Stats (time in seconds):
+JobId	Maps	Reduces	MaxMapTime	MinMapTime	AvgMapTime	MedianMapTime	MaxReduceTime	MinReduceTime	AvgReduceTime	MedianReducetime	Alias	Feature	Outputs
+job_1793078486119_0007	122	1	43	8	33	34	166	166	166	166	1-11,1-12,1-13,1-14,1-15,c_clean,c_core,c_missing,c_qc_bad,c_raw,clean,core,missing,qc_bad,qc_ok,raw,valid	MULTI_QUERY,COMBINER	/ghcn/clean,
+job_1793078486119_0008	5	0	6	4	5	5	0	0	0	0	counts	MAP_ONLY	/ghcn/clean_stats,
+Input(s):
+Successfully read 113135524 records (4071153883 bytes) from: "/ghcn/raw"
+Output(s):
+Successfully stored 86871554 records (3531395026 bytes) in: "/ghcn/clean"
+Successfully stored 4 records (100 bytes) in: "/ghcn/clean_stats"
+Counters:
+Total records written : 86871558
+Total bytes written : 3531395126
+Job DAG:
+job_1793078486119_0007	->	job_1793078486119_0008,
+job_1793078486119_0008

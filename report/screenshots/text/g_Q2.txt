@@ -1,0 +1,25 @@
+==== Q2 Top 10 hottest (avg TMAX) and wettest (total PRCP) stations in India ====
+-- hottest:
+   {"days":683,"station_id":"IN020081700","name":"MADURAI","avg_tmax":36.52}
+   {"days":389,"station_id":"IN020130700","name":"TIRUCHCHIRAPALLI","avg_tmax":36.07}
+   {"days":873,"station_id":"IN019040100","name":"BARMER","avg_tmax":35.11}
+   {"days":544,"station_id":"IN020011100","name":"VELLORE","avg_tmax":34.91}
+   {"days":512,"station_id":"IN020110800","name":"SALEM","avg_tmax":34.75}
+   {"days":911,"station_id":"IN001120100","name":"KURNOOL","avg_tmax":34.74}
+   {"days":887,"station_id":"IN001020700","name":"PBO ANANTAPUR","avg_tmax":34.72}
+   {"days":1056,"station_id":"IN019140400","name":"JAISALMER","avg_tmax":34.61}
+   {"days":547,"station_id":"IN012090600","name":"CHANDRAPUR","avg_tmax":34.59}
+   {"days":554,"station_id":"IN001111600","name":"VIJAYAWADA/GANNAVA","avg_tmax":34.56}
+-- wettest:
+   {"days":334,"station_id":"IN012220400","name":"MAHABALESHWAR","total_mm":12769.9}
+   {"days":457,"station_id":"IN009130300","name":"MANGALORE/BAJPE","total_mm":11373.3}
+   {"days":392,"station_id":"IN022030600","name":"GOA/PANJIM","total_mm":9821}
+   {"days":390,"station_id":"IN012201100","name":"RATNAGIRI","total_mm":9676.7}
+   {"days":321,"station_id":"IN009120400","name":"HONAVAR","total_mm":9512}
+   {"days":354,"station_id":"IN012070800","name":"BOMBAY/SANTACRUZ","total_mm":8762.4}
+   {"days":557,"station_id":"IN003050401","name":"NORTH LAKHIMPUR","total_mm":8111.2}
+   {"days":402,"station_id":"IN024041000","name":"COOCH BEHAR","total_mm":7651.2}
+   {"days":293,"station_id":"IN009120100","name":"KARWAR","total_mm":7066.2}
+   {"days":376,"station_id":"IN010021200","name":"CANNUR","total_mm":6849.5}
+(1 documents, 31807 ms)
+

@@ -1,0 +1,50 @@
+[
+ {
+  "type": "term",
+  "name": "fig38_pig_describe_dump",
+  "title": "master - Pig (MapReduce mode): DESCRIBE + DUMP on a sample",
+  "file": "report/screenshots/text/p01_describe_dump.txt",
+  "max_lines": 95,
+  "width": 1500,
+  "highlight": [
+   "raw:",
+   "clean:",
+   "Success!"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig39_pig_illustrate",
+  "title": "master - Pig ILLUSTRATE clean (row flowing through each operator)",
+  "file": "report/screenshots/text/p02_illustrate.txt",
+  "width": 1700
+ },
+ {
+  "type": "term",
+  "name": "fig40_pig_clean_job",
+  "title": "master - Pig cleaning of all 113 M records",
+  "file": "report/screenshots/text/p03_clean_job_stats.txt",
+  "width": 1700,
+  "highlight": [
+   "Successfully read",
+   "Successfully stored",
+   "Success!"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig41_pig_counts",
+  "title": "master - record counts before/after cleaning, cleaned data in HDFS",
+  "file": "report/screenshots/text/p04_counts.txt",
+  "highlight": [
+   "clean_records",
+   "qc_failed"
+  ]
+ },
+ {
+  "type": "web",
+  "name": "fig42_jobhistory_pig_job",
+  "url": "http://master:19888/jobhistory",
+  "wait_ms": 1500
+ }
+]

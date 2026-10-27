@@ -1,0 +1,13 @@
+query,description,phase,plan_stage,plan_chain,executionTimeMillis,totalKeysExamined,totalDocsExamined,nReturned_explain,result_rows,wall_ms_avg,wall_ms_min
+P1_station_monthly_prcp,Monthly PRCP totals for one station ($match on station_id),before,COLLSCAN,PROJECTION_SIMPLE>COLLSCAN,10436,0,20386429,1053,19,10028.3,9327.2
+P2_station_date_range,"One station, one quarter (find on station_id + date range)",before,COLLSCAN,COLLSCAN,10010,0,20386429,87,87,9603.6,9404.0
+P3_india_hottest,Top-10 hottest Indian stations (anchored ^IN prefix),before,COLLSCAN,PROJECTION_SIMPLE>COLLSCAN,13044,0,20386429,128561,10,12998.5,12707.1
+P4_extreme_heat_days,Extreme-heat days per year ($elemMatch on readings.element),before,COLLSCAN,PROJECTION_SIMPLE>COLLSCAN,18034,0,20386429,96232,3,17061.0,17029.8
+P5_geo_200km_bengaluru,Stations within 200 km of Bengaluru ($geoWithin),before,COLLSCAN,COLLSCAN,159,0,133039,309,309,135.6,131.2
+P6_yearly_country_temp,Yearly avg TMAX/TMIN per country (full scan - control query),before,COLLSCAN,PROJECTION_SIMPLE>COLLSCAN,59001,0,20386429,20386429,1115,58019.9,57835.6
+P1_station_monthly_prcp,Monthly PRCP totals for one station ($match on station_id),after,IXSCAN,PROJECTION_SIMPLE>FETCH>IXSCAN,73,1053,1053,1053,19,6.0,5.9
+P2_station_date_range,"One station, one quarter (find on station_id + date range)",after,IXSCAN,FETCH>IXSCAN,95,87,87,87,87,3.8,3.6
+P3_india_hottest,Top-10 hottest Indian stations (anchored ^IN prefix),after,IXSCAN,PROJECTION_SIMPLE>FETCH>IXSCAN,2606,128562,128561,128561,10,2135.5,2012.3
+P4_extreme_heat_days,Extreme-heat days per year ($elemMatch on readings.element),after,IXSCAN,PROJECTION_SIMPLE>FETCH>IXSCAN,29042,13099595,13099595,96232,3,30267.4,29939.2
+P5_geo_200km_bengaluru,Stations within 200 km of Bengaluru ($geoWithin),after,IXSCAN,FETCH>IXSCAN,5,433,407,309,309,3.2,2.7
+P6_yearly_country_temp,Yearly avg TMAX/TMIN per country (full scan - control query),after,COLLSCAN,PROJECTION_SIMPLE>COLLSCAN,61117,0,20386429,20386429,1115,60552.2,59004.7

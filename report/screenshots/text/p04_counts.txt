@@ -1,0 +1,28 @@
+$ hdfs dfs -cat /ghcn/clean_stats/part-*      (records at each cleaning stage)
+1_raw_records	113135524
+2_core_elements	86955581
+3_qc_failed_removed	84027
+4_missing_removed	0
+5_clean_records	86871554
+pig_clean_seconds	930
+
+$ hdfs dfs -du -s -h /ghcn/raw /ghcn/clean
+3.8 G  7.6 G  /ghcn/raw
+3.3 G  6.6 G  /ghcn/clean
+
+$ hdfs dfs -ls /ghcn/clean | head
+Found 123 items
+-rw-r--r--   2 root supergroup          0 2026-10-27 05:40 /ghcn/clean/_SUCCESS
+-rw-r--r--   2 root supergroup   33114837 2026-10-27 05:25 /ghcn/clean/part-m-00000
+-rw-r--r--   2 root supergroup   29920151 2026-10-27 05:25 /ghcn/clean/part-m-00001
+-rw-r--r--   2 root supergroup   27864123 2026-10-27 05:25 /ghcn/clean/part-m-00002
+-rw-r--r--   2 root supergroup   28670989 2026-10-27 05:25 /ghcn/clean/part-m-00003
+-rw-r--r--   2 root supergroup   28390179 2026-10-27 05:25 /ghcn/clean/part-m-00004
+-rw-r--r--   2 root supergroup   28210450 2026-10-27 05:26 /ghcn/clean/part-m-00005
+
+$ hdfs dfs -cat /ghcn/clean/part-m-00121 | head -5   (station country year month day element value m s time)
+SPE00119720	SP	2024	12	29	TMAX	12.9		E	
+SPE00119720	SP	2024	12	29	TMIN	6.5		E	
+SPE00119720	SP	2024	12	29	PRCP	0.0		E	
+SPE00119729	SP	2024	12	29	TMAX	8.8		E	
+SPE00119729	SP	2024	12	29	TMIN	5.5		E	

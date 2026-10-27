@@ -1,0 +1,19 @@
+flowchart TB
+  NOAA["NOAA NCEI<br/>by_year/2023-2025.csv.gz<br/>ghcnd-stations.txt"] -->|download-data.ps1| RAW["data/raw<br/>494 MB gz"]
+  RAW -->|prepare_stations.py| ST["stations.tsv / .jsonl<br/>countries.tsv"]
+  RAW -->|"zcat | hdfs dfs -put<br/>32 MB blocks, r=2"| H1["HDFS /ghcn/raw<br/>3.8 GB, 122 blocks"]
+  ST -->|hdfs dfs -put| H2["HDFS /ghcn/stations"]
+  H1 -->|"Java MR + Streaming"| MR["/ghcn/output<br/>country-year temps,<br/>extreme-rain days"]
+  H1 -->|"Pig: filter QC, convert units"| CL["HDFS /ghcn/clean"]
+  CL -->|"external TEXTFILE"| T["Hive obs_text"]
+  T -->|"INSERT OVERWRITE"| R["Hive obs_rc (RCFile)<br/>+ bonus Snappy RC, ORC"]
+  H2 --> HS["Hive stations"]
+  R --> SUM["Hive monthly_summary"]
+  RAW -->|"ingest.py (station-day docs)"| MO["MongoDB ghcn.observations"]
+  ST -->|ingest.py / mongoimport| MS["MongoDB ghcn.stations (2dsphere)"]
+  MO -->|"$merge pipeline"| MSUM["summary_country_month"]
+  MSUM --> DASH["Flask dashboard"]
+  MS --> DASH
+  SUM --> DASH
+  R --> DASH
+  H1 -.->|"NameNode JMX / RM REST"| DASH

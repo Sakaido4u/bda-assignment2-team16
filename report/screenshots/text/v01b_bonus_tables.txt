@@ -1,0 +1,33 @@
+$ beeline -u jdbc:hive2://master:10000 -n root -f hive/02_bonus_tables.hql   (BONUS tables)
+hive> USE ghcn;
+No rows affected (0.218 seconds)
+hive> DROP TABLE IF EXISTS obs_rc_snappy;
+No rows affected (0.067 seconds)
+hive> CREATE TABLE obs_rc_snappy LIKE obs_rc;
+No rows affected (0.273 seconds)
+hive> SET hive.exec.compress.output=true;
+No rows affected (0.017 seconds)
+hive> SET mapreduce.output.fileoutputformat.compress.cod 
+No rows affected (0.016 seconds)
+hive> INSERT OVERWRITE TABLE obs_rc_snappy SELECT * FROM 
+No rows affected (101.425 seconds)
+hive> DROP TABLE IF EXISTS obs_orc;
+No rows affected (0.092 seconds)
+hive> CREATE TABLE obs_orc (
+No rows affected (0.211 seconds)
+hive> SET hive.exec.compress.output=false;
+No rows affected (0.006 seconds)
+hive> INSERT OVERWRITE TABLE obs_orc SELECT * FROM obs_t 
+No rows affected (164.829 seconds)
+hive> DROP TABLE IF EXISTS monthly_summary;
+No rows affected (0.119 seconds)
+hive> CREATE TABLE monthly_summary STORED AS RCFILE AS
+No rows affected (1526.087 seconds)
+hive> SELECT COUNT(*) AS summary_rows FROM monthly_summa 
++---------------+
+| summary_rows  |
++---------------+
+| 19727         |
++---------------+
+1 row selected (43.109 seconds)
+hive> Closing: 0: jdbc:hive2://master:10000

@@ -1,0 +1,21 @@
+==== Q7 Average TMAX/TMIN and total rain of stations within 200 km of Bengaluru ====
+{"station_id":"IN009010100","name":"BANGALORE","dist_km":1.4,"obs":[{"element":"TMAX","avg":29.67,"n":905},{"element":"PRCP","avg":6.46,"n":304},{"element":"TMIN","avg":20.49,"n":976}]}
+{"station_id":"IN009012800","name":"BANGALORE/HINDUSTAN","dist_km":4.8,"obs":[{"element":"TMIN","avg":18.98,"n":393},{"element":"PRCP","avg":5.36,"n":144},{"element":"TMAX","avg":30.83,"n":435}]}
+{"station_id":"IN020110800","name":"SALEM","dist_km":159.7,"obs":[{"element":"TMAX","avg":34.75,"n":512},{"element":"PRCP","avg":8.18,"n":235},{"element":"TMIN","avg":22.53,"n":655}]}
+{"station_id":"IN020011100","name":"VELLORE","dist_km":168.9,"obs":[{"element":"TMAX","avg":34.91,"n":544},{"element":"PRCP","avg":6.85,"n":296},{"element":"TMIN","avg":24.02,"n":740}]}
+{"station_id":"IN001020700","name":"PBO ANANTAPUR","dist_km":179.4,"obs":[{"element":"TMAX","avg":34.72,"n":887},{"element":"PRCP","avg":4.38,"n":198},{"element":"TMIN","avg":23.21,"n":1005}]}
+{"station_id":"IN009070100","name":"CHITRADURGA","dist_km":188.4,"obs":[{"element":"TMIN","avg":20.6,"n":940},{"element":"PRCP","avg":6.28,"n":203},{"element":"TMAX","avg":30.57,"n":791}]}
+(6 documents, 272 ms)
+
+==== explain(executionStats) for Q3's $match ====
+{
+  winningStage: 'IXSCAN',
+  executionTimeMillis: 18,
+  totalKeysExamined: 1053,
+  totalDocsExamined: 1053,
+  nReturned: 1053
+}
+
+real	7m19.544s
+user	0m0.000s
+sys	0m0.123s

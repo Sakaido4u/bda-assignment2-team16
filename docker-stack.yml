@@ -1,0 +1,97 @@
+# =====================================================================
+#  Mode B (alternative) - one Swarm stack for all three machines.
+#  Placement uses node labels, so each service lands on the right machine:
+#     docker node update --label-add role=master  <master-node>
+#     docker node update --label-add role=worker1 <worker1-node>
+#     docker node update --label-add role=worker2 <worker2-node>
+#  Deploy from the master (the image must exist on every node, see report/mode-b-guide.md):
+#     docker stack deploy -c docker-stack.yml bda16
+#  Note: `docker stack` does not read .env automatically - export the variables first
+#  (bash: set -a; . ./.env; set +a) or use the compose files instead.
+# =====================================================================
+version: "3.8"
+
+x-hadoop-env: &hadoop-env
+  MASTER_HOST: master
+  WORKER_HOSTS: worker1,worker2
+  HDFS_REPLICATION: ${HDFS_REPLICATION:-2}
+  HDFS_BLOCK_SIZE: ${HDFS_BLOCK_SIZE:-33554432}
+  YARN_NM_MEMORY_MB: ${YARN_NM_MEMORY_MB:-1536}
+  YARN_NM_VCORES: ${YARN_NM_VCORES:-3}
+  METASTORE_DB_HOST: metastore-db
+  METASTORE_DB_NAME: ${METASTORE_DB_NAME:-metastore}
+  METASTORE_DB_USER: ${METASTORE_DB_USER:-hive}
+  METASTORE_DB_PASSWORD: ${METASTORE_DB_PASSWORD:-hive_team16}
+
+services:
+  metastore-db:
+    image: postgres:15.8-alpine
+    hostname: metastore-db
+    environment:
+      POSTGRES_DB: ${METASTORE_DB_NAME:-metastore}
+      POSTGRES_USER: ${METASTORE_DB_USER:-hive}
+      POSTGRES_PASSWORD: ${METASTORE_DB_PASSWORD:-hive_team16}
+    volumes: [pg-data:/var/lib/postgresql/data]
+    networks: [bda]
+    deploy:
+      placement: {constraints: ["node.labels.role == master"]}
+
+  master:
+    image: bda16/hadoop:3.3.6
+    hostname: master
+    environment:
+      <<: *hadoop-env
+      NODE_ROLE: master
+      NODE_HOSTNAME: master
+    ports: ["9870:9870", "8088:8088", "19888:19888", "10000:10000", "10002:10002"]
+    volumes: [namenode:/hadoop/dfs]
+    networks: [bda]
+    deploy:
+      placement: {constraints: ["node.labels.role == master"]}
+
+  worker1:
+    image: bda16/hadoop:3.3.6
+    hostname: worker1
+    environment:
+      <<: *hadoop-env
+      NODE_ROLE: worker
+      NODE_HOSTNAME: worker1
+    ports: ["9864:9864", "8042:8042"]
+    volumes: [datanode:/hadoop/dfs]
+    networks: [bda]
+    deploy:
+      placement: {constraints: ["node.labels.role == worker1"]}
+
+  worker2:
+    image: bda16/hadoop:3.3.6
+    hostname: worker2
+    environment:
+      <<: *hadoop-env
+      NODE_ROLE: worker
+      NODE_HOSTNAME: worker2
+    ports: ["9865:9864", "8043:8042"]
+    volumes: [datanode:/hadoop/dfs]
+    networks: [bda]
+    deploy:
+      placement: {constraints: ["node.labels.role == worker2"]}
+
+  mongodb:
+    image: mongo:7.0.14
+    hostname: mongodb
+    command: ["mongod", "--bind_ip_all", "--wiredTigerCacheSizeGB", "0.5"]
+    ports: ["27017:27017"]
+    volumes: [mongo-data:/data/db]
+    networks: [bda]
+    deploy:
+      placement: {constraints: ["node.labels.role == master"]}
+
+networks:
+  bda:
+    driver: overlay
+    attachable: true
+
+volumes:
+  namenode:
+  datanode:
+  mongo-data:
+  pg-data:

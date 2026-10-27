@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<configuration>
+  <property><name>mapreduce.framework.name</name><value>yarn</value></property>
+  <property><name>mapreduce.jobhistory.address</name><value>${MASTER_HOST}:10020</value></property>
+  <property><name>mapreduce.jobhistory.webapp.address</name><value>${MASTER_HOST}:19888</value></property>
+  <property><name>mapreduce.jobhistory.bind-host</name><value>0.0.0.0</value></property>
+  <property><name>yarn.app.mapreduce.am.env</name><value>HADOOP_MAPRED_HOME=/opt/hadoop</value></property>
+  <property><name>mapreduce.map.env</name><value>HADOOP_MAPRED_HOME=/opt/hadoop</value></property>
+  <property><name>mapreduce.reduce.env</name><value>HADOOP_MAPRED_HOME=/opt/hadoop</value></property>
+  <property><name>mapreduce.application.classpath</name><value>/opt/hadoop/share/hadoop/mapreduce/*:/opt/hadoop/share/hadoop/mapreduce/lib/*</value></property>
+  <property><name>yarn.app.mapreduce.am.resource.mb</name><value>${AM_MEMORY_MB}</value></property>
+  <property><name>yarn.app.mapreduce.am.command-opts</name><value>${AM_JAVA_OPTS}</value></property>
+  <property><name>mapreduce.map.memory.mb</name><value>${MAP_MEMORY_MB}</value></property>
+  <property><name>mapreduce.map.java.opts</name><value>${MAP_JAVA_OPTS}</value></property>
+  <property><name>mapreduce.reduce.memory.mb</name><value>${REDUCE_MEMORY_MB}</value></property>
+  <property><name>mapreduce.reduce.java.opts</name><value>${REDUCE_JAVA_OPTS}</value></property>
+  <!-- job jars/splits are written with replication 10 by default: impossible with 2 DataNodes -->
+  <property><name>mapreduce.client.submit.file.replication</name><value>${HDFS_REPLICATION}</value></property>
+  <property><name>mapreduce.task.io.sort.mb</name><value>100</value></property>
+  <property><name>mapreduce.job.reduce.slowstart.completedmaps</name><value>0.8</value></property>
+</configuration>

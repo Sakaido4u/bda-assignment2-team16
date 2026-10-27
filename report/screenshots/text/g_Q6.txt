@@ -1,0 +1,28 @@
+==== Q6 Stations within 200 km of Bengaluru ($geoNear, 2dsphere index) ====
+{"station_id":"IN009010100","elevation":921,"name":"BANGALORE","dist_km":1.4}
+{"station_id":"IN009012900","elevation":899,"name":"BANGALORE C.JAIL","dist_km":2.5}
+{"station_id":"IN009011900","elevation":899,"name":"HEBBAL","dist_km":3.5}
+{"station_id":"IN009012800","elevation":897,"name":"BANGALORE/HINDUSTAN","dist_km":4.8}
+{"station_id":"IN009015400","elevation":861,"name":"SOLDEVANHALLI","dist_km":14.5}
+{"station_id":"IN009012000","elevation":909,"name":"YELAHANKA","dist_km":16.6}
+{"station_id":"IN009011400","elevation":903,"name":"VARTUR","dist_km":17.8}
+{"station_id":"IN009012200","elevation":857,"name":"KADGUDI(KADGOD)","dist_km":20.4}
+{"station_id":"IN009013000","elevation":896,"name":"CHIKJALA","dist_km":22.1}
+{"station_id":"IN009011800","elevation":860,"name":"HESSARGHATTA","dist_km":22.5}
+{"station_id":"IN009010101","elevation":858,"name":"HASKOTE","dist_km":23.5}
+{"station_id":"IN009010300","elevation":909,"name":"NELAMANGALA","dist_km":25.5}
+{"station_id":"IN009010500","elevation":914,"name":"ANEKAL","dist_km":31.6}
+{"station_id":"IN009011801","elevation":891,"name":"ATTIBELE","dist_km":31.8}
+{"station_id":"IN009010401","elevation":891,"name":"DEVANHALLI","dist_km":33}
+{"station_id":"IN009142101","elevation":899,"name":"LAKKUR","dist_km":33.6}
+{"station_id":"IN009012700","elevation":91,"name":"BEGUR","dist_km":33.7}
+{"station_id":"IN009010200","elevation":889,"name":"DODBALLAPUR","dist_km":34.7}
+{"station_id":"IN009140900","elevation":903,"name":"MALUR","dist_km":36.5}
+{"station_id":"IN009012801","elevation":919,"name":"TAVAREKERE","dist_km":37.3}
+{"station_id":"IN020051100","elevation":949,"name":"HOSUR","dist_km":37.9}
+{"station_id":"IN009012901","elevation":903,"name":"SOLUR","dist_km":38.9}
+{"station_id":"IN009143400","elevation":899,"name":"JAMGAMKOTE","dist_km":40.1}
+{"station_id":"IN009010301","elevation":871,"name":"MAGADI","dist_km":40.7}
+{"station_id":"IN009012500","elevation":91,"name":"TYAMAGONDLU","dist_km":42.2}
+(25 documents, 26 ms)
+

@@ -1,0 +1,31 @@
+$ hdfs dfs -cat /ghcn/output/job1_country_temp_java/part-r-00000 | head -20   (country  year  avgTMAX  avgTMIN  nTMAX  nTMIN)
+AE	2024	35.22	24.28	1079	832
+AG	2024	24.84	12.46	10699	9320
+AJ	2023	20.57	10.84	1897	1492
+AJ	2025	18.91	10.93	2400	2400
+AM	2024	15.31	4.13	4084	3340
+AQ	2024	30.62	25.84	337	337
+AR	2023	24.66	10.53	12747	23105
+AR	2025	22.44	10.01	11894	17619
+AS	2024	25.08	13.19	205350	203683
+AU	2024	12.51	4.75	2739	2940
+AY	2024	-7.82	-12.85	6705	7310
+BA	2023	32.77	25.49	306	211
+BA	2025	32.30	25.12	212	144
+BC	2023	32.58	13.75	989	950
+BC	2025	28.78	11.74	572	553
+BD	2024	25.14	19.59	267	267
+BE	2023	17.79	9.49	232	236
+BE	2025	15.73	8.12	357	357
+BF	2024	30.53	23.46	153	153
+BG	2023	31.78	22.40	1336	2504
+
+$ hdfs dfs -ls /ghcn/output/job1_country_temp_java /ghcn/output/job1_country_temp_streaming
+Found 3 items
+-rw-r--r--   2 root supergroup          0 2026-10-27 05:06 /ghcn/output/job1_country_temp_java/_SUCCESS
+-rw-r--r--   2 root supergroup       8233 2026-10-27 05:06 /ghcn/output/job1_country_temp_java/part-r-00000
+-rw-r--r--   2 root supergroup       7894 2026-10-27 05:06 /ghcn/output/job1_country_temp_java/part-r-00001
+Found 3 items
+-rw-r--r--   2 root supergroup          0 2026-10-27 05:14 /ghcn/output/job1_country_temp_streaming/_SUCCESS
+-rw-r--r--   2 root supergroup       7894 2026-10-27 05:14 /ghcn/output/job1_country_temp_streaming/part-00000
+-rw-r--r--   2 root supergroup       8233 2026-10-27 05:14 /ghcn/output/job1_country_temp_streaming/part-00001

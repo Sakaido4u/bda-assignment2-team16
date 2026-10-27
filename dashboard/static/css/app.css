@@ -1,0 +1,28 @@
+:root {
+  --ink: #16213a;
+  --accent: #2f6fde;
+  --accent-2: #e8833a;
+  --muted: #6b7489;
+  --surface: #ffffff;
+  --page: #f3f5f9;
+}
+body { background: var(--page); color: #1d2433; }
+.bg-ink { background: var(--ink) !important; }
+.card { border: 0; border-radius: 12px; box-shadow: 0 1px 3px rgba(22, 33, 58, .08), 0 4px 16px rgba(22, 33, 58, .04); }
+.card-header { background: transparent; border-bottom: 1px solid #edf0f5; font-weight: 600; }
+.kpi .value { font-size: 2rem; font-weight: 700; line-height: 1.1; }
+.kpi .label { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+.kpi .sub { color: var(--muted); font-size: .85rem; }
+.node-card { border-left: 5px solid #adb5bd; }
+.node-card.up { border-left-color: #2fa84f; }
+.node-card.down { border-left-color: #d64545; }
+.node-role { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.svc { display: inline-block; font-size: .78rem; background: #eef3fc; color: #24467e; border-radius: 6px; padding: 2px 8px; margin: 2px 2px 0 0; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; background: #2fa84f; }
+.dot.off { background: #d64545; }
+.table-sm td, .table-sm th { padding: .35rem .5rem; }
+.small-muted { color: var(--muted); font-size: .85rem; }
+#map { height: 640px; border-radius: 12px; }
+pre.sql { background: #0f172a; color: #dbe4f3; padding: 12px; border-radius: 8px; font-size: .8rem; white-space: pre-wrap; }
+.chart-box { position: relative; height: 320px; }
+.badge-scan { font-family: monospace; }

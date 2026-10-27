@@ -1,0 +1,85 @@
+{
+  "observations_indexes": [
+    [
+      "_id_",
+      {
+        "v": 2,
+        "key": [
+          [
+            "_id",
+            1
+          ]
+        ]
+      }
+    ],
+    [
+      "station_date",
+      {
+        "v": 2,
+        "key": [
+          [
+            "station_id",
+            1
+          ],
+          [
+            "date",
+            1
+          ]
+        ]
+      }
+    ],
+    [
+      "element",
+      {
+        "v": 2,
+        "key": [
+          [
+            "readings.element",
+            1
+          ]
+        ]
+      }
+    ]
+  ],
+  "stations_indexes": [
+    [
+      "_id_",
+      {
+        "v": 2,
+        "key": [
+          [
+            "_id",
+            1
+          ]
+        ]
+      }
+    ],
+    [
+      "location_2dsphere",
+      {
+        "v": 2,
+        "key": [
+          [
+            "location",
+            "2dsphere"
+          ]
+        ],
+        "2dsphereIndexVersion": 3
+      }
+    ]
+  ],
+  "index_build_seconds": {
+    "station_date": 36.9,
+    "element": 77.6,
+    "location_2dsphere": 0.6
+  },
+  "index_sizes_mb": {
+    "_id_": 214.8,
+    "station_date": 304.4,
+    "element": 263.2
+  },
+  "stations_index_sizes_mb": {
+    "_id_": 1.92,
+    "location_2dsphere": 2.17
+  }
+}

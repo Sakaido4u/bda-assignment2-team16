@@ -1,0 +1,1 @@
+[{"type": "web", "name": "figB7_dashboard_service_down", "url": "http://dashboard:5000/climate", "wait_ms": 5000}]

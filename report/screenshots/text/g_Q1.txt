@@ -1,0 +1,18 @@
+==== Q1 Yearly average TMAX/TMIN per country (top 15 by readings) ====
+{"readings":5296777,"country_code":"US","country":"United States","year":2023,"avg_tmax":17.38,"avg_tmin":5.03}
+{"readings":5252180,"country_code":"US","country":"United States","year":2024,"avg_tmax":17.96,"avg_tmin":5.52}
+{"readings":5206819,"country_code":"US","country":"United States","year":2025,"avg_tmax":17.7,"avg_tmin":5.21}
+{"readings":775476,"country_code":"CA","country":"Canada","year":2023,"avg_tmax":9.25,"avg_tmin":-0.64}
+{"readings":751817,"country_code":"CA","country":"Canada","year":2024,"avg_tmax":9.23,"avg_tmin":-0.45}
+{"readings":727634,"country_code":"CA","country":"Canada","year":2025,"avg_tmax":8.53,"avg_tmin":-1.53}
+{"readings":412992,"country_code":"AS","country":"Australia","year":2023,"avg_tmax":24.86,"avg_tmin":12.67}
+{"readings":409033,"country_code":"AS","country":"Australia","year":2024,"avg_tmax":25.08,"avg_tmin":13.19}
+{"readings":405386,"country_code":"AS","country":"Australia","year":2025,"avg_tmax":24.92,"avg_tmin":12.89}
+{"readings":324923,"country_code":"GM","country":"Germany","year":2023,"avg_tmax":15.04,"avg_tmin":6.17}
+{"readings":324857,"country_code":"GM","country":"Germany","year":2024,"avg_tmax":15.18,"avg_tmin":6.53}
+{"readings":322134,"country_code":"GM","country":"Germany","year":2025,"avg_tmax":14.76,"avg_tmin":5.28}
+{"readings":265723,"country_code":"RS","country":"Russia","year":2023,"avg_tmax":6.42,"avg_tmin":-4.71}
+{"readings":256770,"country_code":"RS","country":"Russia","year":2024,"avg_tmax":6.63,"avg_tmin":-4.6}
+{"readings":187513,"country_code":"RS","country":"Russia","year":2025,"avg_tmax":8.18,"avg_tmin":-2.92}
+(15 documents, 179254 ms)
+

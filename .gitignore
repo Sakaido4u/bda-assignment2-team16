@@ -1,0 +1,25 @@
+data/
+docker/hadoop/tarballs/*.tar.gz
+docker/hadoop/tarballs/*.jar
+docker/hadoop/tarballs/dl.log
+mapreduce/target/
+mapreduce/.m2/
+__pycache__/
+*.pyc
+.venv/
+
+# Local secrets (copy .env.example to .env)
+.env
+
+# Report deliverables / drafts kept out of the repo
+report/BDA_Assignment2_Team16_Final.docx
+report/BDA_Assignment2_Team16_Final.pdf
+report/BDA_Assignment2_Team16_Report.docx
+report/project-explained-simply.md
+report/presentation-and-demo.md
+report/report.md
+report/screenshot-checklist.md
+report/template/format.pdf
+report/tools/shooter/wheels/
+report/template/body.md
+report/template/body.docx

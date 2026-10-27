@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}GHCN Big Data Dashboard{% endblock %} · Team 16</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-ink sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-semibold" href="/">GHCN-Daily · Big Data Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link {{ 'active' if page=='overview' }}" href="/">Cluster</a></li>
+        <li class="nav-item"><a class="nav-link {{ 'active' if page=='climate' }}" href="/climate">Climate analytics</a></li>
+        <li class="nav-item"><a class="nav-link {{ 'active' if page=='map' }}" href="/map">Station map</a></li>
+        <li class="nav-item"><a class="nav-link {{ 'active' if page=='hive' }}" href="/hive">Hive queries</a></li>
+        <li class="nav-item"><a class="nav-link {{ 'active' if page=='performance' }}" href="/performance">Performance</a></li>
+      </ul>
+      <span class="navbar-text small">BCS714D · Assignment 2 · Team 16 · JSSATE Bengaluru</span>
+    </div>
+  </div>
+</nav>
+<main class="container-fluid py-4 px-lg-4">
+  <div id="alerts"></div>
+  {% block content %}{% endblock %}
+</main>
+<script src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/chart.umd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/common.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

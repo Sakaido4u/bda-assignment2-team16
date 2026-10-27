@@ -1,0 +1,16 @@
+flowchart LR
+  subgraph PC1["Machine 1 · MASTER_IP"]
+    M["master container<br/>NN · RM · JHS · Hive"]
+    P[("metastore-db")]
+    G[("mongodb")]
+    D["dashboard"]
+  end
+  subgraph PC2["Machine 2 · WORKER1_IP"]
+    W1["worker1 container<br/>DataNode · NodeManager"]
+  end
+  subgraph PC3["Machine 3 · WORKER2_IP"]
+    W2["worker2 container<br/>DataNode · NodeManager"]
+  end
+  M <== "Swarm overlay bda16-overlay<br/>(VXLAN UDP 4789, gossip 7946, mgmt 2377)" ==> W1
+  M <== "overlay" ==> W2
+  W1 <-. "block replication" .-> W2

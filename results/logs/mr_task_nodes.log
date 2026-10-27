@@ -1,0 +1,19 @@
+
+job_1793076666567_0001  GHCN Job1 - yearly avg TMAX/TMIN per country (Java)
+  maps=122 reduces=2 state=SUCCEEDED elapsed=197.6s
+  worker1    MAP     tasks: 49
+  worker1    REDUCE  tasks: 1
+  worker2    MAP     tasks: 73
+  worker2    REDUCE  tasks: 1
+
+job_1793076666567_0002  GHCN Job2 - extreme precipitation days per station (Java)
+  maps=122 reduces=2 state=SUCCEEDED elapsed=179.2s
+  worker1    MAP     tasks: 67
+  worker1    REDUCE  tasks: 2
+  worker2    MAP     tasks: 55
+
+job_1793076666567_0003  GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming)
+  maps=122 reduces=2 state=SUCCEEDED elapsed=279.1s
+  worker1    MAP     tasks: 54
+  worker2    MAP     tasks: 68
+  worker2    REDUCE  tasks: 2

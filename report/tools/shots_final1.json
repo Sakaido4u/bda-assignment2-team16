@@ -1,0 +1,167 @@
+[
+ {
+  "type": "term",
+  "name": "fig43_hive_create_tables",
+  "title": "beeline - TEXTFILE external table, RCFile table, INSERT OVERWRITE",
+  "file": "report/screenshots/text/v01_create_tables.txt",
+  "highlight": [
+   "86871554",
+   "rows selected"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig44_hive_bonus_tables",
+  "title": "beeline - BONUS: Snappy RCFile, ORC, monthly_summary",
+  "file": "report/screenshots/text/v01b_bonus_tables.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig45_hive_describe_rc",
+  "title": "beeline - SHOW TABLES; DESCRIBE FORMATTED obs_rc",
+  "file": "report/screenshots/text/v02_describe_rc.txt",
+  "width": 1400,
+  "highlight": [
+   "RCFile",
+   "InputFormat",
+   "OutputFormat",
+   "SerDe"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig46_hive_benchmark_runs",
+  "title": "master - benchmark_hive.sh (each query x3 per table)",
+  "file": "report/screenshots/text/v03_benchmark_runs.txt",
+  "max_lines": 60
+ },
+ {
+  "type": "term",
+  "name": "fig47_hive_benchmark_summary",
+  "title": "master - benchmark summary and table sizes",
+  "file": "report/screenshots/text/v04_benchmark_summary.txt",
+  "width": 1400
+ },
+ {
+  "type": "term",
+  "name": "fig48_hive_query_results",
+  "title": "beeline - benchmark query results (first run of each)",
+  "file": "report/screenshots/text/v05_query_results.txt",
+  "max_lines": 75,
+  "width": 1400
+ },
+ {
+  "type": "web",
+  "name": "fig49_hs2_ui_queries",
+  "url": "http://master:10002/",
+  "wait_ms": 2000,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "fig50b_hdfs_warehouse",
+  "url": "http://master:9870/explorer.html#/user/hive/warehouse/ghcn.db",
+  "wait_ms": 2500
+ },
+ {
+  "type": "term",
+  "name": "fig53_mongo_indexes",
+  "title": "mongosh - createIndex + getIndexes()",
+  "file": "report/screenshots/text/g03_indexes.txt",
+  "max_lines": 80
+ },
+ {
+  "type": "term",
+  "name": "fig54_mongo_q1",
+  "title": "mongosh - Q1 yearly average TMAX/TMIN per country",
+  "file": "report/screenshots/text/g_Q1.txt",
+  "width": 1400
+ },
+ {
+  "type": "term",
+  "name": "fig55_mongo_q2",
+  "title": "mongosh - Q2 hottest and wettest Indian stations ($facet + $lookup)",
+  "file": "report/screenshots/text/g_Q2.txt",
+  "width": 1400
+ },
+ {
+  "type": "term",
+  "name": "fig56_mongo_q3",
+  "title": "mongosh - Q3 monthly precipitation, Bangalore",
+  "file": "report/screenshots/text/g_Q3.txt",
+  "width": 1400
+ },
+ {
+  "type": "term",
+  "name": "fig57_mongo_q4_q7",
+  "title": "mongosh - Q4 extreme-heat days, Q7 geo + $lookup",
+  "file": "report/screenshots/text/g_Q4.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig58_mongo_q5",
+  "title": "mongosh - Q5 single $facet call with $bucket histogram",
+  "file": "report/screenshots/text/g_Q5.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig59_mongo_q6",
+  "title": "mongosh - Q6 $geoNear: stations within 200 km of Bengaluru",
+  "file": "report/screenshots/text/g_Q6.txt",
+  "width": 1400
+ },
+ {
+  "type": "term",
+  "name": "fig59b_mongo_q7_explain",
+  "title": "mongosh - Q7 geo + $lookup, explain() of Q3",
+  "file": "report/screenshots/text/g_Q7.txt",
+  "width": 1500
+ },
+ {
+  "type": "web",
+  "name": "figB4_dashboard_map_bengaluru",
+  "url": "http://dashboard:5000/map",
+  "wait_for": ".leaflet-interactive",
+  "wait_ms": 6000
+ },
+ {
+  "type": "web",
+  "name": "figB5_dashboard_hive_monthly",
+  "url": "http://dashboard:5000/hive",
+  "select": {
+   "#qid": "country_monthly",
+   "#country": "IN",
+   "#element": "TMAX",
+   "#year": "2025"
+  },
+  "click": "#run",
+  "wait_for": "#result tbody tr",
+  "wait_ms": 1500,
+  "timeout_ms": 600000,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "figB6_dashboard_hive_hottest",
+  "url": "http://dashboard:5000/hive",
+  "select": {
+   "#qid": "hottest_stations",
+   "#country": "IN",
+   "#year": "2024",
+   "#limit": "10"
+  },
+  "click": "#run",
+  "wait_for": "#result tbody tr",
+  "wait_ms": 1500,
+  "timeout_ms": 900000,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "figB8_dashboard_performance",
+  "url": "http://dashboard:5000/performance",
+  "wait_for": "#mongoTable tr",
+  "wait_ms": 3000,
+  "full_page": true
+ }
+]

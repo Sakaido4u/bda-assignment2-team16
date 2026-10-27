@@ -1,0 +1,24 @@
+=== Collecting outputs ===
+   560 mapreduce/sample-output/job1_country_temp_java.tsv
+   560 mapreduce/sample-output/job1_country_temp_streaming.tsv
+ 34460 mapreduce/sample-output/job2_extreme_precip_java.tsv
+ 35580 total
+
+India (IN) yearly averages:
+IN	2023	32.22	20.74	30621	41624
+IN	2024	32.30	21.18	28080	39805
+IN	2025	31.55	22.17	27999	33715
+
+Top 10 stations by extreme-precipitation days (>= 50 mm):
+USC00505604	114
+USC00505519	110
+USS0022C13S	108
+BGM00041891	93
+FMC00914395	90
+AJ000037575	89
+ASN00032033	85
+IN012220400	85
+FMC00914898	82
+ASN00032042	80
+
+Java vs Streaming: 560 rows, 0 differ beyond rounding, 1 differ only by a 0.01 rounding tie

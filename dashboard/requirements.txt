@@ -1,0 +1,11 @@
+flask==3.0.3
+gunicorn==22.0.0
+requests==2.32.3
+pymongo==4.8.0
+pyhive==0.7.0
+thrift==0.16.0
+thrift-sasl==0.4.3
+pure-sasl==0.6.2
+pandas==2.2.2
+matplotlib==3.9.2
+tqdm==4.66.5

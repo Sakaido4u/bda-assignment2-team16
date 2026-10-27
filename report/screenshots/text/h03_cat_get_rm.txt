@@ -1,0 +1,28 @@
+## 6. Peek at the data without downloading it
+$ hdfs dfs -cat /ghcn/raw/2025.csv | head -n 5
+ASN00009877,20250101,PRCP,0,,,a,
+ASN00009891,20250101,PRCP,0,,,a,
+ASN00009893,20250101,PRCP,0,,,a,
+ASN00009894,20250101,PRCP,0,,,a,
+ASN00009899,20250101,PRCP,0,,,a,
+$ hdfs dfs -cat /ghcn/stations/stations.tsv | head -n 5
+ACW00011604	17.1167	-61.7833	10.1		ST JOHNS COOLIDGE FLD				AC	Antigua and Barbuda
+ACW00011647	17.1333	-61.7833	19.2		ST JOHNS				AC	Antigua and Barbuda
+AE000041196	25.333	55.517	34.0		SHARJAH INTER. AIRP	GSN		41196	AE	United Arab Emirates
+AEM00041194	25.255	55.364	10.4		DUBAI INTL			41194	AE	United Arab Emirates
+AEM00041217	24.433	54.651	26.8		ABU DHABI INTL			41217	AE	United Arab Emirates
+
+## 7. Copy a file from HDFS back to the local filesystem
+$ rm -f /tmp/stations_copy.tsv && hdfs dfs -get /ghcn/stations/stations.tsv /tmp/stations_copy.tsv
+$ ls -lh /tmp/stations_copy.tsv && wc -l /tmp/stations_copy.tsv
+-rw-r--r-- 1 root root 8.8M Oct 27 05:02 /tmp/stations_copy.tsv
+133039 /tmp/stations_copy.tsv
+
+## 8. Create and remove a temporary directory
+$ hdfs dfs -mkdir -p /ghcn/tmp_demo && hdfs dfs -cp /ghcn/countries/countries.tsv /ghcn/tmp_demo/
+$ hdfs dfs -ls /ghcn/tmp_demo
+Found 1 items
+-rw-r--r--   2 root supergroup       3488 2026-10-27 05:02 /ghcn/tmp_demo/countries.tsv
+$ hdfs dfs -rm -r -skipTrash /ghcn/tmp_demo
+Deleted /ghcn/tmp_demo
+

@@ -1,0 +1,468 @@
+Connecting to jdbc:hive2://master:10000
+Connected to: Apache Hive (version 3.1.3)
+Driver: Hive JDBC (version 3.1.3)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://master:10000> -- =============================================== ======================
+0: jdbc:hive2://master:10000> --  BONUS (extra, beyond the required TEXTFILE vs  RCFile comparison)
+0: jdbc:hive2://master:10000> --    obs_rc_snappy : RCFile with Snappy block com pression
+0: jdbc:hive2://master:10000> --    obs_orc       : ORC (modern columnar format)  as a reference point
+0: jdbc:hive2://master:10000> --    monthly_summary : small aggregate used by th e dashboard's Hive page
+0: jdbc:hive2://master:10000> -- =============================================== ======================
+0: jdbc:hive2://master:10000> USE ghcn;
+INFO  : Compiling command(queryId=root_20261027054839_947ebefb-0b40-4c33-a5bb-f2ef069f2282): USE ghcn
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054839_947ebefb-0b40-4c33-a5bb-f2ef069f2282); Time taken: 0.15 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054839_947ebefb-0b40-4c33-a5bb-f2ef069f2282): USE ghcn
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054839_947ebefb-0b40-4c33-a5bb-f2ef069f2282); Time taken: 0.013 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.218 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> DROP TABLE IF EXISTS obs_rc_snappy;
+INFO  : Compiling command(queryId=root_20261027054840_818fd0bc-3e8b-419f-8d11-d1d3044a7eca): DROP TABLE IF EXISTS obs_rc_snappy
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054840_818fd0bc-3e8b-419f-8d11-d1d3044a7eca); Time taken: 0.024 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054840_818fd0bc-3e8b-419f-8d11-d1d3044a7eca): DROP TABLE IF EXISTS obs_rc_snappy
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054840_818fd0bc-3e8b-419f-8d11-d1d3044a7eca); Time taken: 0.024 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.067 seconds)
+0: jdbc:hive2://master:10000> CREATE TABLE obs_rc_snappy LIKE obs_rc;
+INFO  : Compiling command(queryId=root_20261027054840_7b86f923-6ff1-458f-bc48-61c56c86cfbe): CREATE TABLE obs_rc_snappy LIKE obs_rc
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054840_7b86f923-6ff1-458f-bc48-61c56c86cfbe); Time taken: 0.026 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054840_7b86f923-6ff1-458f-bc48-61c56c86cfbe): CREATE TABLE obs_rc_snappy LIKE obs_rc
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027054840_7b86f923-6ff1-458f-bc48-61c56c86cfbe); Time taken: 0.232 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.273 seconds)
+0: jdbc:hive2://master:10000> SET hive.exec.compress.output=true;
+No rows affected (0.017 seconds)
+0: jdbc:hive2://master:10000> SET mapreduce.output.fileoutputformat.compress.cod ec=org.apache.hadoop.io.compress.SnappyCodec;
+No rows affected (0.016 seconds)
+0: jdbc:hive2://master:10000> INSERT OVERWRITE TABLE obs_rc_snappy SELECT * FROM  obs_text;
+INFO  : Compiling command(queryId=root_20261027054840_4b7a650b-00b9-47ca-a2a1-fc8a16a93eb1): INSERT OVERWRITE TABLE obs_rc_snappy SELECT * FROM obs_text
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:obs_text.station_id, type:string, comment:null), FieldSchema(name:obs_text.country_code, type:string, comment:null), FieldSchema(name:obs_text.year, type:int, comment:null), FieldSchema(name:obs_text.month, type:int, comment:null), FieldSchema(name:obs_text.day, type:int, comment:null), FieldSchema(name:obs_text.element, type:string, comment:null), FieldSchema(name:obs_text.value, type:double, comment:null), FieldSchema(name:obs_text.m_flag, type:string, comment:null), FieldSchema(name:obs_text.s_flag, type:string, comment:null), FieldSchema(name:obs_text.obs_time, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261027054840_4b7a650b-00b9-47ca-a2a1-fc8a16a93eb1); Time taken: 0.337 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027054840_4b7a650b-00b9-47ca-a2a1-fc8a16a93eb1): INSERT OVERWRITE TABLE obs_rc_snappy SELECT * FROM obs_text
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261027054840_4b7a650b-00b9-47ca-a2a1-fc8a16a93eb1
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks is set to 0 since there's no reduce operator
+INFO  : number of splits:14
+INFO  : Submitting tokens for job: job_1793078486119_0013
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://master:8088/proxy/application_1793078486119_0013/
+INFO  : Starting Job = job_1793078486119_0013, Tracking URL = http://master:8088/proxy/application_1793078486119_0013/
+INFO  : Kill Command = /opt/hadoop/bin/mapred job  -kill job_1793078486119_0013
+INFO  : Hadoop job information for Stage-1: number of mappers: 14; number of reducers: 0
+INFO  : 2026-10-27 05:48:46,843 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-27 05:49:04,240 Stage-1 map = 3%,  reduce = 0%, Cumulative CPU 24.9 sec
+INFO  : 2026-10-27 05:49:07,362 Stage-1 map = 6%,  reduce = 0%, Cumulative CPU 37.03 sec
+INFO  : 2026-10-27 05:49:08,393 Stage-1 map = 10%,  reduce = 0%, Cumulative CPU 62.45 sec
+INFO  : 2026-10-27 05:49:10,458 Stage-1 map = 15%,  reduce = 0%, Cumulative CPU 74.13 sec
+INFO  : 2026-10-27 05:49:13,549 Stage-1 map = 19%,  reduce = 0%, Cumulative CPU 85.94 sec
+INFO  : 2026-10-27 05:49:14,607 Stage-1 map = 21%,  reduce = 0%, Cumulative CPU 91.77 sec
+INFO  : 2026-10-27 05:49:16,670 Stage-1 map = 25%,  reduce = 0%, Cumulative CPU 103.68 sec
+INFO  : 2026-10-27 05:49:19,770 Stage-1 map = 33%,  reduce = 0%, Cumulative CPU 127.56 sec
+INFO  : 2026-10-27 05:49:22,156 Stage-1 map = 36%,  reduce = 0%, Cumulative CPU 131.73 sec
+INFO  : 2026-10-27 05:49:38,787 Stage-1 map = 43%,  reduce = 0%, Cumulative CPU 172.49 sec
+INFO  : 2026-10-27 05:49:39,833 Stage-1 map = 48%,  reduce = 0%, Cumulative CPU 200.7 sec
+INFO  : 2026-10-27 05:49:43,998 Stage-1 map = 49%,  reduce = 0%, Cumulative CPU 206.88 sec
+INFO  : 2026-10-27 05:49:45,052 Stage-1 map = 54%,  reduce = 0%, Cumulative CPU 219.19 sec
+INFO  : 2026-10-27 05:49:46,083 Stage-1 map = 58%,  reduce = 0%, Cumulative CPU 231.45 sec
+INFO  : 2026-10-27 05:49:50,214 Stage-1 map = 63%,  reduce = 0%, Cumulative CPU 250.05 sec
+INFO  : 2026-10-27 05:49:51,263 Stage-1 map = 67%,  reduce = 0%, Cumulative CPU 258.07 sec
+INFO  : 2026-10-27 05:49:52,286 Stage-1 map = 71%,  reduce = 0%, Cumulative CPU 265.81 sec
+INFO  : 2026-10-27 05:50:06,766 Stage-1 map = 78%,  reduce = 0%, Cumulative CPU 296.64 sec
+INFO  : 2026-10-27 05:50:10,897 Stage-1 map = 81%,  reduce = 0%, Cumulative CPU 311.39 sec
+INFO  : 2026-10-27 05:50:13,040 Stage-1 map = 91%,  reduce = 0%, Cumulative CPU 336.74 sec
+INFO  : 2026-10-27 05:50:17,167 Stage-1 map = 93%,  reduce = 0%, Cumulative CPU 341.65 sec
+INFO  : 2026-10-27 05:50:18,202 Stage-1 map = 95%,  reduce = 0%, Cumulative CPU 346.4 sec
+INFO  : 2026-10-27 05:50:19,221 Stage-1 map = 98%,  reduce = 0%, Cumulative CPU 351.71 sec
+INFO  : 2026-10-27 05:50:20,245 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 355.48 sec
+INFO  : MapReduce Total cumulative CPU time: 5 minutes 55 seconds 480 msec
+INFO  : Ended Job = job_1793078486119_0013
+INFO  : Starting task [Stage-7:CONDITIONAL] in serial mode
+INFO  : Stage-4 is selected by condition resolver.
+INFO  : Stage-3 is filtered out by condition resolver.
+INFO  : Stage-5 is filtered out by condition resolver.
+INFO  : Starting task [Stage-4:MOVE] in serial mode
+INFO  : Moving data to directory hdfs://master:9000/user/hive/warehouse/ghcn.db/obs_rc_snappy/.hive-staging_hive_2026-10-27_05-48-40_573_8608805529648886112-4/-ext-10000 from hdfs://master:9000/user/hive/warehouse/ghcn.db/obs_rc_snappy/.hive-staging_hive_2026-10-27_05-48-40_573_8608805529648886112-4/-ext-10002
+INFO  : Starting task [Stage-0:MOVE] in serial mode
+INFO  : Loading data to table ghcn.obs_rc_snappy from hdfs://master:9000/user/hive/warehouse/ghcn.db/obs_rc_snappy/.hive-staging_hive_2026-10-27_05-48-40_573_8608805529648886112-4/-ext-10000
+INFO  : Starting task [Stage-2:STATS] in serial mode
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 14   Cumulative CPU: 355.48 sec   HDFS Read: 3531495814 HDFS Write: 551375821 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 5 minutes 55 seconds 480 msec
+INFO  : Completed executing command(queryId=root_20261027054840_4b7a650b-00b9-47ca-a2a1-fc8a16a93eb1); Time taken: 101.068 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (101.425 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> DROP TABLE IF EXISTS obs_orc;
+INFO  : Compiling command(queryId=root_20261027055022_af723859-e1a8-436a-925b-3c8b924f0e54): DROP TABLE IF EXISTS obs_orc
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027055022_af723859-e1a8-436a-925b-3c8b924f0e54); Time taken: 0.069 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027055022_af723859-e1a8-436a-925b-3c8b924f0e54): DROP TABLE IF EXISTS obs_orc
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027055022_af723859-e1a8-436a-925b-3c8b924f0e54); Time taken: 0.01 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.092 seconds)
+0: jdbc:hive2://master:10000> CREATE TABLE obs_orc (
+. . . . . . . . . . . . . . >   station_id STRING, country_code STRING, year INT , month INT, day INT,
+. . . . . . . . . . . . . . >   element STRING, value DOUBLE, m_flag STRING, s_f lag STRING, obs_time STRING
+. . . . . . . . . . . . . . > )
+. . . . . . . . . . . . . . > STORED AS ORC TBLPROPERTIES ('orc.compress'='ZLIB' );
+INFO  : Compiling command(queryId=root_20261027055022_0263035c-a705-4e92-89b1-0a10170cde31): CREATE TABLE obs_orc (
+station_id STRING, country_code STRING, year INT, month INT, day INT,
+element STRING, value DOUBLE, m_flag STRING, s_flag STRING, obs_time STRING
+)
+STORED AS ORC TBLPROPERTIES ('orc.compress'='ZLIB')
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027055022_0263035c-a705-4e92-89b1-0a10170cde31); Time taken: 0.071 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027055022_0263035c-a705-4e92-89b1-0a10170cde31): CREATE TABLE obs_orc (
+station_id STRING, country_code STRING, year INT, month INT, day INT,
+element STRING, value DOUBLE, m_flag STRING, s_flag STRING, obs_time STRING
+)
+STORED AS ORC TBLPROPERTIES ('orc.compress'='ZLIB')
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027055022_0263035c-a705-4e92-89b1-0a10170cde31); Time taken: 0.115 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.211 seconds)
+0: jdbc:hive2://master:10000> SET hive.exec.compress.output=false;
+No rows affected (0.006 seconds)
+0: jdbc:hive2://master:10000> INSERT OVERWRITE TABLE obs_orc SELECT * FROM obs_t ext;
+INFO  : Compiling command(queryId=root_20261027055022_b99f7399-448c-4c32-bbd9-d6deecc711e0): INSERT OVERWRITE TABLE obs_orc SELECT * FROM obs_text
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:obs_text.station_id, type:string, comment:null), FieldSchema(name:obs_text.country_code, type:string, comment:null), FieldSchema(name:obs_text.year, type:int, comment:null), FieldSchema(name:obs_text.month, type:int, comment:null), FieldSchema(name:obs_text.day, type:int, comment:null), FieldSchema(name:obs_text.element, type:string, comment:null), FieldSchema(name:obs_text.value, type:double, comment:null), FieldSchema(name:obs_text.m_flag, type:string, comment:null), FieldSchema(name:obs_text.s_flag, type:string, comment:null), FieldSchema(name:obs_text.obs_time, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261027055022_b99f7399-448c-4c32-bbd9-d6deecc711e0); Time taken: 0.353 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027055022_b99f7399-448c-4c32-bbd9-d6deecc711e0): INSERT OVERWRITE TABLE obs_orc SELECT * FROM obs_text
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261027055022_b99f7399-448c-4c32-bbd9-d6deecc711e0
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks is set to 0 since there's no reduce operator
+INFO  : number of splits:14
+INFO  : Submitting tokens for job: job_1793078486119_0014
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://master:8088/proxy/application_1793078486119_0014/
+INFO  : Starting Job = job_1793078486119_0014, Tracking URL = http://master:8088/proxy/application_1793078486119_0014/
+INFO  : Kill Command = /opt/hadoop/bin/mapred job  -kill job_1793078486119_0014
+INFO  : Hadoop job information for Stage-1: number of mappers: 14; number of reducers: 0
+INFO  : 2026-10-27 05:50:33,341 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-27 05:50:52,350 Stage-1 map = 2%,  reduce = 0%, Cumulative CPU 30.0 sec
+INFO  : 2026-10-27 05:50:55,451 Stage-1 map = 3%,  reduce = 0%, Cumulative CPU 69.72 sec
+INFO  : 2026-10-27 05:50:57,559 Stage-1 map = 5%,  reduce = 0%, Cumulative CPU 77.97 sec
+INFO  : 2026-10-27 05:51:01,766 Stage-1 map = 9%,  reduce = 0%, Cumulative CPU 97.9 sec
+INFO  : 2026-10-27 05:51:03,832 Stage-1 map = 11%,  reduce = 0%, Cumulative CPU 112.73 sec
+INFO  : 2026-10-27 05:51:08,128 Stage-1 map = 13%,  reduce = 0%, Cumulative CPU 133.49 sec
+INFO  : 2026-10-27 05:51:10,270 Stage-1 map = 17%,  reduce = 0%, Cumulative CPU 145.31 sec
+INFO  : 2026-10-27 05:51:14,485 Stage-1 map = 18%,  reduce = 0%, Cumulative CPU 150.26 sec
+INFO  : 2026-10-27 05:51:15,538 Stage-1 map = 23%,  reduce = 0%, Cumulative CPU 171.35 sec
+INFO  : 2026-10-27 05:51:20,380 Stage-1 map = 24%,  reduce = 0%, Cumulative CPU 175.75 sec
+INFO  : 2026-10-27 05:51:21,638 Stage-1 map = 27%,  reduce = 0%, Cumulative CPU 191.9 sec
+INFO  : 2026-10-27 05:51:22,912 Stage-1 map = 28%,  reduce = 0%, Cumulative CPU 197.32 sec
+INFO  : 2026-10-27 05:51:24,975 Stage-1 map = 29%,  reduce = 0%, Cumulative CPU 200.08 sec
+INFO  : 2026-10-27 05:51:27,070 Stage-1 map = 34%,  reduce = 0%, Cumulative CPU 219.39 sec
+INFO  : 2026-10-27 05:51:31,309 Stage-1 map = 36%,  reduce = 0%, Cumulative CPU 224.77 sec
+INFO  : 2026-10-27 05:51:51,278 Stage-1 map = 39%,  reduce = 0%, Cumulative CPU 283.03 sec
+INFO  : 2026-10-27 05:51:52,371 Stage-1 map = 40%,  reduce = 0%, Cumulative CPU 297.78 sec
+INFO  : 2026-10-27 05:51:57,635 Stage-1 map = 41%,  reduce = 0%, Cumulative CPU 304.28 sec
+INFO  : 2026-10-27 05:51:58,663 Stage-1 map = 47%,  reduce = 0%, Cumulative CPU 328.96 sec
+INFO  : 2026-10-27 05:52:03,927 Stage-1 map = 50%,  reduce = 0%, Cumulative CPU 349.13 sec
+INFO  : 2026-10-27 05:52:05,011 Stage-1 map = 52%,  reduce = 0%, Cumulative CPU 362.55 sec
+INFO  : 2026-10-27 05:52:10,321 Stage-1 map = 58%,  reduce = 0%, Cumulative CPU 386.45 sec
+INFO  : 2026-10-27 05:52:16,794 Stage-1 map = 60%,  reduce = 0%, Cumulative CPU 410.65 sec
+INFO  : 2026-10-27 05:52:22,992 Stage-1 map = 67%,  reduce = 0%, Cumulative CPU 441.92 sec
+INFO  : 2026-10-27 05:52:25,048 Stage-1 map = 69%,  reduce = 0%, Cumulative CPU 447.66 sec
+INFO  : 2026-10-27 05:52:26,086 Stage-1 map = 70%,  reduce = 0%, Cumulative CPU 450.42 sec
+INFO  : 2026-10-27 05:52:27,132 Stage-1 map = 71%,  reduce = 0%, Cumulative CPU 454.56 sec
+INFO  : 2026-10-27 05:52:42,026 Stage-1 map = 73%,  reduce = 0%, Cumulative CPU 471.75 sec
+INFO  : 2026-10-27 05:52:43,078 Stage-1 map = 76%,  reduce = 0%, Cumulative CPU 502.51 sec
+INFO  : 2026-10-27 05:52:45,314 Stage-1 map = 80%,  reduce = 0%, Cumulative CPU 519.95 sec
+INFO  : 2026-10-27 05:52:48,523 Stage-1 map = 82%,  reduce = 0%, Cumulative CPU 541.7 sec
+INFO  : 2026-10-27 05:52:51,663 Stage-1 map = 85%,  reduce = 0%, Cumulative CPU 548.37 sec
+INFO  : 2026-10-27 05:52:52,738 Stage-1 map = 86%,  reduce = 0%, Cumulative CPU 549.47 sec
+INFO  : 2026-10-27 05:52:53,818 Stage-1 map = 88%,  reduce = 0%, Cumulative CPU 549.47 sec
+INFO  : 2026-10-27 05:52:54,869 Stage-1 map = 93%,  reduce = 0%, Cumulative CPU 568.3 sec
+INFO  : 2026-10-27 05:53:00,715 Stage-1 map = 96%,  reduce = 0%, Cumulative CPU 586.83 sec
+INFO  : 2026-10-27 05:53:03,822 Stage-1 map = 97%,  reduce = 0%, Cumulative CPU 590.19 sec
+INFO  : 2026-10-27 05:53:04,859 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 597.42 sec
+INFO  : MapReduce Total cumulative CPU time: 9 minutes 57 seconds 420 msec
+INFO  : Ended Job = job_1793078486119_0014
+INFO  : Starting task [Stage-7:CONDITIONAL] in serial mode
+INFO  : Stage-4 is selected by condition resolver.
+INFO  : Stage-3 is filtered out by condition resolver.
+INFO  : Stage-5 is filtered out by condition resolver.
+INFO  : Starting task [Stage-4:MOVE] in serial mode
+INFO  : Moving data to directory hdfs://master:9000/user/hive/warehouse/ghcn.db/obs_orc/.hive-staging_hive_2026-10-27_05-50-22_513_766605949034581067-4/-ext-10000 from hdfs://master:9000/user/hive/warehouse/ghcn.db/obs_orc/.hive-staging_hive_2026-10-27_05-50-22_513_766605949034581067-4/-ext-10002
+INFO  : Starting task [Stage-0:MOVE] in serial mode
+INFO  : Loading data to table ghcn.obs_orc from hdfs://master:9000/user/hive/warehouse/ghcn.db/obs_orc/.hive-staging_hive_2026-10-27_05-50-22_513_766605949034581067-4/-ext-10000
+INFO  : Starting task [Stage-2:STATS] in serial mode
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 14   Cumulative CPU: 597.42 sec   HDFS Read: 3531496206 HDFS Write: 247221185 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 9 minutes 57 seconds 420 msec
+INFO  : Completed executing command(queryId=root_20261027055022_b99f7399-448c-4c32-bbd9-d6deecc711e0); Time taken: 164.462 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (164.829 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> DROP TABLE IF EXISTS monthly_summary;
+INFO  : Compiling command(queryId=root_20261027055307_00776e1e-088e-4682-9c48-d8e32af399ad): DROP TABLE IF EXISTS monthly_summary
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=root_20261027055307_00776e1e-088e-4682-9c48-d8e32af399ad); Time taken: 0.082 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027055307_00776e1e-088e-4682-9c48-d8e32af399ad): DROP TABLE IF EXISTS monthly_summary
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=root_20261027055307_00776e1e-088e-4682-9c48-d8e32af399ad); Time taken: 0.016 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (0.119 seconds)
+0: jdbc:hive2://master:10000> CREATE TABLE monthly_summary STORED AS RCFILE AS
+. . . . . . . . . . . . . . > SELECT o.country_code, c.name AS country_name, o.y ear, o.month, o.element,
+. . . . . . . . . . . . . . >        ROUND(AVG(o.value), 2) AS avg_value,
+. . . . . . . . . . . . . . >        MIN(o.value)           AS min_value,
+. . . . . . . . . . . . . . >        MAX(o.value)           AS max_value,
+. . . . . . . . . . . . . . >        COUNT(*)               AS n_obs,
+. . . . . . . . . . . . . . >        COUNT(DISTINCT o.station_id) AS n_stations
+. . . . . . . . . . . . . . > FROM obs_rc o JOIN countries c ON (o.country_code  = c.code)
+. . . . . . . . . . . . . . > GROUP BY o.country_code, c.name, o.year, o.month,  o.element;
+INFO  : Compiling command(queryId=root_20261027055307_41f10143-f4bc-415c-8703-b77e96c480ce): CREATE TABLE monthly_summary STORED AS RCFILE AS
+SELECT o.country_code, c.name AS country_name, o.year, o.month, o.element,
+ROUND(AVG(o.value), 2) AS avg_value,
+MIN(o.value)           AS min_value,
+MAX(o.value)           AS max_value,
+COUNT(*)               AS n_obs,
+COUNT(DISTINCT o.station_id) AS n_stations
+FROM obs_rc o JOIN countries c ON (o.country_code = c.code)
+GROUP BY o.country_code, c.name, o.year, o.month, o.element
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:o.country_code, type:string, comment:null), FieldSchema(name:country_name, type:string, comment:null), FieldSchema(name:o.year, type:int, comment:null), FieldSchema(name:o.month, type:int, comment:null), FieldSchema(name:o.element, type:string, comment:null), FieldSchema(name:avg_value, type:double, comment:null), FieldSchema(name:min_value, type:double, comment:null), FieldSchema(name:max_value, type:double, comment:null), FieldSchema(name:n_obs, type:bigint, comment:null), FieldSchema(name:n_stations, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261027055307_41f10143-f4bc-415c-8703-b77e96c480ce); Time taken: 7.86 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027055307_41f10143-f4bc-415c-8703-b77e96c480ce): CREATE TABLE monthly_summary STORED AS RCFILE AS
+SELECT o.country_code, c.name AS country_name, o.year, o.month, o.element,
+ROUND(AVG(o.value), 2) AS avg_value,
+MIN(o.value)           AS min_value,
+MAX(o.value)           AS max_value,
+COUNT(*)               AS n_obs,
+COUNT(DISTINCT o.station_id) AS n_stations
+FROM obs_rc o JOIN countries c ON (o.country_code = c.code)
+GROUP BY o.country_code, c.name, o.year, o.month, o.element
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261027055307_41f10143-f4bc-415c-8703-b77e96c480ce
+INFO  : Total jobs = 1
+INFO  : Starting task [Stage-6:MAPREDLOCAL] in serial mode
+INFO  : Execution completed successfully
+INFO  : MapredLocal task succeeded
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 12
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:12
+INFO  : Submitting tokens for job: job_1793078486119_0015
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://master:8088/proxy/application_1793078486119_0015/
+INFO  : Starting Job = job_1793078486119_0015, Tracking URL = http://master:8088/proxy/application_1793078486119_0015/
+INFO  : Kill Command = /opt/hadoop/bin/mapred job  -kill job_1793078486119_0015
+INFO  : Hadoop job information for Stage-2: number of mappers: 12; number of reducers: 12
+INFO  : 2026-10-27 05:53:33,236 Stage-2 map = 0%,  reduce = 0%
+INFO  : 2026-10-27 05:54:07,956 Stage-2 map = 1%,  reduce = 0%, Cumulative CPU 100.53 sec
+INFO  : 2026-10-27 05:54:24,171 Stage-2 map = 2%,  reduce = 0%, Cumulative CPU 148.47 sec
+INFO  : 2026-10-27 05:54:32,740 Stage-2 map = 5%,  reduce = 0%, Cumulative CPU 179.31 sec
+INFO  : 2026-10-27 05:54:38,091 Stage-2 map = 7%,  reduce = 0%, Cumulative CPU 211.58 sec
+INFO  : 2026-10-27 05:55:15,827 Stage-2 map = 9%,  reduce = 0%, Cumulative CPU 261.31 sec
+INFO  : 2026-10-27 05:55:17,738 Stage-2 map = 11%,  reduce = 0%, Cumulative CPU 286.19 sec
+INFO  : 2026-10-27 05:55:39,055 Stage-2 map = 12%,  reduce = 0%, Cumulative CPU 308.13 sec
+INFO  : 2026-10-27 05:55:58,172 Stage-2 map = 14%,  reduce = 0%, Cumulative CPU 345.31 sec
+INFO  : 2026-10-27 05:56:09,426 Stage-2 map = 17%,  reduce = 0%, Cumulative CPU 382.47 sec
+INFO  : 2026-10-27 05:56:22,501 Stage-2 map = 18%,  reduce = 0%, Cumulative CPU 412.21 sec
+INFO  : 2026-10-27 05:56:41,855 Stage-2 map = 20%,  reduce = 0%, Cumulative CPU 438.21 sec
+INFO  : 2026-10-27 05:56:48,335 Stage-2 map = 22%,  reduce = 0%, Cumulative CPU 487.95 sec
+INFO  : 2026-10-27 05:57:42,716 Stage-2 map = 24%,  reduce = 0%, Cumulative CPU 528.59 sec
+INFO  : 2026-10-27 05:57:51,921 Stage-2 map = 25%,  reduce = 0%, Cumulative CPU 566.43 sec
+INFO  : 2026-10-27 05:58:17,335 Stage-2 map = 26%,  reduce = 0%, Cumulative CPU 589.13 sec
+INFO  : 2026-10-27 05:58:23,473 Stage-2 map = 28%,  reduce = 0%, Cumulative CPU 625.62 sec
+INFO  : 2026-10-27 05:59:22,365 Stage-2 map = 30%,  reduce = 0%, Cumulative CPU 687.77 sec
+INFO  : 2026-10-27 05:59:23,386 Stage-2 map = 31%,  reduce = 0%, Cumulative CPU 690.67 sec
+INFO  : 2026-10-27 05:59:36,185 Stage-2 map = 32%,  reduce = 0%, Cumulative CPU 734.1 sec
+INFO  : 2026-10-27 06:00:12,233 Stage-2 map = 33%,  reduce = 0%, Cumulative CPU 802.27 sec
+INFO  : 2026-10-27 06:00:24,528 Stage-2 map = 34%,  reduce = 0%, Cumulative CPU 807.72 sec
+INFO  : 2026-10-27 06:01:13,265 Stage-2 map = 39%,  reduce = 0%, Cumulative CPU 849.14 sec
+INFO  : 2026-10-27 06:01:29,685 Stage-2 map = 40%,  reduce = 0%, Cumulative CPU 878.91 sec
+INFO  : 2026-10-27 06:01:49,474 Stage-2 map = 41%,  reduce = 0%, Cumulative CPU 888.86 sec
+INFO  : 2026-10-27 06:01:50,511 Stage-2 map = 42%,  reduce = 0%, Cumulative CPU 906.35 sec
+INFO  : 2026-10-27 06:02:36,052 Stage-2 map = 44%,  reduce = 0%, Cumulative CPU 979.23 sec
+INFO  : 2026-10-27 06:02:43,131 Stage-2 map = 45%,  reduce = 0%, Cumulative CPU 1011.27 sec
+INFO  : 2026-10-27 06:02:50,634 Stage-2 map = 49%,  reduce = 0%, Cumulative CPU 1063.23 sec
+INFO  : 2026-10-27 06:03:18,429 Stage-2 map = 50%,  reduce = 0%, Cumulative CPU 1066.83 sec
+INFO  : 2026-10-27 06:03:19,497 Stage-2 map = 52%,  reduce = 0%, Cumulative CPU 1102.06 sec
+INFO  : 2026-10-27 06:03:24,929 Stage-2 map = 56%,  reduce = 0%, Cumulative CPU 1140.16 sec
+INFO  : 2026-10-27 06:04:04,705 Stage-2 map = 58%,  reduce = 0%, Cumulative CPU 1149.72 sec
+INFO  : 2026-10-27 06:04:05,774 Stage-2 map = 59%,  reduce = 0%, Cumulative CPU 1167.46 sec
+INFO  : 2026-10-27 06:04:18,228 Stage-2 map = 60%,  reduce = 0%, Cumulative CPU 1209.34 sec
+INFO  : 2026-10-27 06:04:31,249 Stage-2 map = 61%,  reduce = 0%, Cumulative CPU 1209.34 sec
+INFO  : 2026-10-27 06:04:32,460 Stage-2 map = 63%,  reduce = 0%, Cumulative CPU 1245.81 sec
+INFO  : 2026-10-27 06:04:52,607 Stage-2 map = 65%,  reduce = 0%, Cumulative CPU 1256.71 sec
+INFO  : 2026-10-27 06:04:53,714 Stage-2 map = 66%,  reduce = 0%, Cumulative CPU 1272.07 sec
+INFO  : 2026-10-27 06:05:03,667 Stage-2 map = 68%,  reduce = 0%, Cumulative CPU 1272.07 sec
+INFO  : 2026-10-27 06:05:04,785 Stage-2 map = 69%,  reduce = 0%, Cumulative CPU 1304.87 sec
+INFO  : 2026-10-27 06:06:05,709 Stage-2 map = 71%,  reduce = 0%, Cumulative CPU 1324.49 sec
+INFO  : 2026-10-27 06:06:13,638 Stage-2 map = 72%,  reduce = 0%, Cumulative CPU 1405.13 sec
+INFO  : 2026-10-27 06:06:24,191 Stage-2 map = 73%,  reduce = 0%, Cumulative CPU 1450.89 sec
+INFO  : 2026-10-27 06:06:47,314 Stage-2 map = 74%,  reduce = 0%, Cumulative CPU 1484.56 sec
+INFO  : 2026-10-27 06:07:21,204 Stage-2 map = 75%,  reduce = 0%, Cumulative CPU 1519.73 sec
+INFO  : 2026-10-27 06:07:32,632 Stage-2 map = 76%,  reduce = 0%, Cumulative CPU 1536.2 sec
+INFO  : 2026-10-27 06:08:22,726 Stage-2 map = 77%,  reduce = 0%, Cumulative CPU 1598.46 sec
+INFO  : 2026-10-27 06:08:25,854 Stage-2 map = 79%,  reduce = 0%, Cumulative CPU 1683.81 sec
+INFO  : 2026-10-27 06:08:32,431 Stage-2 map = 83%,  reduce = 0%, Cumulative CPU 1702.3 sec
+INFO  : 2026-10-27 06:09:23,968 Stage-2 map = 83%,  reduce = 1%, Cumulative CPU 1719.33 sec
+INFO  : 2026-10-27 06:09:48,639 Stage-2 map = 83%,  reduce = 3%, Cumulative CPU 1720.55 sec
+INFO  : 2026-10-27 06:09:58,428 Stage-2 map = 83%,  reduce = 4%, Cumulative CPU 1720.55 sec
+INFO  : 2026-10-27 06:10:08,195 Stage-2 map = 83%,  reduce = 5%, Cumulative CPU 1754.38 sec
+INFO  : 2026-10-27 06:10:19,784 Stage-2 map = 83%,  reduce = 6%, Cumulative CPU 1754.38 sec
+INFO  : 2026-10-27 06:10:23,877 Stage-2 map = 84%,  reduce = 6%, Cumulative CPU 1759.39 sec
+INFO  : 2026-10-27 06:10:30,870 Stage-2 map = 85%,  reduce = 7%, Cumulative CPU 1766.08 sec
+INFO  : 2026-10-27 06:10:33,969 Stage-2 map = 86%,  reduce = 7%, Cumulative CPU 1774.44 sec
+INFO  : 2026-10-27 06:10:45,939 Stage-2 map = 89%,  reduce = 7%, Cumulative CPU 1784.84 sec
+INFO  : 2026-10-27 06:11:02,992 Stage-2 map = 92%,  reduce = 7%, Cumulative CPU 1797.37 sec
+INFO  : 2026-10-27 06:11:07,882 Stage-2 map = 93%,  reduce = 7%, Cumulative CPU 1798.73 sec
+INFO  : 2026-10-27 06:11:08,937 Stage-2 map = 94%,  reduce = 7%, Cumulative CPU 1798.89 sec
+INFO  : 2026-10-27 06:11:16,921 Stage-2 map = 95%,  reduce = 8%, Cumulative CPU 1805.02 sec
+INFO  : 2026-10-27 06:11:43,710 Stage-2 map = 96%,  reduce = 10%, Cumulative CPU 1814.07 sec
+INFO  : 2026-10-27 06:12:07,537 Stage-2 map = 98%,  reduce = 10%, Cumulative CPU 1828.6 sec
+INFO  : 2026-10-27 06:12:19,947 Stage-2 map = 99%,  reduce = 10%, Cumulative CPU 1831.61 sec
+INFO  : 2026-10-27 06:12:22,066 Stage-2 map = 100%,  reduce = 10%, Cumulative CPU 1836.96 sec
+INFO  : 2026-10-27 06:12:23,099 Stage-2 map = 100%,  reduce = 22%, Cumulative CPU 1839.45 sec
+INFO  : 2026-10-27 06:12:49,552 Stage-2 map = 100%,  reduce = 26%, Cumulative CPU 1866.61 sec
+INFO  : 2026-10-27 06:13:03,924 Stage-2 map = 100%,  reduce = 31%, Cumulative CPU 1896.17 sec
+INFO  : 2026-10-27 06:13:35,129 Stage-2 map = 100%,  reduce = 34%, Cumulative CPU 1917.18 sec
+INFO  : 2026-10-27 06:13:49,758 Stage-2 map = 100%,  reduce = 35%, Cumulative CPU 1933.27 sec
+INFO  : 2026-10-27 06:13:51,773 Stage-2 map = 100%,  reduce = 38%, Cumulative CPU 1983.77 sec
+INFO  : 2026-10-27 06:13:54,016 Stage-2 map = 100%,  reduce = 40%, Cumulative CPU 1998.19 sec
+INFO  : 2026-10-27 06:13:56,158 Stage-2 map = 100%,  reduce = 41%, Cumulative CPU 2004.7 sec
+INFO  : 2026-10-27 06:13:58,213 Stage-2 map = 100%,  reduce = 42%, Cumulative CPU 2005.71 sec
+INFO  : 2026-10-27 06:14:18,501 Stage-2 map = 100%,  reduce = 47%, Cumulative CPU 2007.18 sec
+INFO  : 2026-10-27 06:14:26,402 Stage-2 map = 100%,  reduce = 49%, Cumulative CPU 2014.56 sec
+INFO  : 2026-10-27 06:14:38,098 Stage-2 map = 100%,  reduce = 50%, Cumulative CPU 2015.22 sec
+INFO  : 2026-10-27 06:14:45,539 Stage-2 map = 100%,  reduce = 51%, Cumulative CPU 2015.22 sec
+INFO  : 2026-10-27 06:14:46,904 Stage-2 map = 100%,  reduce = 52%, Cumulative CPU 2019.23 sec
+INFO  : 2026-10-27 06:14:56,323 Stage-2 map = 100%,  reduce = 53%, Cumulative CPU 2020.92 sec
+INFO  : 2026-10-27 06:15:27,346 Stage-2 map = 100%,  reduce = 54%, Cumulative CPU 2023.0 sec
+INFO  : 2026-10-27 06:15:41,484 Stage-2 map = 100%,  reduce = 57%, Cumulative CPU 2025.13 sec
+INFO  : 2026-10-27 06:15:51,083 Stage-2 map = 100%,  reduce = 62%, Cumulative CPU 2029.55 sec
+INFO  : 2026-10-27 06:15:52,504 Stage-2 map = 100%,  reduce = 64%, Cumulative CPU 2030.7 sec
+INFO  : 2026-10-27 06:15:54,895 Stage-2 map = 100%,  reduce = 67%, Cumulative CPU 2030.76 sec
+INFO  : 2026-10-27 06:16:06,548 Stage-2 map = 100%,  reduce = 69%, Cumulative CPU 2033.27 sec
+INFO  : 2026-10-27 06:16:11,883 Stage-2 map = 100%,  reduce = 70%, Cumulative CPU 2040.56 sec
+INFO  : 2026-10-27 06:16:18,359 Stage-2 map = 100%,  reduce = 76%, Cumulative CPU 2098.32 sec
+INFO  : 2026-10-27 06:16:29,183 Stage-2 map = 100%,  reduce = 77%, Cumulative CPU 2102.22 sec
+INFO  : 2026-10-27 06:16:34,723 Stage-2 map = 100%,  reduce = 78%, Cumulative CPU 2104.84 sec
+INFO  : 2026-10-27 06:16:41,821 Stage-2 map = 100%,  reduce = 80%, Cumulative CPU 2145.71 sec
+INFO  : 2026-10-27 06:16:42,859 Stage-2 map = 100%,  reduce = 81%, Cumulative CPU 2152.58 sec
+INFO  : 2026-10-27 06:16:43,893 Stage-2 map = 100%,  reduce = 83%, Cumulative CPU 2163.01 sec
+INFO  : 2026-10-27 06:17:13,822 Stage-2 map = 100%,  reduce = 86%, Cumulative CPU 2163.01 sec
+INFO  : 2026-10-27 06:17:26,184 Stage-2 map = 100%,  reduce = 88%, Cumulative CPU 2168.93 sec
+INFO  : 2026-10-27 06:17:55,424 Stage-2 map = 100%,  reduce = 94%, Cumulative CPU 2178.11 sec
+INFO  : 2026-10-27 06:18:11,749 Stage-2 map = 100%,  reduce = 95%, Cumulative CPU 2183.63 sec
+INFO  : 2026-10-27 06:18:14,047 Stage-2 map = 100%,  reduce = 96%, Cumulative CPU 2188.66 sec
+INFO  : 2026-10-27 06:18:18,018 Stage-2 map = 100%,  reduce = 97%, Cumulative CPU 2193.61 sec
+INFO  : 2026-10-27 06:18:20,062 Stage-2 map = 100%,  reduce = 99%, Cumulative CPU 2199.74 sec
+INFO  : 2026-10-27 06:18:23,904 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 2202.34 sec
+INFO  : MapReduce Total cumulative CPU time: 36 minutes 42 seconds 340 msec
+INFO  : Ended Job = job_1793078486119_0015
+INFO  : Starting task [Stage-0:MOVE] in serial mode
+INFO  : Moving data to directory hdfs://master:9000/user/hive/warehouse/ghcn.db/monthly_summary from hdfs://master:9000/user/hive/warehouse/ghcn.db/.hive-staging_hive_2026-10-27_05-53-07_736_7955927061703255236-4/-ext-10002
+INFO  : Starting task [Stage-7:DDL] in serial mode
+INFO  : Starting task [Stage-3:STATS] in serial mode
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-2: Map: 12  Reduce: 12   Cumulative CPU: 2202.34 sec   HDFS Read: 2547266297 HDFS Write: 963891 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 36 minutes 42 seconds 340 msec
+INFO  : Completed executing command(queryId=root_20261027055307_41f10143-f4bc-415c-8703-b77e96c480ce); Time taken: 1518.097 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (1526.087 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> SELECT COUNT(*) AS summary_rows FROM monthly_summa ry;
+INFO  : Compiling command(queryId=root_20261027061836_37a0578b-7916-469d-9e92-8ed8997c40eb): SELECT COUNT(*) AS summary_rows FROM monthly_summary
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:summary_rows, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261027061836_37a0578b-7916-469d-9e92-8ed8997c40eb); Time taken: 2.372 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261027061836_37a0578b-7916-469d-9e92-8ed8997c40eb): SELECT COUNT(*) AS summary_rows FROM monthly_summary
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261027061836_37a0578b-7916-469d-9e92-8ed8997c40eb
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=<number>
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=<number>
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=<number>
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1793078486119_0016
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://master:8088/proxy/application_1793078486119_0016/
+INFO  : Starting Job = job_1793078486119_0016, Tracking URL = http://master:8088/proxy/application_1793078486119_0016/
+INFO  : Kill Command = /opt/hadoop/bin/mapred job  -kill job_1793078486119_0016
+INFO  : Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+INFO  : 2026-10-27 06:18:59,893 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-27 06:19:04,125 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 2.74 sec
+INFO  : 2026-10-27 06:19:09,226 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 5.15 sec
+INFO  : MapReduce Total cumulative CPU time: 5 seconds 150 msec
+INFO  : Ended Job = job_1793078486119_0016
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 5.15 sec   HDFS Read: 31709 HDFS Write: 105 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 5 seconds 150 msec
+INFO  : Completed executing command(queryId=root_20261027061836_37a0578b-7916-469d-9e92-8ed8997c40eb); Time taken: 34.226 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
++---------------+
+| summary_rows  |
++---------------+
+| 19727         |
++---------------+
+1 row selected (43.109 seconds)
+0: jdbc:hive2://master:10000> 
+0: jdbc:hive2://master:10000> Closing: 0: jdbc:hive2://master:10000

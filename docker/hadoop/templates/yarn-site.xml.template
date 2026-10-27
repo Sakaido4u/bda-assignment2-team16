@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<configuration>
+  <property><name>yarn.resourcemanager.hostname</name><value>${MASTER_HOST}</value></property>
+  <property><name>yarn.resourcemanager.bind-host</name><value>0.0.0.0</value></property>
+  <property><name>yarn.nodemanager.bind-host</name><value>0.0.0.0</value></property>
+  <property><name>yarn.nodemanager.hostname</name><value>${NODE_HOSTNAME}</value></property>
+  <property><name>yarn.nodemanager.aux-services</name><value>mapreduce_shuffle</value></property>
+  <property><name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name><value>org.apache.hadoop.mapred.ShuffleHandler</value></property>
+  <property><name>yarn.nodemanager.resource.memory-mb</name><value>${YARN_NM_MEMORY_MB}</value></property>
+  <property><name>yarn.nodemanager.resource.cpu-vcores</name><value>${YARN_NM_VCORES}</value></property>
+  <property><name>yarn.scheduler.minimum-allocation-mb</name><value>${YARN_MIN_ALLOC_MB}</value></property>
+  <property><name>yarn.scheduler.maximum-allocation-mb</name><value>${YARN_MAX_ALLOC_MB}</value></property>
+  <property><name>yarn.scheduler.maximum-allocation-vcores</name><value>${YARN_NM_VCORES}</value></property>
+  <!-- Docker/WSL2 report huge virtual memory for JVMs; the vmem check would kill healthy tasks -->
+  <property><name>yarn.nodemanager.vmem-check-enabled</name><value>false</value></property>
+  <!-- the Docker Desktop disk is shared by all containers; do not mark nodes unhealthy at 90% -->
+  <property><name>yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage</name><value>98.5</value></property>
+  <property><name>yarn.nodemanager.env-whitelist</name><value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_HOME,PATH,LANG,TZ,HADOOP_MAPRED_HOME</value></property>
+  <property><name>yarn.log-aggregation-enable</name><value>true</value></property>
+  <property><name>yarn.log.server.url</name><value>http://${MASTER_HOST}:19888/jobhistory/logs</value></property>
+  <property><name>yarn.scheduler.capacity.maximum-am-resource-percent</name><value>0.5</value></property>
+</configuration>

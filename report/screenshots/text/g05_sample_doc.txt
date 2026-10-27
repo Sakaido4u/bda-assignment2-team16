@@ -1,0 +1,39 @@
+$ db.observations.findOne({station_id: "IN009010100"})
+{
+  station_id: 'IN009010100',
+  country_code: 'IN',
+  date: ISODate('2023-03-17T00:00:00.000Z'),
+  year: 2023,
+  month: 3,
+  day: 17,
+  readings: [
+    {
+      element: 'TMAX',
+      value: 33,
+      m_flag: '',
+      s_flag: 'S'
+    },
+    {
+      element: 'TMIN',
+      value: 20,
+      m_flag: '',
+      s_flag: 'S'
+    },
+    {
+      element: 'PRCP',
+      value: 3,
+      m_flag: '',
+      s_flag: 'S'
+    }
+  ]
+}
+
+$ db.observations.stats()  (selected fields)
+{
+  count: 20386429,
+  avgObjSize: 320,
+  size_MB: 6233,
+  storageSize_MB: 852,
+  totalIndexSize_MB: 782,
+  nindexes: 3
+}

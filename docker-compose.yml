@@ -1,0 +1,126 @@
+# =====================================================================
+#  Mode A - whole 3-node cluster on ONE laptop (Docker Desktop / WSL2)
+#    master  : NameNode, SecondaryNameNode, ResourceManager, JobHistory,
+#              Hive Metastore + HiveServer2, Pig & Hadoop clients
+#    worker1 : DataNode + NodeManager
+#    worker2 : DataNode + NodeManager
+#    support : metastore-db (PostgreSQL), mongodb, dashboard (Flask)
+#  Start with:  .\scripts\start-cluster.ps1
+# =====================================================================
+name: bda16
+
+x-hadoop: &hadoop
+  image: bda16/hadoop:3.3.6
+  env_file: .env
+  restart: unless-stopped
+  stop_grace_period: 60s
+  networks: [bda]
+
+services:
+  metastore-db:
+    image: postgres:15.8-alpine
+    container_name: metastore-db
+    hostname: metastore-db
+    environment:
+      POSTGRES_DB: ${METASTORE_DB_NAME}
+      POSTGRES_USER: ${METASTORE_DB_USER}
+      POSTGRES_PASSWORD: ${METASTORE_DB_PASSWORD}
+    volumes: [pg-data:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${METASTORE_DB_USER} -d ${METASTORE_DB_NAME}"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+    networks: [bda]
+
+  master:
+    <<: *hadoop
+    build: ./docker/hadoop
+    container_name: master
+    hostname: master
+    environment:
+      NODE_ROLE: master
+      NODE_HOSTNAME: master
+    ports:
+      - "9870:9870"     # NameNode UI
+      - "9000:9000"     # HDFS RPC
+      - "8088:8088"     # ResourceManager UI
+      - "19888:19888"   # JobHistory UI
+      - "10000:10000"   # HiveServer2 (JDBC/Thrift)
+      - "10002:10002"   # HiveServer2 UI
+    volumes:
+      - namenode:/hadoop/dfs
+      - ./:/project
+    depends_on:
+      metastore-db: {condition: service_healthy}
+
+  worker1:
+    <<: *hadoop
+    container_name: worker1
+    hostname: worker1
+    environment:
+      NODE_ROLE: worker
+      NODE_HOSTNAME: worker1
+    ports:
+      - "9864:9864"     # DataNode UI (worker1)
+      - "8042:8042"     # NodeManager UI (worker1)
+    volumes: [datanode1:/hadoop/dfs]
+    depends_on: [master]
+
+  worker2:
+    <<: *hadoop
+    container_name: worker2
+    hostname: worker2
+    environment:
+      NODE_ROLE: worker
+      NODE_HOSTNAME: worker2
+    ports:
+      - "9865:9864"     # DataNode UI (worker2)
+      - "8043:8042"     # NodeManager UI (worker2)
+    volumes: [datanode2:/hadoop/dfs]
+    depends_on: [master]
+
+  mongodb:
+    image: mongo:7.0.14
+    container_name: mongodb
+    hostname: mongodb
+    command: ["mongod", "--bind_ip_all", "--wiredTigerCacheSizeGB", "${MONGO_CACHE_GB}"]
+    ports: ["27017:27017"]
+    volumes: [mongo-data:/data/db]
+    restart: unless-stopped
+    networks: [bda]
+
+  dashboard:
+    build: ./dashboard
+    image: bda16/dashboard:1.0
+    container_name: dashboard
+    hostname: dashboard
+    env_file: .env
+    ports: ["5000:5000"]
+    volumes: [./results:/app/results:ro]
+    depends_on: [mongodb, master]
+    restart: unless-stopped
+    networks: [bda]
+
+  # One-off Python runner (ingestion, profiling, charts). Not started by default:
+  #   docker compose run --rm tools python mongodb/ingest.py
+  tools:
+    image: bda16/dashboard:1.0
+    profiles: ["tools"]
+    env_file: .env
+    working_dir: /project
+    volumes: [./:/project]
+    entrypoint: []
+    command: ["python", "--version"]
+    networks: [bda]
+
+networks:
+  bda:
+    name: bda16-net
+
+volumes:
+  namenode:
+  datanode1:
+  datanode2:
+  mongo-data:
+  pg-data:

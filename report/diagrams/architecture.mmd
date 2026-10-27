@@ -1,0 +1,33 @@
+flowchart LR
+  subgraph M["master · NODE_ROLE=master"]
+    direction TB
+    NN["HDFS NameNode<br/>:9000 · UI :9870"]
+    RM["YARN ResourceManager<br/>:8088"]
+    JHS["JobHistory :19888<br/>SecondaryNameNode"]
+    HIVE["Hive Metastore :9083<br/>HiveServer2 :10000"]
+    CLI["Hadoop · Pig · Beeline clients"]
+  end
+  subgraph W1["worker1 · NODE_ROLE=worker"]
+    direction TB
+    DN1["DataNode :9864"]
+    NM1["NodeManager :8042<br/>1536 MB · 3 vcores"]
+  end
+  subgraph W2["worker2 · NODE_ROLE=worker"]
+    direction TB
+    DN2["DataNode :9865"]
+    NM2["NodeManager :8043<br/>1536 MB · 3 vcores"]
+  end
+  subgraph S["support containers"]
+    direction TB
+    PG[("metastore-db<br/>PostgreSQL 15")]
+    MG[("mongodb<br/>MongoDB 7.0")]
+    DB["dashboard<br/>Flask :5000"]
+  end
+  NN <-->|"heartbeats, block reports"| DN1
+  NN <-->|"heartbeats, block reports"| DN2
+  RM <-->|"task containers"| NM1
+  RM <-->|"task containers"| NM2
+  DN1 <-.->|"replica pipeline r=2"| DN2
+  HIVE --> PG
+  DB -->|"JMX · REST · PyHive"| M
+  DB --> MG

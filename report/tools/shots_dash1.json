@@ -1,0 +1,24 @@
+[
+ {
+  "type": "web",
+  "name": "figB2_dashboard_climate_india",
+  "url": "http://dashboard:5000/climate?country=IN",
+  "wait_for": "#heat",
+  "wait_ms": 3500,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "figB3_dashboard_climate_australia",
+  "url": "http://dashboard:5000/climate?country=AS",
+  "wait_ms": 3500,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "figB4_dashboard_map_bengaluru",
+  "url": "http://dashboard:5000/map",
+  "wait_for": ".leaflet-interactive",
+  "wait_ms": 5000
+ }
+]

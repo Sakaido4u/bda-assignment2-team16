@@ -1,0 +1,30 @@
+$ cat results/hive_benchmark_summary.csv
+query  table          avg_seconds  maps  reduces  avg_cpu_s  read_reduction_vs_text_pct
+Q1     obs_orc        26.14        1     1        13.4       96.4
+Q1     obs_rc         78.35        12    12       190.6      69.7
+Q1     obs_rc_snappy  42.03        2     3        63.9       94.6
+Q1     obs_text       103.71       14    14       195.7      0.0
+Q2     obs_orc        21.6         1     0        11.6       93.0
+Q2     obs_rc         75.06        12    0        227.6      13.8
+Q2     obs_rc_snappy  68.58        2     0        118.5      84.4
+Q2     obs_text       75.48        14    0        154.4      0.0
+Q3     obs_orc        25.82        1     1        11.5       96.4
+Q3     obs_rc         79.8         12    12       230.7      57.4
+Q3     obs_rc_snappy  53.28        2     3        81.6       93.9
+Q3     obs_text       111.52       14    14       245.2      0.0
+Q4     obs_orc        24.36        1     1        10.2       96.8
+Q4     obs_rc         69.11        12    12       184.5      72.2
+Q4     obs_rc_snappy  40.98        2     3        58.8       95.5
+Q4     obs_text       89.96        14    14       216.3      0.0
+Q5     obs_orc        51.79        2     2        18.1       94.0
+Q5     obs_rc         112.45       13    13       250.6      37.8
+Q5     obs_rc_snappy  78.63        3     4        85.9       87.0
+Q5     obs_text       142.7        15    15       305.0      0.0
+
+$ hdfs dfs -du -s -h <table locations>
+table            bytes       bytes_with_replicas  files
+obs_text         3531395026  7062790052           123
+obs_rc           3034264998  6068529996           14
+obs_rc_snappy    551374617   1102749234           14
+obs_orc          247220051   494440102            14
+monthly_summary  962919      1925838              12

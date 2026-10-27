@@ -1,0 +1,23 @@
+ Container bda16-tools-run-010e579f8c9a Creating 
+ Container bda16-tools-run-010e579f8c9a Created 
+observations=20,386,429 stations=133,039
+[before] P1_station_monthly_prcp    COLLSCAN           exec=10436ms keys=0 docs=20386429 wall=10028.3ms
+[before] P2_station_date_range      COLLSCAN           exec=10010ms keys=0 docs=20386429 wall=9603.6ms
+[before] P3_india_hottest           COLLSCAN           exec=13044ms keys=0 docs=20386429 wall=12998.5ms
+[before] P4_extreme_heat_days       COLLSCAN           exec=18034ms keys=0 docs=20386429 wall=17061.0ms
+[before] P5_geo_200km_bengaluru     COLLSCAN           exec=159ms keys=0 docs=133039 wall=135.6ms
+[before] P6_yearly_country_temp     COLLSCAN           exec=59001ms keys=0 docs=20386429 wall=58019.9ms
+created index observations.station_date in 36.9 s
+created index observations.element in 77.6 s
+created index stations.location_2dsphere in 0.6 s
+[after ] P1_station_monthly_prcp    IXSCAN             exec=73ms keys=1053 docs=1053 wall=6.0ms
+[after ] P2_station_date_range      IXSCAN             exec=95ms keys=87 docs=87 wall=3.8ms
+[after ] P3_india_hottest           IXSCAN             exec=2606ms keys=128562 docs=128561 wall=2135.5ms
+[after ] P4_extreme_heat_days       IXSCAN             exec=29042ms keys=13099595 docs=13099595 wall=30267.4ms
+[after ] P5_geo_200km_bengaluru     IXSCAN             exec=5ms keys=433 docs=407 wall=3.2ms
+[after ] P6_yearly_country_temp     COLLSCAN           exec=61117ms keys=0 docs=20386429 wall=60552.2ms
+{
+  "_id_": 214.8,
+  "station_date": 304.4,
+  "element": 263.2
+}

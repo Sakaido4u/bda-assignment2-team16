@@ -1,0 +1,94 @@
+# =====================================================================
+#  Mode B - MASTER machine (3 real machines on one LAN)
+#  Same image, same .env, same service names as Mode A. The containers join the
+#  attachable Swarm overlay network "bda16-overlay", so master/worker1/worker2 resolve
+#  each other by name across machines exactly as they do on one laptop.
+#
+#  On the master machine (after `docker swarm init` + creating the overlay, see report/mode-b-guide.md):
+#     docker compose -f docker-compose.master.yml up -d
+# =====================================================================
+name: bda16
+
+services:
+  metastore-db:
+    image: postgres:15.8-alpine
+    container_name: metastore-db
+    hostname: metastore-db
+    environment:
+      POSTGRES_DB: ${METASTORE_DB_NAME}
+      POSTGRES_USER: ${METASTORE_DB_USER}
+      POSTGRES_PASSWORD: ${METASTORE_DB_PASSWORD}
+    volumes: [pg-data:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${METASTORE_DB_USER} -d ${METASTORE_DB_NAME}"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+    networks: [bda]
+
+  master:
+    image: bda16/hadoop:3.3.6
+    build: ./docker/hadoop
+    container_name: master
+    hostname: master
+    env_file: .env
+    environment:
+      NODE_ROLE: master
+      NODE_HOSTNAME: master
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+      - "8088:8088"
+      - "19888:19888"
+      - "10000:10000"
+      - "10002:10002"
+    volumes:
+      - namenode:/hadoop/dfs
+      - ./:/project
+    depends_on:
+      metastore-db: {condition: service_healthy}
+    restart: unless-stopped
+    stop_grace_period: 60s
+    networks: [bda]
+
+  mongodb:
+    image: mongo:7.0.14
+    container_name: mongodb
+    hostname: mongodb
+    command: ["mongod", "--bind_ip_all", "--wiredTigerCacheSizeGB", "${MONGO_CACHE_GB}"]
+    ports: ["27017:27017"]
+    volumes: [mongo-data:/data/db]
+    restart: unless-stopped
+    networks: [bda]
+
+  dashboard:
+    image: bda16/dashboard:1.0
+    build: ./dashboard
+    container_name: dashboard
+    hostname: dashboard
+    env_file: .env
+    ports: ["5000:5000"]
+    volumes: [./results:/app/results:ro]
+    depends_on: [mongodb, master]
+    restart: unless-stopped
+    networks: [bda]
+
+  tools:
+    image: bda16/dashboard:1.0
+    profiles: ["tools"]
+    env_file: .env
+    working_dir: /project
+    volumes: [./:/project]
+    entrypoint: []
+    command: ["python", "--version"]
+    networks: [bda]
+
+networks:
+  bda:
+    external: true
+    name: bda16-overlay
+
+volumes:
+  namenode:
+  mongo-data:
+  pg-data:

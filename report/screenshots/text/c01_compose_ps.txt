@@ -1,0 +1,8 @@
+$ docker compose ps
+NAME           IMAGE                  STATUS
+dashboard      bda16/dashboard:1.0    Up 7 minutes
+master         bda16/hadoop:3.3.6     Up 3 hours
+metastore-db   postgres:15.8-alpine   Up 4 hours (healthy)
+mongodb        mongo:7.0.14           Up 52 seconds
+worker1        bda16/hadoop:3.3.6     Up 3 hours
+worker2        bda16/hadoop:3.3.6     Up 3 hours

@@ -1,0 +1,22 @@
+==== Q3 Monthly precipitation totals - IN009010100 (Bangalore) ====
+{"reported_days":8,"rain_days":2,"year":2023,"month":3,"total_mm":8.4}
+{"reported_days":5,"rain_days":1,"year":2023,"month":4,"total_mm":7.1}
+{"reported_days":24,"rain_days":13,"year":2023,"month":5,"total_mm":305.7}
+{"reported_days":20,"rain_days":5,"year":2023,"month":6,"total_mm":66.7}
+{"reported_days":30,"rain_days":12,"year":2023,"month":7,"total_mm":142.7}
+{"reported_days":17,"rain_days":1,"year":2023,"month":8,"total_mm":12.5}
+{"reported_days":25,"rain_days":11,"year":2023,"month":9,"total_mm":228.4}
+{"reported_days":10,"rain_days":3,"year":2023,"month":10,"total_mm":87.1}
+{"reported_days":10,"rain_days":2,"year":2023,"month":11,"total_mm":104.4}
+{"reported_days":4,"rain_days":0,"year":2023,"month":12,"total_mm":0.8}
+{"reported_days":1,"rain_days":0,"year":2024,"month":1,"total_mm":0}
+{"reported_days":22,"rain_days":9,"year":2024,"month":5,"total_mm":180.6}
+{"reported_days":23,"rain_days":10,"year":2024,"month":6,"total_mm":201.5}
+{"reported_days":27,"rain_days":9,"year":2024,"month":7,"total_mm":72}
+{"reported_days":15,"rain_days":7,"year":2024,"month":8,"total_mm":118.1}
+{"reported_days":15,"rain_days":1,"year":2024,"month":9,"total_mm":23.8}
+{"reported_days":24,"rain_days":15,"year":2024,"month":10,"total_mm":293.9}
+{"reported_days":13,"rain_days":3,"year":2024,"month":11,"total_mm":21.4}
+{"reported_days":11,"rain_days":5,"year":2024,"month":12,"total_mm":89.9}
+(19 documents, 153 ms)
+

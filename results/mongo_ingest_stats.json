@@ -1,0 +1,22 @@
+{
+  "years": [
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "exclude_prefix": [
+    "US1"
+  ],
+  "rows": 113135524,
+  "kept_rows": 57066860,
+  "qc_failed": 84027,
+  "missing": 0,
+  "other_element": 26179943,
+  "excluded_prefix": 29804694,
+  "documents": 20386429,
+  "seconds": 591.7,
+  "docs_per_second": 34454,
+  "data_size_mb": 6232.8,
+  "storage_size_mb": 851.3,
+  "avg_doc_bytes": 320
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<configuration>
+  <property><name>javax.jdo.option.ConnectionURL</name><value>jdbc:postgresql://${METASTORE_DB_HOST}:5432/${METASTORE_DB_NAME}</value></property>
+  <property><name>javax.jdo.option.ConnectionDriverName</name><value>org.postgresql.Driver</value></property>
+  <property><name>javax.jdo.option.ConnectionUserName</name><value>${METASTORE_DB_USER}</value></property>
+  <property><name>javax.jdo.option.ConnectionPassword</name><value>${METASTORE_DB_PASSWORD}</value></property>
+  <property><name>hive.metastore.uris</name><value>thrift://${MASTER_HOST}:9083</value></property>
+  <property><name>hive.metastore.warehouse.dir</name><value>/user/hive/warehouse</value></property>
+  <property><name>hive.metastore.schema.verification</name><value>true</value></property>
+  <property><name>datanucleus.schema.autoCreateAll</name><value>false</value></property>
+  <property><name>hive.execution.engine</name><value>mr</value></property>
+  <!-- never fall back to local mode: every query must run on the YARN cluster -->
+  <property><name>hive.exec.mode.local.auto</name><value>false</value></property>
+  <property><name>hive.server2.thrift.bind.host</name><value>0.0.0.0</value></property>
+  <property><name>hive.server2.thrift.port</name><value>10000</value></property>
+  <property><name>hive.server2.webui.host</name><value>0.0.0.0</value></property>
+  <property><name>hive.server2.webui.port</name><value>10002</value></property>
+  <property><name>hive.server2.enable.doAs</name><value>false</value></property>
+  <property><name>hive.server2.authentication</name><value>NONE</value></property>
+  <property><name>hive.exec.scratchdir</name><value>/tmp/hive</value></property>
+  <!-- force real MapReduce jobs (no fetch-task shortcut, no answers from stats) so benchmarks are fair -->
+  <property><name>hive.fetch.task.conversion</name><value>none</value></property>
+  <property><name>hive.compute.query.using.stats</name><value>false</value></property>
+  <property><name>hive.stats.column.autogather</name><value>false</value></property>
+  <property><name>hive.auto.convert.join</name><value>true</value></property>
+</configuration>

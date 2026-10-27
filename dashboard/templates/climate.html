@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Climate analytics{% endblock %}
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-end mb-3 gap-2">
+  <div>
+    <h3 class="mb-0">Climate analytics</h3>
+    <div class="small-muted">MongoDB aggregation results (collection <code>summary_country_month</code>, built by a <code>$unwind → $group → $lookup → $merge</code> pipeline over ghcn.observations)</div>
+  </div>
+  <div class="d-flex align-items-center gap-2">
+    <label for="country" class="small-muted">Country</label>
+    <select id="country" class="form-select form-select-sm" style="min-width: 240px"></select>
+  </div>
+</div>
+<div class="row g-3">
+  <div class="col-xl-6"><div class="card h-100"><div class="card-header" id="t-trend">Average TMAX / TMIN by year</div>
+    <div class="card-body"><div class="chart-box"><canvas id="trend"></canvas></div></div></div></div>
+  <div class="col-xl-6"><div class="card h-100"><div class="card-header">Average daily precipitation by month (mm)</div>
+    <div class="card-body"><div class="chart-box"><canvas id="prcp"></canvas></div></div></div></div>
+  <div class="col-xl-6"><div class="card h-100"><div class="card-header">Monthly average TMAX (°C)</div>
+    <div class="card-body"><div class="chart-box"><canvas id="mtmax"></canvas></div></div></div></div>
+  <div class="col-xl-6"><div class="card h-100"><div class="card-header">Extreme-heat station-days (TMAX &gt; 40 °C) – top 15 countries, 2023-2025</div>
+    <div class="card-body"><div class="chart-box"><canvas id="heat"></canvas></div></div></div></div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const charts = {};
+function draw(id, cfg) { if (charts[id]) charts[id].destroy(); charts[id] = new Chart(document.getElementById(id), cfg); }
+const base = { maintainAspectRatio: false, animation: false };
+
+async function loadCountry(code) {
+  const d = await api(`/api/climate/country?country=${code}`);
+  document.getElementById("t-trend").textContent = `Average TMAX / TMIN by year – ${d.name}`;
+  draw("trend", { type: "bar", data: { labels: d.years, datasets: [
+      { label: "avg TMAX °C", data: d.avg_tmax, backgroundColor: PALETTE[1] },
+      { label: "avg TMIN °C", data: d.avg_tmin, backgroundColor: PALETTE[0] }] },
+    options: { ...base, plugins: { tooltip: { callbacks: { footer: items => `heat days (TMAX > 40 °C): ${fmt(d.heat_days[items[0].dataIndex])}` } } },
+      scales: { y: { title: { display: true, text: "°C" } } } } });
+  draw("prcp", { type: "line", data: { labels: MONTHS, datasets: Object.entries(d.monthly_prcp_avg).map(([y, v], i) =>
+      ({ label: y, data: v, borderColor: PALETTE[i], backgroundColor: PALETTE[i], tension: .3 })) },
+    options: { ...base, scales: { y: { beginAtZero: true, title: { display: true, text: "mm / day" } } } } });
+  draw("mtmax", { type: "line", data: { labels: MONTHS, datasets: Object.entries(d.monthly_tmax).map(([y, v], i) =>
+      ({ label: y, data: v, borderColor: PALETTE[i], backgroundColor: PALETTE[i], tension: .3 })) },
+    options: { ...base, scales: { y: { title: { display: true, text: "°C" } } } } });
+}
+
+(async () => {
+  const countries = await api("/api/climate/countries");
+  const sel = document.getElementById("country");
+  sel.innerHTML = countries.map(c => `<option value="${c.code}">${escapeHtml(c.name)} (${c.code})</option>`).join("");
+  const initial = new URLSearchParams(location.search).get("country") || "IN";
+  sel.value = countries.some(c => c.code === initial) ? initial : countries[0].code;
+  sel.addEventListener("change", () => loadCountry(sel.value));
+  loadCountry(sel.value);
+  const heat = await api("/api/climate/global_heat");
+  draw("heat", { type: "bar", data: { labels: heat.map(h => h.name), datasets: [{ label: "station-days with TMAX > 40 °C", data: heat.map(h => h.heat_days), backgroundColor: PALETTE[1] }] },
+    options: { ...base, indexAxis: "y", plugins: { legend: { display: false } } } });
+})();
+</script>
+{% endblock %}

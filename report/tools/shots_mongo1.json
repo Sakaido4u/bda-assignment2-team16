@@ -1,0 +1,40 @@
+[
+ {
+  "type": "term",
+  "name": "fig50_mongo_ingest",
+  "title": "PowerShell - MongoDB ingestion (pymongo insert_many, station-day documents)",
+  "file": "report/screenshots/text/g01_ingest.txt",
+  "highlight": [
+   "documents",
+   "docs_per_second",
+   "qc_failed"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig51_mongo_sample_doc",
+  "title": "mongosh - one station-day document and collection statistics",
+  "file": "report/screenshots/text/g05_sample_doc.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig52_mongoimport",
+  "title": "PowerShell - mongoimport alternative (stations JSON Lines)",
+  "file": "report/screenshots/text/g04_mongoimport.txt",
+  "highlight": [
+   "imported successfully"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig60_mongo_profile",
+  "title": "PowerShell - explain(executionStats) before vs after indexing",
+  "file": "report/screenshots/text/g02_profile.txt",
+  "width": 1400,
+  "highlight": [
+   "COLLSCAN",
+   "IXSCAN",
+   "created index"
+  ]
+ }
+]

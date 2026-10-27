@@ -1,0 +1,30 @@
+==== Q5 $facet - temperature stats, precipitation stats, station counts, TMAX histogram ====
+-- temperature:
+   {"_id":"TMIN","min":-82,"max":43,"n":13097791,"avg":5.78}
+   {"_id":"TMAX","min":-79,"max":53.9,"n":13099595,"avg":17.11}
+-- precipitation:
+   {"max_mm":861.2,"n":17002881,"wet_days":4205594,"avg_mm":2.42}
+-- stations_per_country:
+   {"_id":"US","stations":9519}
+   {"_id":"AS","stations":4230}
+   {"_id":"CA","stations":2148}
+   {"_id":"RS","stations":624}
+   {"_id":"SW","stations":608}
+   {"_id":"GM","stations":561}
+   {"_id":"NL","stations":360}
+   {"_id":"NO","stations":293}
+   {"_id":"FI","stations":247}
+   {"_id":"CH","stations":210}
+-- tmax_histogram:
+   {"_id":-70,"n":78772}
+   {"_id":-20,"n":215307}
+   {"_id":-10,"n":893491}
+   {"_id":0,"n":2503974}
+   {"_id":10,"n":3336451}
+   {"_id":20,"n":3915428}
+   {"_id":30,"n":2045617}
+   {"_id":40,"n":110310}
+   {"_id":50,"n":176}
+   {"_id":"out_of_range","n":69}
+(1 documents, 139536 ms)
+

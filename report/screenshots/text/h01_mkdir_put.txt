@@ -1,0 +1,12 @@
+## 1. Create the project directory tree in HDFS
+$ hdfs dfs -mkdir -p /ghcn/raw /ghcn/stations /ghcn/countries /ghcn/output
+
+## 2. Upload the raw yearly files (decompressed on the fly so HDFS can split them into 32 MB blocks)
+/ghcn/raw/2023.csv already present - skipping upload
+/ghcn/raw/2024.csv already present - skipping upload
+/ghcn/raw/2025.csv already present - skipping upload
+
+## 3. Upload station and country metadata
+$ hdfs dfs -put -f data/stations.tsv /ghcn/stations/stations.tsv
+$ hdfs dfs -put -f data/countries.tsv /ghcn/countries/countries.tsv
+

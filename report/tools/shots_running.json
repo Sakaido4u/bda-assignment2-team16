@@ -1,0 +1,22 @@
+[
+ {
+  "type": "web",
+  "name": "figB1_dashboard_cluster_running",
+  "url": "http://dashboard:5000/",
+  "wait_for": "#apps tr",
+  "wait_ms": 2500,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "fig36_rm_nodes_running_containers",
+  "url": "http://master:8088/cluster/nodes",
+  "wait_ms": 1500
+ },
+ {
+  "type": "web",
+  "name": "fig37_rm_pig_app_running",
+  "url": "http://master:8088/cluster/apps/RUNNING",
+  "wait_ms": 1500
+ }
+]

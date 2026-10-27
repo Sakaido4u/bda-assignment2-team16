@@ -1,0 +1,23 @@
+$ docker exec master yarn node -list -all
+Total Nodes:4
+         Node-Id	     Node-State	Node-Http-Address	Number-of-Running-Containers
+   worker2:41423	        RUNNING	     worker2:8042	                           0
+   worker1:33897	        RUNNING	     worker1:8042	                           0
+   worker1:46191	       SHUTDOWN	     worker1:8042	                           0
+   worker2:42153	       SHUTDOWN	     worker2:8042	                           0
+
+$ docker exec master jps
+240 JobHistoryServer
+48 NameNode
+171 ResourceManager
+1052 RunJar
+1180 RunJar
+101 SecondaryNameNode
+
+$ docker exec worker1 jps
+50 DataNode
+115 NodeManager
+
+$ docker exec worker2 jps
+50 DataNode
+115 NodeManager

@@ -1,0 +1,21 @@
+## 4. List everything recursively
+$ hdfs dfs -ls -R /ghcn
+drwxr-xr-x   - root supergroup          0 2026-10-27 05:02 /ghcn/countries
+-rw-r--r--   2 root supergroup       3488 2026-10-27 05:02 /ghcn/countries/countries.tsv
+drwxr-xr-x   - root supergroup          0 2026-10-27 04:57 /ghcn/output
+drwxr-xr-x   - root supergroup          0 2026-10-27 05:01 /ghcn/raw
+-rw-r--r--   2 root supergroup 1376338331 2026-10-27 04:57 /ghcn/raw/2023.csv
+-rw-r--r--   2 root supergroup 1383355743 2026-10-27 04:59 /ghcn/raw/2024.csv
+-rw-r--r--   2 root supergroup 1310928099 2026-10-27 05:01 /ghcn/raw/2025.csv
+drwxr-xr-x   - root supergroup          0 2026-10-27 05:02 /ghcn/stations
+-rw-r--r--   2 root supergroup    9225470 2026-10-27 05:02 /ghcn/stations/stations.tsv
+
+## 5. Space used (logical size, then size including both replicas)
+$ hdfs dfs -du -h /ghcn
+3.4 K  6.8 K   /ghcn/countries
+0      0       /ghcn/output
+3.8 G  7.6 G   /ghcn/raw
+8.8 M  17.6 M  /ghcn/stations
+$ hdfs dfs -du -s -h /ghcn/raw
+3.8 G  7.6 G  /ghcn/raw
+

@@ -1,0 +1,34 @@
+$ beeline -u jdbc:hive2://master:10000 -n root -f hive/01_create_tables.hql
+hive> CREATE DATABASE IF NOT EXISTS ghcn;
+No rows affected (6.793 seconds)
+hive> USE ghcn;
+No rows affected (0.103 seconds)
+hive> DROP TABLE IF EXISTS obs_text;
+No rows affected (0.291 seconds)
+hive> CREATE EXTERNAL TABLE obs_text (
+No rows affected (1.302 seconds)
+hive> DROP TABLE IF EXISTS stations;
+No rows affected (0.081 seconds)
+hive> CREATE EXTERNAL TABLE stations (
+No rows affected (0.211 seconds)
+hive> DROP TABLE IF EXISTS countries;
+No rows affected (0.094 seconds)
+hive> CREATE EXTERNAL TABLE countries (code STRING, name 
+No rows affected (0.16 seconds)
+hive> DROP TABLE IF EXISTS obs_rc;
+No rows affected (0.094 seconds)
+hive> CREATE TABLE obs_rc (
+No rows affected (2.119 seconds)
+hive> SET hive.exec.compress.output=false;
+No rows affected (0.012 seconds)
+hive> INSERT OVERWRITE TABLE obs_rc SELECT * FROM obs_te 
+No rows affected (262.616 seconds)
+hive> SELECT 'obs_text' AS tbl, COUNT(*) AS row_count FR 
++-----------+----------------+
+|  _u1.tbl  | _u1.row_count  |
++-----------+----------------+
+| obs_text  | 86871554       |
+| obs_rc    | 86871554       |
++-----------+----------------+
+2 rows selected (152.31 seconds)
+hive> Closing: 0: jdbc:hive2://master:10000

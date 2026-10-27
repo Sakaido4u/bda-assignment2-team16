@@ -1,0 +1,51 @@
+$ beeline ... -e "USE ghcn; SHOW TABLES; DESCRIBE FORMATTED obs_rc"
++------------------+
+|     tab_name     |
++------------------+
+| countries        |
+| monthly_summary  |
+| obs_orc          |
+| obs_rc           |
+| obs_rc_snappy    |
+| obs_text         |
+| stations         |
++------------------+
++-------------------------------+----------------------------------------------------+-----------------------------+
+|           col_name            |                     data_type                      |           comment           |
++-------------------------------+----------------------------------------------------+-----------------------------+
+| # col_name                    | data_type                                          | comment                     |
+| station_id                    | string                                             |                             |
+| country_code                  | string                                             |                             |
+| year                          | int                                                |                             |
+| month                         | int                                                |                             |
+| day                           | int                                                |                             |
+| element                       | string                                             |                             |
+| value                         | double                                             |                             |
+| m_flag                        | string                                             |                             |
+| s_flag                        | string                                             |                             |
+| obs_time                      | string                                             |                             |
+|                               | NULL                                               | NULL                        |
+| # Detailed Table Information  | NULL                                               | NULL                        |
+| Database:                     | ghcn                                               | NULL                        |
+| OwnerType:                    | USER                                               | NULL                        |
+| Owner:                        | root                                               | NULL                        |
+| CreateTime:                   | Tue Oct 27 05:41:34 UTC 2026                       | NULL                        |
+| LastAccessTime:               | UNKNOWN                                            | NULL                        |
+| Retention:                    | 0                                                  | NULL                        |
+| Location:                     | hdfs://master:9000/user/hive/warehouse/ghcn.db/obs_rc | NULL                        |
+| Table Type:                   | MANAGED_TABLE                                      | NULL                        |
+| Table Parameters:             | NULL                                               | NULL                        |
+|                               | COLUMN_STATS_ACCURATE                              | {\"BASIC_STATS\":\"true\"}  |
+|                               | bucketing_version                                  | 2                           |
+|                               | numFiles                                           | 14                          |
+|                               | numRows                                            | 86871554                    |
+|                               | rawDataSize                                        | 3017299146                  |
+|                               | totalSize                                          | 3034264998                  |
+|                               | transient_lastDdlTime                              | 1793079957                  |
+|                               | NULL                                               | NULL                        |
+| # Storage Information         | NULL                                               | NULL                        |
+| SerDe Library:                | org.apache.hadoop.hive.serde2.columnar.LazyBinaryColumnarSerDe | NULL                        |
+| InputFormat:                  | org.apache.hadoop.hive.ql.io.RCFileInputFormat     | NULL                        |
+| OutputFormat:                 | org.apache.hadoop.hive.ql.io.RCFileOutputFormat    | NULL                        |
+| Compressed:                   | No                                                 | NULL                        |
+| Num Buckets:                  | -1                                                 | NULL                        |

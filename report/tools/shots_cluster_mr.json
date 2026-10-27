@@ -1,0 +1,261 @@
+[
+ {
+  "type": "term",
+  "name": "fig01_compose_ps",
+  "title": "PowerShell - docker compose ps (6 containers)",
+  "file": "report/screenshots/text/c01_compose_ps.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig02_dfsadmin_report",
+  "title": "master - hdfs dfsadmin -report (2 live DataNodes)",
+  "file": "report/screenshots/text/c02_dfsadmin_report.txt",
+  "highlight": [
+   "Live datanodes",
+   "Hostname:",
+   "Num of Blocks"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig03_yarn_nodes_jps",
+  "title": "master - yarn node -list -all, jps on every node",
+  "file": "report/screenshots/text/c03_yarn_nodes_jps.txt",
+  "highlight": [
+   "RUNNING",
+   "Total Nodes"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig04_config_versions",
+  "title": "master - effective configuration and versions",
+  "file": "report/screenshots/text/c04_config_versions.txt"
+ },
+ {
+  "type": "web",
+  "name": "fig05_namenode_overview",
+  "url": "http://master:9870/dfshealth.html#tab-overview",
+  "wait_ms": 3000,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "fig06_namenode_datanodes",
+  "url": "http://master:9870/dfshealth.html#tab-datanode",
+  "wait_ms": 3000,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "fig07_datanode_worker1",
+  "url": "http://worker1:9864/datanode.html",
+  "wait_ms": 2500
+ },
+ {
+  "type": "web",
+  "name": "fig08_datanode_worker2",
+  "url": "http://worker2:9864/datanode.html",
+  "wait_ms": 2500
+ },
+ {
+  "type": "web",
+  "name": "fig09_rm_cluster",
+  "url": "http://master:8088/cluster",
+  "wait_ms": 1500,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "fig10_rm_nodes",
+  "url": "http://master:8088/cluster/nodes",
+  "wait_ms": 1500
+ },
+ {
+  "type": "web",
+  "name": "fig11_nm_worker1",
+  "url": "http://worker1:8042/node",
+  "wait_ms": 1500
+ },
+ {
+  "type": "web",
+  "name": "fig12_nm_worker2",
+  "url": "http://worker2:8042/node",
+  "wait_ms": 1500
+ },
+ {
+  "type": "web",
+  "name": "fig13_hs2_ui",
+  "url": "http://master:10002/",
+  "wait_ms": 2000,
+  "full_page": true
+ },
+ {
+  "type": "term",
+  "name": "fig14_hdfs_mkdir_put",
+  "title": "master - HDFS: mkdir and put",
+  "file": "report/screenshots/text/h01_mkdir_put.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig15_hdfs_ls_du",
+  "title": "master - HDFS: ls -R and du -h",
+  "file": "report/screenshots/text/h02_ls_du.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig16_hdfs_cat_get_rm",
+  "title": "master - HDFS: cat, get, cp, rm -r",
+  "file": "report/screenshots/text/h03_cat_get_rm.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig17_hdfs_stat_fsck",
+  "title": "master - HDFS: stat and fsck -files -blocks -locations",
+  "file": "report/screenshots/text/h04_stat_fsck_blocks.txt",
+  "width": 1500,
+  "highlight": [
+   "Live_repl=2",
+   "replication=2"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig18_hdfs_fsck_summary",
+  "title": "master - fsck summary and replicas per DataNode",
+  "file": "report/screenshots/text/h05_fsck_summary_per_node.txt",
+  "highlight": [
+   "HEALTHY",
+   "worker1",
+   "worker2",
+   "Average block replication"
+  ]
+ },
+ {
+  "type": "web",
+  "name": "fig19_namenode_browse",
+  "url": "http://master:9870/explorer.html#/ghcn/raw",
+  "wait_ms": 2500
+ },
+ {
+  "type": "web",
+  "name": "fig20_namenode_block_locations",
+  "url": "http://master:9870/explorer.html#/ghcn/raw",
+  "click": "a:has-text('2025.csv')",
+  "wait_ms": 2500
+ },
+ {
+  "type": "term",
+  "name": "fig21_mr_build",
+  "title": "PowerShell - Maven build of the MapReduce jar (in a container)",
+  "file": "report/screenshots/text/m00_build_jar.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig22_mr_job1_java",
+  "title": "master - Job 1 (Java): yearly avg TMAX/TMIN per country",
+  "file": "report/screenshots/text/m01_job1_java.txt",
+  "highlight": [
+   "completed successfully",
+   "Combine output records",
+   "QC_FAILED",
+   "VALID",
+   "Launched map tasks"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig23_mr_job2_java",
+  "title": "master - Job 2 (Java): extreme-precipitation days per station",
+  "file": "report/screenshots/text/m02_job2_java.txt",
+  "highlight": [
+   "completed successfully",
+   "EXTREME_DAYS",
+   "QC_FAILED"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig24_mr_job1_streaming",
+  "title": "master - Job 1 (Python Streaming)",
+  "file": "report/screenshots/text/m03_job1_streaming.txt",
+  "highlight": [
+   "completed successfully",
+   "finished in"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig25_mr_outputs",
+  "title": "master - job outputs, India averages, Java vs Streaming check",
+  "file": "report/screenshots/text/m04_outputs.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig26_mr_hdfs_output",
+  "title": "master - MapReduce output files in HDFS",
+  "file": "report/screenshots/text/m06_hdfs_output.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig27_mr_task_nodes",
+  "title": "master - tasks per node from the JobHistory REST API",
+  "file": "report/screenshots/text/m05_task_nodes.txt",
+  "highlight": [
+   "worker1",
+   "worker2"
+  ]
+ },
+ {
+  "type": "web",
+  "name": "fig28_rm_apps",
+  "url": "http://master:8088/cluster/apps",
+  "wait_ms": 1500
+ },
+ {
+  "type": "web",
+  "name": "fig29_jobhistory_jobs",
+  "url": "http://master:19888/jobhistory",
+  "wait_ms": 1500
+ },
+ {
+  "type": "web",
+  "name": "fig30_jobhistory_job1",
+  "url": "http://master:19888/jobhistory/job/job_1793076666567_0001",
+  "wait_ms": 1500,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "fig31_jobhistory_job1_attempts_nodes",
+  "url": "http://master:19888/jobhistory/attempts/job_1793076666567_0001/m/SUCCESSFUL",
+  "wait_ms": 1500
+ },
+ {
+  "type": "web",
+  "name": "fig32_jobhistory_job1_counters",
+  "url": "http://master:19888/jobhistory/jobcounters/job_1793076666567_0001",
+  "wait_ms": 1500,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "fig33_jobhistory_job2",
+  "url": "http://master:19888/jobhistory/job/job_1793076666567_0002",
+  "wait_ms": 1500,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "fig34_jobhistory_streaming",
+  "url": "http://master:19888/jobhistory/job/job_1793076666567_0003",
+  "wait_ms": 1500,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "fig35_jobhistory_job2_reduce_nodes",
+  "url": "http://master:19888/jobhistory/attempts/job_1793076666567_0002/r/SUCCESSFUL",
+  "wait_ms": 1500
+ }
+]

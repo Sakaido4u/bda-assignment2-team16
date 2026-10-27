@@ -1,0 +1,22 @@
+$ docker compose run --rm tools python mongodb/ingest.py
+ Container bda16-tools-run-0b35b7a6a369 Creating 
+ Container bda16-tools-run-0b35b7a6a369 Created 
+MongoDB 7.0.14 at mongodb://mongodb:27017; years=['2023', '2024', '2025'] exclude=('US1',)
+stations: inserted 133,039 documents into ghcn.stations
+countries: inserted 219 documents into ghcn.countries
+
+2023.csv.gz: 100%|██████████| 176M/176M [04:17<00:00, 684kB/s] 
+{
+  "rows": 113135524,
+  "kept_rows": 57066860,
+  "qc_failed": 84027,
+  "missing": 0,
+  "other_element": 26179943,
+  "excluded_prefix": 29804694,
+  "documents": 20386429,
+  "seconds": 591.7,
+  "docs_per_second": 34454,
+  "data_size_mb": 6232.8,
+  "storage_size_mb": 851.3,
+  "avg_doc_bytes": 320
+}

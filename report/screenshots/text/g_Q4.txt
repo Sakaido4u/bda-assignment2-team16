@@ -1,0 +1,6 @@
+==== Q4 Extreme-heat station-days (TMAX > 40 C) per year ====
+{"heat_days":36286,"max_tmax":53.4,"year":2023,"n_stations":2416,"n_countries":69}
+{"heat_days":35509,"max_tmax":53.9,"year":2024,"n_stations":2232,"n_countries":69}
+{"heat_days":24437,"max_tmax":51.6,"year":2025,"n_stations":1492,"n_countries":69}
+(3 documents, 86756 ms)
+

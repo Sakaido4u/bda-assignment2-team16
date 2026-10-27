@@ -1,0 +1,15 @@
+=== job1_country_year_temp (python_streaming) ===
+$ hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -D mapreduce.job.name=GHCN Job1 - yearly avg TMAX/TMIN per country (Python Streaming) -D mapreduce.job.reduces=2 -files mapreduce/streaming/mapper.py,mapreduce/streaming/combiner.py,mapreduce/streaming/reducer.py -mapper python3 mapper.py -combiner python3 combiner.py -reducer python3 reducer.py -input /ghcn/raw -output /ghcn/output/job1_country_temp_streaming
+    2026-10-27 05:09:51,268 INFO mapreduce.Job: Running job: job_1793076666567_0003
+    2026-10-27 05:14:37,937 INFO mapreduce.Job: Job job_1793076666567_0003 completed successfully
+    		HDFS: Number of bytes read=4071120333
+    		HDFS: Number of bytes read erasure-coded=0
+    		Launched map tasks=122
+    		Launched reduce tasks=2
+    		Data-local map tasks=122
+    		Map output records=26197386
+    		Combine output records=20762
+    		Reduce output records=560
+    		QC_FAILED=43210
+>>> job1_country_year_temp (python_streaming) finished in 290.6s  job=job_1793076666567_0003 maps=122 reduces=2
+

@@ -1,0 +1,376 @@
+----- obs_text @Q1 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_text GROUP BY element;
+FROM obs_text GROUP BY element
+FROM obs_text GROUP BY element
+element	n	avg_v	min_v	max_v
+PRCP	33725626	2.71	0.0	861.2
+SNOW	17082532	1.67	0.0	1524.0
+SNWD	9866010	76.42	0.0	10000.0
+TMAX	13099595	17.11	-79.0	53.9
+TMIN	13097791	5.78	-82.0	43.0
+5 rows selected (97.125 seconds)
+----- obs_text @Q2 result -----
+obs_text.station_id	obs_text.country_code	obs_text.year	obs_text.month	obs_text.day	obs_text.element	obs_text.value	obs_text.m_flag	obs_text.s_flag	obs_text.obs_time
+IN019040100	IN	2025	4	7	TMAX	45.2	H	2	
+IN019040100	IN	2025	4	8	TMAX	46.0	H	2	
+IN019140400	IN	2025	4	16	TMAX	45.2	H	2	
+IN012090600	IN	2025	4	21	TMAX	45.6		S	
+IN012090600	IN	2025	4	22	TMAX	45.8		S	
+IN012090600	IN	2025	4	25	TMAX	45.4		S	
+IN019040100	IN	2025	4	27	TMAX	45.2	H	2	
+IN019140400	IN	2025	4	28	TMAX	45.0	H	2	
+IN019140400	IN	2025	4	29	TMAX	45.2	H	2	
+IN019140400	IN	2025	4	30	TMAX	45.6	H	2	
+IN019140400	IN	2025	5	1	TMAX	45.4	H	2	
+IN019070100	IN	2025	5	16	TMAX	45.0	H	2	
+IN019120700	IN	2025	5	16	TMAX	45.4	H	2	
+IN023550800	IN	2025	5	16	TMAX	45.0		S	
+IN011150300	IN	2025	5	16	TMAX	45.0		S	
+IN019120700	IN	2025	5	17	TMAX	45.0	H	2	
+IN023550800	IN	2025	5	17	TMAX	45.0		S	
+IN023310500	IN	2025	5	17	TMAX	45.1		S	
+IN019120700	IN	2025	5	18	TMAX	45.2	H	2	
+IN023310500	IN	2025	5	18	TMAX	45.4		S	
+IN019100500	IN	2025	5	19	TMAX	45.0	H	2	
+IN019070100	IN	2025	5	20	TMAX	45.0	H	2	
+IN019120700	IN	2025	5	20	TMAX	45.2	H	2	
+IN023310500	IN	2025	5	20	TMAX	45.4		S	
+----- obs_text @Q3 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_text WHERE element = 'TMAX' GROUP BY  country_code, year;
+FROM obs_text WHERE element = 'TMAX' GROUP BY country_code, year
+FROM obs_text WHERE element = 'TMAX' GROUP BY country_code, year
+country_code	year	avg_tmax	n
+AR	2025	22.44	11894
+BA	2025	32.3	212
+BF	2024	30.53	153
+BK	2023	19.63	1384
+BO	2025	10.86	6776
+CH	2023	18.73	66886
+CQ	2024	30.06	1071
+CV	2023	29.74	464
+EK	2024	30.56	244
+ET	2025	28.4	383
+FM	2023	31.78	2975
+HU	2023	17.72	919
+ID	2023	31.9	31663
+IR	2023	26.36	8938
+IV	2025	32.14	2903
+JA	2023	18.88	23667
+JO	2023	27.37	734
+KG	2024	15.55	3115
+KU	2024	35.21	293
+KZ	2023	15.65	33223
+MA	2024	30.21	1739
+----- obs_text @Q4 result -----
+year	total	max_v
+2023	4.49095378E8	10000.0
+2024	3.745666012E8	6900.0
+2025	3.497701498E8	5156.0
+3 rows selected (94.425 seconds)
+----- obs_text @Q5 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_text o JOIN stations s ON (o.station _id = s.station_id)
+. . . . . . . . . . . . . . . . .> WHERE o.country_code = 'IN' AND o.element = ' TMAX'
+. . . . . . . . . . . . . . . . .> GROUP BY s.name, s.latitude, s.longitude HAVI NG COUNT(*) > 300
+. . . . . . . . . . . . . . . . .> ORDER BY avg_tmax DESC LIMIT 10;
+FROM obs_text o JOIN stations s ON (o.station_id = s.station_id)
+WHERE o.country_code = 'IN' AND o.element = 'TMAX'
+GROUP BY s.name, s.latitude, s.longitude HAVING COUNT(*) > 300
+ORDER BY avg_tmax DESC LIMIT 10
+FROM obs_text o JOIN stations s ON (o.station_id = s.station_id)
+WHERE o.country_code = 'IN' AND o.element = 'TMAX'
+GROUP BY s.name, s.latitude, s.longitude HAVING COUNT(*) > 300
+ORDER BY avg_tmax DESC LIMIT 10
+s.name	s.latitude	s.longitude	avg_tmax	n
+MADURAI	9.833	78.083	36.52	683
+TIRUCHCHIRAPALLI	10.767	78.717	36.07	389
+BARMER	25.75	71.383	35.11	873
+VELLORE	12.917	79.15	34.91	544
+SALEM	11.65	78.167	34.75	512
+KURNOOL	15.8	78.067	34.74	911
+PBO ANANTAPUR	14.583	77.633	34.72	887
+JAISALMER	26.9	70.917	34.61	1056
+CHANDRAPUR	19.967	79.3	34.59	547
+VIJAYAWADA/GANNAVA	16.533	80.8	34.56	554
+10 rows selected (133.441 seconds)
+----- obs_rc @Q1 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_rc GROUP BY element;
+FROM obs_rc GROUP BY element
+FROM obs_rc GROUP BY element
+element	n	avg_v	min_v	max_v
+PRCP	33725626	2.71	0.0	861.2
+SNOW	17082532	1.67	0.0	1524.0
+SNWD	9866010	76.42	0.0	10000.0
+TMIN	13097791	5.78	-82.0	43.0
+TMAX	13099595	17.11	-79.0	53.9
+5 rows selected (74.583 seconds)
+----- obs_rc @Q2 result -----
+obs_rc.station_id	obs_rc.country_code	obs_rc.year	obs_rc.month	obs_rc.day	obs_rc.element	obs_rc.value	obs_rc.m_flag	obs_rc.s_flag	obs_rc.obs_time
+IN019070100	IN	2023	5	12	TMAX	45.3		S	
+IN019100500	IN	2023	5	12	TMAX	45.3		S	
+IN019140400	IN	2023	5	12	TMAX	45.0		S	
+IN019040100	IN	2023	5	13	TMAX	45.7		S	
+IN019070100	IN	2023	5	13	TMAX	45.3		S	
+IN019100500	IN	2023	5	13	TMAX	45.6		S	
+IN019140400	IN	2023	5	13	TMAX	46.0		S	
+IN023310500	IN	2023	5	13	TMAX	45.3		S	
+IN019191200	IN	2023	5	13	TMAX	45.4		S	
+IN019040100	IN	2023	5	14	TMAX	45.7		S	
+IN019070100	IN	2023	5	14	TMAX	45.0		S	
+IN019100500	IN	2023	5	14	TMAX	45.6		S	
+IN019140400	IN	2023	5	14	TMAX	46.0		S	
+IN023310500	IN	2023	5	14	TMAX	45.7		S	
+IN012030700	IN	2023	5	14	TMAX	45.4		S	
+IN019191200	IN	2023	5	14	TMAX	45.4		S	
+IN023310500	IN	2023	5	15	TMAX	45.7		S	
+IN019040100	IN	2025	4	7	TMAX	45.2	H	2	
+IN019040100	IN	2025	4	8	TMAX	46.0	H	2	
+IN019140400	IN	2025	4	16	TMAX	45.2	H	2	
+IN012090600	IN	2025	4	21	TMAX	45.6		S	
+IN012090600	IN	2025	4	22	TMAX	45.8		S	
+IN012090600	IN	2025	4	25	TMAX	45.4		S	
+IN019040100	IN	2025	4	27	TMAX	45.2	H	2	
+----- obs_rc @Q3 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_rc WHERE element = 'TMAX' GROUP BY c ountry_code, year;
+FROM obs_rc WHERE element = 'TMAX' GROUP BY country_code, year
+FROM obs_rc WHERE element = 'TMAX' GROUP BY country_code, year
+country_code	year	avg_tmax	n
+AM	2024	15.31	4084
+AR	2025	22.44	11894
+AY	2024	-7.82	6705
+BA	2023	32.77	306
+BF	2024	30.53	153
+BK	2025	19.02	1452
+BM	2023	32.89	1691
+BR	2024	31.48	1223
+CD	2025	35.27	9
+CF	2023	31.22	1758
+CK	2024	30.24	246
+CW	2024	28.68	154
+EI	2024	13.72	1252
+EN	2025	11.31	9642
+EU	2024	25.4	1
+EZ	2025	12.39	2756
+FG	2025	30.51	10
+FI	2023	7.57	63570
+FS	2025	13.15	4
+GB	2023	30.44	291
+GG	2024	20.3	2618
+----- obs_rc @Q4 result -----
+year	total	max_v
+2023	4.49095378E8	10000.0
+2024	3.745666012E8	6900.0
+2025	3.497701498E8	5156.0
+3 rows selected (70.552 seconds)
+----- obs_rc @Q5 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_rc o JOIN stations s ON (o.station_i d = s.station_id)
+. . . . . . . . . . . . . . . . .> WHERE o.country_code = 'IN' AND o.element = ' TMAX'
+. . . . . . . . . . . . . . . . .> GROUP BY s.name, s.latitude, s.longitude HAVI NG COUNT(*) > 300
+. . . . . . . . . . . . . . . . .> ORDER BY avg_tmax DESC LIMIT 10;
+FROM obs_rc o JOIN stations s ON (o.station_id = s.station_id)
+WHERE o.country_code = 'IN' AND o.element = 'TMAX'
+GROUP BY s.name, s.latitude, s.longitude HAVING COUNT(*) > 300
+ORDER BY avg_tmax DESC LIMIT 10
+FROM obs_rc o JOIN stations s ON (o.station_id = s.station_id)
+WHERE o.country_code = 'IN' AND o.element = 'TMAX'
+GROUP BY s.name, s.latitude, s.longitude HAVING COUNT(*) > 300
+ORDER BY avg_tmax DESC LIMIT 10
+s.name	s.latitude	s.longitude	avg_tmax	n
+MADURAI	9.833	78.083	36.52	683
+TIRUCHCHIRAPALLI	10.767	78.717	36.07	389
+BARMER	25.75	71.383	35.11	873
+VELLORE	12.917	79.15	34.91	544
+SALEM	11.65	78.167	34.75	512
+KURNOOL	15.8	78.067	34.74	911
+PBO ANANTAPUR	14.583	77.633	34.72	887
+JAISALMER	26.9	70.917	34.61	1056
+CHANDRAPUR	19.967	79.3	34.59	547
+VIJAYAWADA/GANNAVA	16.533	80.8	34.56	554
+10 rows selected (113.723 seconds)
+----- obs_rc_snappy @Q1 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_rc_snappy GROUP BY element;
+FROM obs_rc_snappy GROUP BY element
+FROM obs_rc_snappy GROUP BY element
+element	n	avg_v	min_v	max_v
+PRCP	33725626	2.71	0.0	861.2
+SNOW	17082532	1.67	0.0	1524.0
+TMIN	13097791	5.78	-82.0	43.0
+SNWD	9866010	76.42	0.0	10000.0
+TMAX	13099595	17.11	-79.0	53.9
+5 rows selected (42.03 seconds)
+----- obs_rc_snappy @Q2 result -----
+obs_rc_snappy.station_id	obs_rc_snappy.country_code	obs_rc_snappy.year	obs_rc_snappy.month	obs_rc_snappy.day	obs_rc_snappy.element	obs_rc_snappy.value	obs_rc_snappy.m_flag	obs_rc_snappy.s_flag	obs_rc_snappy.obs_time
+IN019040100	IN	2025	4	7	TMAX	45.2	H	2	
+IN019040100	IN	2025	4	8	TMAX	46.0	H	2	
+IN019140400	IN	2025	4	16	TMAX	45.2	H	2	
+IN012090600	IN	2025	4	21	TMAX	45.6		S	
+IN012090600	IN	2025	4	22	TMAX	45.8		S	
+IN012090600	IN	2025	4	25	TMAX	45.4		S	
+IN019040100	IN	2025	4	27	TMAX	45.2	H	2	
+IN019140400	IN	2025	4	28	TMAX	45.0	H	2	
+IN019140400	IN	2025	4	29	TMAX	45.2	H	2	
+IN019140400	IN	2025	4	30	TMAX	45.6	H	2	
+IN019140400	IN	2025	5	1	TMAX	45.4	H	2	
+IN019070100	IN	2025	5	16	TMAX	45.0	H	2	
+IN019120700	IN	2025	5	16	TMAX	45.4	H	2	
+IN023550800	IN	2025	5	16	TMAX	45.0		S	
+IN011150300	IN	2025	5	16	TMAX	45.0		S	
+IN019120700	IN	2025	5	17	TMAX	45.0	H	2	
+IN023550800	IN	2025	5	17	TMAX	45.0		S	
+IN023310500	IN	2025	5	17	TMAX	45.1		S	
+IN019120700	IN	2025	5	18	TMAX	45.2	H	2	
+IN023310500	IN	2025	5	18	TMAX	45.4		S	
+IN019100500	IN	2025	5	19	TMAX	45.0	H	2	
+IN019070100	IN	2025	5	20	TMAX	45.0	H	2	
+IN019120700	IN	2025	5	20	TMAX	45.2	H	2	
+IN023310500	IN	2025	5	20	TMAX	45.4		S	
+----- obs_rc_snappy @Q3 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_rc_snappy WHERE element = 'TMAX' GRO UP BY country_code, year;
+FROM obs_rc_snappy WHERE element = 'TMAX' GROUP BY country_code, year
+FROM obs_rc_snappy WHERE element = 'TMAX' GROUP BY country_code, year
+country_code	year	avg_tmax	n
+AC	2025	28.97	359
+AE	2023	35.44	1283
+AG	2024	24.84	10699
+AJ	2024	19.64	1682
+AM	2024	15.31	4084
+AO	2025	27.5	30
+AQ	2023	30.4	365
+AR	2025	22.44	11894
+AS	2024	25.08	205350
+AU	2025	11.16	2797
+AY	2024	-7.82	6705
+BA	2023	32.77	306
+BC	2024	33.64	752
+BD	2023	25.4	259
+BE	2025	15.73	357
+BF	2024	30.53	153
+BG	2023	31.78	1336
+BH	2025	31.59	120
+BK	2025	19.02	1452
+BL	2024	31.48	6220
+BM	2023	32.89	1691
+----- obs_rc_snappy @Q4 result -----
+year	total	max_v
+2025	3.497701498E8	5156.0
+2023	4.49095378E8	10000.0
+2024	3.745666012E8	6900.0
+3 rows selected (40.98 seconds)
+----- obs_rc_snappy @Q5 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_rc_snappy o JOIN stations s ON (o.st ation_id = s.station_id)
+. . . . . . . . . . . . . . . . .> WHERE o.country_code = 'IN' AND o.element = ' TMAX'
+. . . . . . . . . . . . . . . . .> GROUP BY s.name, s.latitude, s.longitude HAVI NG COUNT(*) > 300
+. . . . . . . . . . . . . . . . .> ORDER BY avg_tmax DESC LIMIT 10;
+FROM obs_rc_snappy o JOIN stations s ON (o.station_id = s.station_id)
+WHERE o.country_code = 'IN' AND o.element = 'TMAX'
+GROUP BY s.name, s.latitude, s.longitude HAVING COUNT(*) > 300
+ORDER BY avg_tmax DESC LIMIT 10
+FROM obs_rc_snappy o JOIN stations s ON (o.station_id = s.station_id)
+WHERE o.country_code = 'IN' AND o.element = 'TMAX'
+GROUP BY s.name, s.latitude, s.longitude HAVING COUNT(*) > 300
+ORDER BY avg_tmax DESC LIMIT 10
+s.name	s.latitude	s.longitude	avg_tmax	n
+MADURAI	9.833	78.083	36.52	683
+TIRUCHCHIRAPALLI	10.767	78.717	36.07	389
+BARMER	25.75	71.383	35.11	873
+VELLORE	12.917	79.15	34.91	544
+SALEM	11.65	78.167	34.75	512
+KURNOOL	15.8	78.067	34.74	911
+PBO ANANTAPUR	14.583	77.633	34.72	887
+JAISALMER	26.9	70.917	34.61	1056
+CHANDRAPUR	19.967	79.3	34.59	547
+VIJAYAWADA/GANNAVA	16.533	80.8	34.56	554
+10 rows selected (78.626 seconds)
+----- obs_orc @Q1 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_orc GROUP BY element;
+FROM obs_orc GROUP BY element
+FROM obs_orc GROUP BY element
+element	n	avg_v	min_v	max_v
+PRCP	33725626	2.71	0.0	861.2
+SNOW	17082532	1.67	0.0	1524.0
+SNWD	9866010	76.42	0.0	10000.0
+TMAX	13099595	17.11	-79.0	53.9
+TMIN	13097791	5.78	-82.0	43.0
+5 rows selected (26.139 seconds)
+----- obs_orc @Q2 result -----
+obs_orc.station_id	obs_orc.country_code	obs_orc.year	obs_orc.month	obs_orc.day	obs_orc.element	obs_orc.value	obs_orc.m_flag	obs_orc.s_flag	obs_orc.obs_time
+IN019040100	IN	2025	4	7	TMAX	45.2	H	2	
+IN019040100	IN	2025	4	8	TMAX	46.0	H	2	
+IN019140400	IN	2025	4	16	TMAX	45.2	H	2	
+IN012090600	IN	2025	4	21	TMAX	45.6		S	
+IN012090600	IN	2025	4	22	TMAX	45.8		S	
+IN012090600	IN	2025	4	25	TMAX	45.4		S	
+IN019040100	IN	2025	4	27	TMAX	45.2	H	2	
+IN019140400	IN	2025	4	28	TMAX	45.0	H	2	
+IN019140400	IN	2025	4	29	TMAX	45.2	H	2	
+IN019140400	IN	2025	4	30	TMAX	45.6	H	2	
+IN019140400	IN	2025	5	1	TMAX	45.4	H	2	
+IN019070100	IN	2025	5	16	TMAX	45.0	H	2	
+IN019120700	IN	2025	5	16	TMAX	45.4	H	2	
+IN023550800	IN	2025	5	16	TMAX	45.0		S	
+IN011150300	IN	2025	5	16	TMAX	45.0		S	
+IN019120700	IN	2025	5	17	TMAX	45.0	H	2	
+IN023550800	IN	2025	5	17	TMAX	45.0		S	
+IN023310500	IN	2025	5	17	TMAX	45.1		S	
+IN019120700	IN	2025	5	18	TMAX	45.2	H	2	
+IN023310500	IN	2025	5	18	TMAX	45.4		S	
+IN019100500	IN	2025	5	19	TMAX	45.0	H	2	
+IN019070100	IN	2025	5	20	TMAX	45.0	H	2	
+IN019120700	IN	2025	5	20	TMAX	45.2	H	2	
+IN023310500	IN	2025	5	20	TMAX	45.4		S	
+----- obs_orc @Q3 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_orc WHERE element = 'TMAX' GROUP BY  country_code, year;
+FROM obs_orc WHERE element = 'TMAX' GROUP BY country_code, year
+FROM obs_orc WHERE element = 'TMAX' GROUP BY country_code, year
+country_code	year	avg_tmax	n
+AC	2025	28.97	359
+AE	2023	35.44	1283
+AE	2024	35.22	1079
+AE	2025	36.23	815
+AG	2023	27.11	10682
+AG	2024	24.84	10699
+AG	2025	26.74	5244
+AJ	2023	20.57	1897
+AJ	2024	19.64	1682
+AJ	2025	18.91	2400
+AM	2023	15.86	4214
+AM	2024	15.31	4084
+AM	2025	13.67	5545
+AO	2025	27.5	30
+AQ	2023	30.4	365
+AQ	2024	30.62	337
+AQ	2025	30.03	365
+AR	2023	24.66	12747
+AR	2024	23.72	11918
+AR	2025	22.44	11894
+AS	2023	24.86	207358
+----- obs_orc @Q4 result -----
+year	total	max_v
+2023	4.49095378E8	10000.0
+2024	3.745666012E8	6900.0
+2025	3.497701498E8	5156.0
+3 rows selected (24.365 seconds)
+----- obs_orc @Q5 result -----
+. . . . . . . . . . . . . . . . .> FROM obs_orc o JOIN stations s ON (o.station_ id = s.station_id)
+. . . . . . . . . . . . . . . . .> WHERE o.country_code = 'IN' AND o.element = ' TMAX'
+. . . . . . . . . . . . . . . . .> GROUP BY s.name, s.latitude, s.longitude HAVI NG COUNT(*) > 300
+. . . . . . . . . . . . . . . . .> ORDER BY avg_tmax DESC LIMIT 10;
+FROM obs_orc o JOIN stations s ON (o.station_id = s.station_id)
+WHERE o.country_code = 'IN' AND o.element = 'TMAX'
+GROUP BY s.name, s.latitude, s.longitude HAVING COUNT(*) > 300
+ORDER BY avg_tmax DESC LIMIT 10
+FROM obs_orc o JOIN stations s ON (o.station_id = s.station_id)
+WHERE o.country_code = 'IN' AND o.element = 'TMAX'
+GROUP BY s.name, s.latitude, s.longitude HAVING COUNT(*) > 300
+ORDER BY avg_tmax DESC LIMIT 10
+s.name	s.latitude	s.longitude	avg_tmax	n
+MADURAI	9.833	78.083	36.52	683
+TIRUCHCHIRAPALLI	10.767	78.717	36.07	389
+BARMER	25.75	71.383	35.11	873
+VELLORE	12.917	79.15	34.91	544
+SALEM	11.65	78.167	34.75	512
+KURNOOL	15.8	78.067	34.74	911
+PBO ANANTAPUR	14.583	77.633	34.72	887
+JAISALMER	26.9	70.917	34.61	1056
+CHANDRAPUR	19.967	79.3	34.59	547
+VIJAYAWADA/GANNAVA	16.533	80.8	34.56	554
+10 rows selected (51.787 seconds)

@@ -1,0 +1,22 @@
+$ docker exec -i mongodb mongoimport --db ghcn --collection stations_import --drop < data/stations.jsonl
+﻿2026-10-27T05:48:30.120+0000	connected to: mongodb://localhost/
+2026-10-27T05:48:30.130+0000	dropping: ghcn.stations_import
+2026-10-27T05:48:33.121+0000	ghcn.stations_import	21.7MB
+2026-10-27T05:48:35.302+0000	ghcn.stations_import	38.4MB
+2026-10-27T05:48:35.302+0000	133039 document(s) imported successfully. 0 document(s) failed to import.
+mongoimport took 8.6 s
+{
+  stations_import: 133039,
+  sample: {
+    station_id: 'IN009010100',
+    name: 'BANGALORE',
+    country_name: 'India',
+    location: {
+      type: 'Point',
+      coordinates: [
+        77.583,
+        12.967
+      ]
+    }
+  }
+}

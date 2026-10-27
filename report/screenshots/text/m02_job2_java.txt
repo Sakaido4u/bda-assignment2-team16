@@ -1,0 +1,19 @@
+=== job2_extreme_precip (java) ===
+$ hadoop jar mapreduce/target/ghcn-mapreduce.jar extreme-precip -D ghcn.prcp.threshold=500 -D ghcn.reducers=2 /ghcn/raw /ghcn/output/job2_extreme_precip_java
+    2026-10-27 05:06:37,800 INFO mapreduce.Job: Running job: job_1793076666567_0002
+    2026-10-27 05:09:45,305 INFO mapreduce.Job: Job job_1793076666567_0002 completed successfully
+    		HDFS: Number of bytes read=4071121919
+    		HDFS: Number of bytes read erasure-coded=0
+    		Launched map tasks=122
+    		Launched reduce tasks=2
+    		Data-local map tasks=122
+    		Map output records=200298
+    		Combine output records=178571
+    		Reduce output records=34460
+    		EXTREME_DAYS=200298
+    		PRCP_READINGS=33725626
+    		OTHER_ELEMENT=79384711
+    		QC_FAILED=25187
+    		VALID=33725626
+>>> job2_extreme_precip (java) finished in 190.4s  job=job_1793076666567_0002 maps=122 reduces=2
+

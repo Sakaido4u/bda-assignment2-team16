@@ -1,0 +1,47 @@
+$ docker cp mongodbqueries.js mongodb:/tmp/queries.js; docker exec mongodb mongosh --quiet ghcn /tmp/queries.js
+==== Creating indexes ====
+observations:
+[
+  {
+    v: 2,
+    key: {
+      _id: 1
+    },
+    name: '_id_'
+  },
+  {
+    v: 2,
+    key: {
+      station_id: 1,
+      date: 1
+    },
+    name: 'station_date'
+  },
+  {
+    v: 2,
+    key: {
+      'readings.element': 1
+    },
+    name: 'element'
+  }
+]
+stations:
+[
+  {
+    v: 2,
+    key: {
+      _id: 1
+    },
+    name: '_id_'
+  },
+  {
+    v: 2,
+    key: {
+      location: '2dsphere'
+    },
+    name: 'location_2dsphere',
+    '2dsphereIndexVersion': 3
+  }
+]
+observations count: 20386429   stations count: 133039
+

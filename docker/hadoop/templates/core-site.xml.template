@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<configuration>
+  <property><name>fs.defaultFS</name><value>hdfs://${MASTER_HOST}:9000</value></property>
+  <property><name>hadoop.tmp.dir</name><value>/hadoop/tmp</value></property>
+  <property><name>hadoop.http.staticuser.user</name><value>root</value></property>
+  <!-- allow HiveServer2 (running as root) to act on behalf of clients -->
+  <property><name>hadoop.proxyuser.root.hosts</name><value>*</value></property>
+  <property><name>hadoop.proxyuser.root.groups</name><value>*</value></property>
+</configuration>

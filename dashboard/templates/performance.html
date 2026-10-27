@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Performance{% endblock %}
+{% block content %}
+<h3 class="mb-0">Performance evaluation</h3>
+<div class="small-muted mb-3">Read from the Part 1 result files in <code>results/</code> (mongo_profile.csv, hive_benchmark_summary.csv, hive_storage.csv, mapreduce_times.csv)</div>
+<div class="row g-3">
+  <div class="col-xl-6"><div class="card h-100"><div class="card-header">MongoDB – query time before vs after indexing (ms, log scale)</div>
+    <div class="card-body"><div class="chart-box"><canvas id="mongoTime"></canvas></div></div></div></div>
+  <div class="col-xl-6"><div class="card h-100"><div class="card-header">MongoDB – documents examined before vs after indexing (log scale)</div>
+    <div class="card-body"><div class="chart-box"><canvas id="mongoDocs"></canvas></div></div></div></div>
+  <div class="col-12"><div class="card"><div class="card-header">MongoDB explain("executionStats") summary</div>
+    <div class="card-body p-0"><div class="table-responsive"><table class="table table-sm small mb-0" id="mongoTable"></table></div></div></div></div>
+  <div class="col-xl-6"><div class="card h-100"><div class="card-header">Hive – average query time (3 runs), TEXTFILE vs RCFile</div>
+    <div class="card-body"><div class="chart-box"><canvas id="hiveTime"></canvas></div></div></div></div>
+  <div class="col-xl-6"><div class="card h-100"><div class="card-header">Hive – HDFS data read per query (MB)</div>
+    <div class="card-body"><div class="chart-box"><canvas id="hiveRead"></canvas></div></div></div></div>
+  <div class="col-xl-6"><div class="card h-100"><div class="card-header">Hive – storage size per table format</div>
+    <div class="card-body"><div class="chart-box"><canvas id="hiveStore"></canvas></div></div></div></div>
+  <div class="col-xl-6"><div class="card h-100"><div class="card-header">MapReduce – Java vs Python Streaming (same job, same input)</div>
+    <div class="card-body"><div class="chart-box"><canvas id="mr"></canvas></div></div></div></div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+const opts = (extra = {}) => ({ maintainAspectRatio: false, animation: false, ...extra });
+(async () => {
+  const d = await api("/api/performance");
+  if (d.mongo) {
+    const qs = [...new Set(d.mongo.map(r => r.query))];
+    const pick = (phase, col) => qs.map(q => +((d.mongo.find(r => r.query === q && r.phase === phase) || {})[col] || 0) || null);
+    const labels = qs.map(q => q.replace(/^P\d_/, ""));
+    new Chart(mongoTime, { type: "bar", data: { labels, datasets: [
+      { label: "before (no index)", data: pick("before", "wall_ms_avg"), backgroundColor: PALETTE[1] },
+      { label: "after (indexed)", data: pick("after", "wall_ms_avg"), backgroundColor: PALETTE[0] }] },
+      options: opts({ scales: { y: { type: "logarithmic", title: { display: true, text: "ms" } } } }) });
+    new Chart(mongoDocs, { type: "bar", data: { labels, datasets: [
+      { label: "before", data: pick("before", "totalDocsExamined"), backgroundColor: PALETTE[1] },
+      { label: "after", data: pick("after", "totalDocsExamined"), backgroundColor: PALETTE[0] }] },
+      options: opts({ scales: { y: { type: "logarithmic" } } }) });
+    mongoTable.innerHTML = `<thead class="table-light"><tr><th>Query</th><th>Phase</th><th>Winning plan</th><th class="text-end">executionTimeMillis</th><th class="text-end">keys examined</th><th class="text-end">docs examined</th><th class="text-end">avg wall ms</th></tr></thead><tbody>` +
+      d.mongo.map(r => `<tr><td>${r.query}</td><td>${r.phase}</td><td><span class="badge badge-scan ${r.plan_stage === "COLLSCAN" ? "text-bg-danger" : "text-bg-success"}">${r.plan_stage}</span></td>
+        <td class="text-end">${fmt(r.executionTimeMillis)}</td><td class="text-end">${fmt(r.totalKeysExamined)}</td><td class="text-end">${fmt(r.totalDocsExamined)}</td><td class="text-end">${fmt(r.wall_ms_avg, 1)}</td></tr>`).join("") + "</tbody>";
+  } else showAlert("results/mongo_profile.csv not found yet", "warning");
+
+  if (d.hive) {
+    const tables = TABLE_ORDER.filter(t => d.hive.some(r => r.table === t));
+    const qs = [...new Set(d.hive.map(r => r.query))];
+    const ds = col => tables.map(t => ({ label: t, backgroundColor: TABLE_COLOR[t], data: qs.map(q => +((d.hive.find(r => r.table === t && r.query === q) || {})[col] || 0)) }));
+    new Chart(hiveTime, { type: "bar", data: { labels: qs, datasets: ds("avg_seconds") }, options: opts({ scales: { y: { title: { display: true, text: "seconds" } } } }) });
+    new Chart(hiveRead, { type: "bar", data: { labels: qs, datasets: ds("avg_hdfs_mb_read") }, options: opts({ scales: { y: { title: { display: true, text: "MB read from HDFS" } } } }) });
+  } else showAlert("results/hive_benchmark_summary.csv not found yet", "warning");
+
+  if (d.hive_storage) {
+    const rows = TABLE_ORDER.map(t => d.hive_storage.find(r => r.table === t)).filter(Boolean);
+    new Chart(hiveStore, { type: "bar", data: { labels: rows.map(r => r.table), datasets: [
+      { label: "size (MB, one copy)", data: rows.map(r => (+r.bytes / 1048576).toFixed(0)), backgroundColor: rows.map(r => TABLE_COLOR[r.table]) }] },
+      options: opts({ plugins: { legend: { display: false } }, scales: { y: { title: { display: true, text: "MB" } } } }) });
+  }
+  if (d.mapreduce) {
+    new Chart(mr, { type: "bar", data: { labels: d.mapreduce.map(r => `${r.job} (${r.implementation})`), datasets: [
+      { label: "wall time (s)", data: d.mapreduce.map(r => +r.wall_seconds), backgroundColor: d.mapreduce.map(r => r.implementation === "java" ? PALETTE[0] : PALETTE[1]) }] },
+      options: opts({ indexAxis: "y", plugins: { legend: { display: false } }, scales: { x: { title: { display: true, text: "seconds" } } } }) });
+  }
+})();
+</script>
+{% endblock %}

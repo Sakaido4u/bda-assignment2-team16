@@ -1,0 +1,15 @@
+$ docker exec master hdfs getconf -confKey dfs.replication / dfs.blocksize / fs.defaultFS
+fs.defaultFS                             hdfs://master:9000
+dfs.replication                          2
+dfs.blocksize                            33554432
+yarn.nodemanager.resource.memory-mb      1536
+mapreduce.map.memory.mb                  512
+
+$ docker exec master cat /opt/hadoop/etc/hadoop/workers
+worker1
+worker2
+
+$ docker exec master bash -c "hadoop version | head -1; hive --version 2>/dev/null | head -1; pig -version 2>/dev/null | head -1"
+Hadoop 3.3.6
+Hive 3.1.3
+Apache Pig version 0.18.0 (r1926484) 

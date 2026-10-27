@@ -1,0 +1,12 @@
+==== explain(executionStats) for Q3's $match ====
+{
+  winningStage: 'IXSCAN',
+  executionTimeMillis: 18,
+  totalKeysExamined: 1053,
+  totalDocsExamined: 1053,
+  nReturned: 1053
+}
+
+real	7m19.544s
+user	0m0.000s
+sys	0m0.123s

@@ -1,0 +1,50 @@
+[
+ {
+  "type": "term",
+  "name": "fig01_compose_ps",
+  "title": "PowerShell - docker compose ps (6 containers)",
+  "file": "report/screenshots/text/c01_compose_ps.txt"
+ },
+ {
+  "type": "term",
+  "name": "fig02_dfsadmin_report",
+  "title": "master - hdfs dfsadmin -report (2 live DataNodes)",
+  "file": "report/screenshots/text/c02_dfsadmin_report.txt",
+  "highlight": [
+   "Live datanodes",
+   "Hostname:",
+   "Num of Blocks"
+  ]
+ },
+ {
+  "type": "term",
+  "name": "fig03_yarn_nodes_jps",
+  "title": "master - yarn node -list -all, jps on every node",
+  "file": "report/screenshots/text/c03_yarn_nodes_jps.txt",
+  "highlight": [
+   "RUNNING",
+   "Total Nodes"
+  ]
+ },
+ {
+  "type": "web",
+  "name": "fig06_namenode_datanodes",
+  "url": "http://master:9870/dfshealth.html#tab-datanode",
+  "wait_ms": 3000,
+  "full_page": true
+ },
+ {
+  "type": "web",
+  "name": "fig10_rm_nodes",
+  "url": "http://master:8088/cluster/nodes",
+  "wait_ms": 1500
+ },
+ {
+  "type": "web",
+  "name": "figB1b_dashboard_cluster_idle",
+  "url": "http://dashboard:5000/",
+  "wait_for": "#apps tr",
+  "wait_ms": 2500,
+  "full_page": true
+ }
+]

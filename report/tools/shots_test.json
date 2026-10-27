@@ -1,0 +1,1 @@
+[{"type": "term", "name": "fig43_hive_create_tables", "title": "beeline - TEXTFILE external table, RCFile table, INSERT OVERWRITE", "file": "report/screenshots/text/v01_create_tables.txt", "highlight": ["86871554", "rows selected"]}, {"type": "web", "name": "figB8_dashboard_performance", "url": "http://dashboard:5000/performance", "height": 1950, "budget_ms": 8000}]

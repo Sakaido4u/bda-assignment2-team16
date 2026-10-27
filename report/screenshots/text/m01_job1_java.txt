@@ -1,0 +1,23 @@
+=== job1_country_year_temp (java) ===
+$ hadoop jar mapreduce/target/ghcn-mapreduce.jar country-temp -D ghcn.reducers=2 /ghcn/raw /ghcn/output/job1_country_temp_java
+    2026-10-27 05:03:09,273 INFO mapreduce.Job: Running job: job_1793076666567_0001
+    2026-10-27 05:06:34,741 INFO mapreduce.Job: Job job_1793076666567_0001 completed successfully
+    		HDFS: Number of bytes read=4071121919
+    		HDFS: Number of bytes read erasure-coded=0
+    		Launched map tasks=122
+    		Launched reduce tasks=2
+    		Data-local map tasks=122
+    		Map output records=26197386
+    		Combine output records=20762
+    		Reduce output records=560
+    		OTHER_ELEMENT=86894928
+    		QC_FAILED=43210
+    		VALID=26197386
+>>> job1_country_year_temp (java) finished in 208.9s  job=job_1793076666567_0001 maps=122 reduces=2
+
+    2026-10-27 05:03:16,371 INFO mapreduce.Job:  map 0% reduce 0%
+    2026-10-27 05:04:03,986 INFO mapreduce.Job:  map 25% reduce 0%
+    2026-10-27 05:04:54,792 INFO mapreduce.Job:  map 50% reduce 0%
+    2026-10-27 05:05:39,234 INFO mapreduce.Job:  map 75% reduce 0%
+    2026-10-27 05:06:32,722 INFO mapreduce.Job:  map 100% reduce 32%
+    2026-10-27 05:06:33,725 INFO mapreduce.Job:  map 100% reduce 100%
