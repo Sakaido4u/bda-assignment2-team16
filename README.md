@@ -5,7 +5,7 @@
 BCS714D · JSS Academy of Technical Education, Bengaluru · Faculty: Ms. Sandhiya B
 Team: Deeptanshu Pandey (1JS23CS044) · Chirag S (1JS23CS039) · Gagan Surendra Shamnur (1JS23CS052)
 
-The full write-up is in [`report/report.md`](report/report.md). Screenshots are in `report/screenshots/`. The demo script, viva questions and slide outline are in `report/`.
+The write-up is assembled from the sections in `report/parts/`. Screenshots are in `report/screenshots/` and architecture diagrams in `report/diagrams/`.
 
 ---
 
@@ -13,7 +13,7 @@ The full write-up is in [`report/report.md`](report/report.md). Screenshots are 
 
 | Path | Contents |
 |---|---|
-| `.env` | **the only file to edit** – hostnames/IPs, HDFS block size, YARN memory, years to download |
+| `.env.example` | copy to `.env` and set `METASTORE_DB_PASSWORD`; `.env` is **the only file to edit** – hostnames/IPs, HDFS block size, YARN memory, years to download |
 | `docker/hadoop/` | one image (Temurin JDK 8 + Hadoop 3.3.6 + Hive 3.1.3 + Pig 0.18.0); `NODE_ROLE=master\|worker` picks the daemons; XML configs are rendered from `templates/` |
 | `docker-compose.yml` | **Mode A** – master + worker1 + worker2 + PostgreSQL + MongoDB + dashboard on one laptop |
 | `docker-compose.master.yml`, `docker-compose.worker.yml`, `docker-stack.yml` | **Mode B** – three real machines via a Docker Swarm overlay network |
@@ -24,7 +24,7 @@ The full write-up is in [`report/report.md`](report/report.md). Screenshots are 
 | `mongodb/` | `ingest.py`, `queries.js`, `profile_queries.py`, `build_summaries.py` |
 | `dashboard/` | Part 2 Flask dashboard (`app.py`, `templates/`, `static/`, `Dockerfile`) |
 | `results/` | every measured number (CSV/JSON), logs and charts |
-| `report/` | report, screenshots, demo script, viva questions, Mode B guide |
+| `report/` | report sections, screenshots, diagrams, build tools, Mode B guide |
 
 ## 2. Prerequisites (Windows 10/11)
 
@@ -54,6 +54,7 @@ The full write-up is in [`report/report.md`](report/report.md). Screenshots are 
 
 ```powershell
 cd bda-assignment2-team16
+copy .env.example .env               # once: then set METASTORE_DB_PASSWORD in .env
 .\scripts\fetch-tarballs.ps1         # once: Hadoop/Hive/Pig tarballs (~1.5 GB)
 .\scripts\start-cluster.ps1          # builds images first time, formats NameNode only once,
                                      # waits for 2 live DataNodes + 2 NodeManagers
